@@ -75,7 +75,7 @@ function erji() {
 
     for (var i in XL) {
         d.push({
-            title: getMyVar('SrcJuying$XL', XL[0]) === XL[i] ? '““””<b><span style="color:' + Color + '">' + XLN[i] + '</span></b>' : XLN[i],
+            title: getMyVar('SrcJuying$XL', XL[0]) === XL[i] ? '““””<b><span style="color:' + Color + '">' + XLN[i] + '↓' + '</span></b>' : XLN[i],
             url: $('#noLoading#').lazyRule((XL) => {
                 putMyVar('SrcJuying$XL', XL);
                 refreshPage(false);
@@ -103,7 +103,7 @@ function erji() {
     for (var i = 1; i < DZ.length + 1; i++) {
 
         d.push({
-            title: i,
+            title: i + '',
             url: url + DZ[i - 1] + easy,
             col_type: 'text_4',
         });
