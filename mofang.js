@@ -80,17 +80,7 @@ function yiji() {
             pic_url: fold === '1' ? 'https://lanmeiguojiang.com/tubiao/more/213.png' : 'https://lanmeiguojiang.com/tubiao/more/172.png',
             col_type: getAppVersion() >= 3188 ? 'icon_5' : 'icon_small_4'
         });
-        if (getAppVersion() >= 3188) {
-            d.push({
-                title: "展示",
-                url: $("hiker://empty##fypage#noRecordHistory##noHistory#").rule(() => {
-                    require(config.依赖);
-                    jiekouyiji();
-                }),
-                pic_url: 'https://lanmeiguojiang.com/tubiao/more/105.png',
-                col_type: 'icon_5'
-            });
-        }
+
 
         d.push({
             col_type: 'line'
