@@ -82,10 +82,7 @@ function erji() {
 
 
     clearMyVar(XL)
-    var url = 'https://360yy.cn';
-    cc = url + getMyVar('SrcJuying$XL', XL[i])
-    var 播放 = '//*[@class="fed-play-item fed-drop-item fed-visible"]/ul[2]/li/a/@href'
-    DZ = xpathArray(fetch(cc), 播放)
+
     for (var i in XL) {
         // var a = XL[0];
         // log(a);
@@ -99,19 +96,28 @@ function erji() {
                 return "hiker://empty";
             }, XL[i]),
             col_type: 'scroll_button',
+
         });
     }
+    var xx = getMyVar('SrcJuying$XL', XL[i])
+    setLists(xx)
 
+    function setLists(bbb) {
+        var url = 'https://360yy.cn';
+        cc = url + bbb
+        var 播放 = '//*[@class="fed-play-item fed-drop-item fed-visible"]/ul[2]/li/a/@href'
+        DZ = xpathArray(fetch(cc), 播放)
+        for (var i = 1; i < DZ.length + 1; i++) {
 
+            d.push({
+                title: i + '',
+                url: url + DZ[i - 1] + easy,
+                col_type: 'text_4',
+            });
+        }
 
-    for (var i = 1; i < DZ.length + 1; i++) {
-
-        d.push({
-            title: i + '',
-            url: url + DZ[i - 1] + easy,
-            col_type: 'text_4',
-        });
     }
+
 
     setResult(d);
 }
