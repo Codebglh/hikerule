@@ -3,7 +3,7 @@ function yiji() {
     if (MY_PAGE == 1) { //第一页的筛选
         for (var i in FL) {
             var a = FL[0];
-            log(a);
+            // log(a);
             d.push({
                 title: getMyVar('SrcJuying$FL', '1') === FL[i] ? getHead(FLN[i]) : FLN[i],
                 url: $('#noLoading#').lazyRule((FL) => {
