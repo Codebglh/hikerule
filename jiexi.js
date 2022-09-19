@@ -84,12 +84,8 @@ function erji() {
     clearMyVar(XL)
 
     for (var i in XL) {
-        // var a = XL[0];
-        // log(a);
-
-
         d.push({
-            title: getMyVar('SrcJuying$XL', XL[1]) === XL[i] ? getHead(XLN[i] + '↓') : XLN[i],
+            title: getMyVar('SrcJuying$XL', "") === XL[i] ? getHead(XLN[i] + '↓') : XLN[i],
             url: $('#noLoading#').lazyRule((XL) => {
                 putMyVar('SrcJuying$XL', XL);
                 refreshPage(false);
@@ -104,6 +100,7 @@ function erji() {
 
     function setLists(bbb) {
         var url = 'https://360yy.cn';
+        log(bbb)
         cc = url + bbb
         var 播放 = '//*[@class="fed-play-item fed-drop-item fed-visible"]/ul[2]/li/a/@href'
         DZ = xpathArray(request(cc), 播放)
