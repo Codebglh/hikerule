@@ -173,7 +173,7 @@ function yiji() {
 
 
 }
-setResult(d);
+// setResult(d);
 if (getMyVar('jydingyue', '0') == "0" && JYconfig['codeid2'] && JYconfig['codeid'] != JYconfig['codeid2']) {
     putMyVar('jydingyue', '1');
     try {
