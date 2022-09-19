@@ -35,7 +35,7 @@ function yiji() {
             title: BT[i],
             desc: XQ[i].replace("\r\n", ""),
             pic_url: TP[i],
-            url: MY_URL + LJ[i],
+            url: "hiker://empty##" + MY_URL + LJ[i] + "#immersiveTheme#",
             col_type: 'movie_3',
         });
 
