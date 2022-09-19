@@ -20,11 +20,7 @@ function yiji() {
     });
     //站位符
 
-    //https://360yy.cn
-    // MY_URL1 = '/index.php/vod/show/id/'
-    // MY_URL2 = '/page/'
-    // MY_URL2 = '.html'
-    // MY_PAGE
+    log(MY_URL)
     var html = fetch(MY_URL); //fetch直接访问链接
     var BT = xpathArray(html, 标题);
     var LJ = xpathArray(html, 链接);
