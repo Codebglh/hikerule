@@ -95,16 +95,17 @@ function erji() {
 
         });
     }
-    clearMyVar('SrcJy$back');
+
     var xx = getMyVar('SrcJuying$XL', XL[i])
-    setLists(xx)
+    var url = 'https://360yy.cn';
+    cc = url + bbb
+    setLists(cc)
+
+
 
     function setLists(bbb) {
-        var url = 'https://360yy.cn';
-        log(bbb)
-        cc = url + bbb
         var 播放 = '//*[@class="fed-play-item fed-drop-item fed-visible"]/ul[2]/li/a/@href'
-        DZ = xpathArray(request(cc), 播放)
+        DZ = xpathArray(bbb, 播放)
         for (var i = 1; i < DZ.length + 1; i++) {
 
             d.push({
@@ -113,7 +114,6 @@ function erji() {
                 col_type: 'text_4',
             });
         }
-
     }
 
 
