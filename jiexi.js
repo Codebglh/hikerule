@@ -100,13 +100,6 @@ function erji() {
             }, XL[i]),
             col_type: 'scroll_button',
         });
-
-        d.push({
-            title: i + '',
-            url: url + DZ[i - 1] + easy,
-            col_type: 'text_4',
-        });
-
     }
 
 
