@@ -5,7 +5,7 @@ function yiji() {
             var a = FL[0];
             log(a);
             d.push({
-                title: getMyVar('SrcJuying$FL', '') === FL[i] ? getHead(FLN[i]) : FLN[i],
+                title: getMyVar('SrcJuying$FL', '1') === FL[i] ? getHead(FLN[i]) : FLN[i],
                 url: $('#noLoading#').lazyRule((FL) => {
                     putMyVar('SrcJuying$FL', FL);
                     refreshPage(false);
