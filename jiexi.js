@@ -22,7 +22,7 @@ function yiji() {
     url = MY_URL + "/index.php/vod/show/id/" + getMyVar('SrcJuying$FL', '1') + "/page/" + MY_PAGE + ".html"
 
     //  log(url)
-    var html = fetch(url); //fetch直接访问链接
+    var html = request(url); //fetch直接访问链接
     var BT = xpathArray(html, 标题);
     var LJ = xpathArray(html, 链接);
     var XQ = xpathArray(html, 详情);
@@ -106,7 +106,7 @@ function erji() {
         var url = 'https://360yy.cn';
         cc = url + bbb
         var 播放 = '//*[@class="fed-play-item fed-drop-item fed-visible"]/ul[2]/li/a/@href'
-        DZ = xpathArray(fetch(cc), 播放)
+        DZ = xpathArray(request(cc), 播放)
         for (var i = 1; i < DZ.length + 1; i++) {
 
             d.push({
