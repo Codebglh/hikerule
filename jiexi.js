@@ -85,7 +85,11 @@ function erji() {
         });
     }
 
+    var easy = $("").lazyRule((path) => {
+        eval(request(path));
+        return lazy(input);
 
+    }, ("hiker://files/rules/Src/Juying/自动匹配免嗅.js"));
 
 
 
@@ -104,10 +108,6 @@ function erji() {
             col_type: 'text_4',
         });
     }
-    var easy = $("").lazyRule((path) => {
-        eval(request(path));
-        return lazy(input);
 
-    }, ("hiker://files/rules/Src/Juying/自动匹配免嗅.js"));
     setResult(d);
 }
