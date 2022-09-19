@@ -150,26 +150,26 @@ function yiji() {
     } else {
         var html = JSON.parse(request(MY_URL));
     }
-    var seachurl = $('').lazyRule(() => {
-        return $('hiker://empty#noRecordHistory##noHistory#').rule((name) => {
-            require(config.依赖.match(/https.*\//)[0] + 'SrcJyXunmi.js');
-            xunmi(name);
-        }, input);
-    });
+    // var seachurl = $('').lazyRule(() => {
+    //     return $('hiker://empty#noRecordHistory##noHistory#').rule((name) => {
+    //         require(config.依赖.match(/https.*\//)[0] + 'SrcJyXunmi.js');
+    //         xunmi(name);
+    //     }, input);
+    // });
 
-    var list = html.listData.results;
-    for (var i in list) {
-        d.push({
-            title: list[i].name,
-            img: list[i].v_picurl + '@Referer=',
-            url: JYconfig['erjimode'] != 2 ? "hiker://empty##https://v.sogou.com" + list[i].url.replace('teleplay', 'series').replace('cartoon', 'series') + "#immersiveTheme#" : list[i].name + seachurl,
-            desc: list[i].ipad_play_for_list.finish_episode ? list[i].ipad_play_for_list.episode == list[i].ipad_play_for_list.finish_episode ? "全集" + list[i].ipad_play_for_list.finish_episode : "连载" + list[i].ipad_play_for_list.episode + "/" + list[i].ipad_play_for_list.finish_episode : "",
-            extra: {
-                pic: list[i].v_picurl,
-                name: list[i].name
-            }
-        });
-    }
+    // var list = html.listData.results;
+    // for (var i in list) {
+    //     d.push({
+    //         title: list[i].name,
+    //         img: list[i].v_picurl + '@Referer=',
+    //         url: JYconfig['erjimode'] != 2 ? "hiker://empty##https://v.sogou.com" + list[i].url.replace('teleplay', 'series').replace('cartoon', 'series') + "#immersiveTheme#" : list[i].name + seachurl,
+    //         desc: list[i].ipad_play_for_list.finish_episode ? list[i].ipad_play_for_list.episode == list[i].ipad_play_for_list.finish_episode ? "全集" + list[i].ipad_play_for_list.finish_episode : "连载" + list[i].ipad_play_for_list.episode + "/" + list[i].ipad_play_for_list.finish_episode : "",
+    //         extra: {
+    //             pic: list[i].v_picurl,
+    //             name: list[i].name
+    //         }
+    //     });
+    // }
 
 
 }
