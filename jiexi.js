@@ -55,7 +55,7 @@ function yiji() {
 }
 
 function erji() {
-    clearMyVar(MY_URL)
+
     var d = [];
     var html = getResCode();
     d.push({
@@ -72,15 +72,24 @@ function erji() {
     var Color = 'blue'
 
 
+    var easy = $("").lazyRule((path) => {
+        eval(request(path));
+        return lazy(input);
+
+    }, ("hiker://files/rules/Src/Juying/自动匹配免嗅.js"));
 
 
 
 
-
-
+    clearMyVar(XL)
     for (var i in XL) {
         // var a = XL[0];
         // log(a);
+        var url = 'https://360yy.cn';
+        cc = url + getMyVar('SrcJuying$XL', XL[i])
+        var 播放 = '//*[@class="fed-play-item fed-drop-item fed-visible"]/ul[2]/li/a/@href'
+        DZ = xpathArray(fetch(cc), 播放)
+
         d.push({
             title: getMyVar('SrcJuying$XL', XL[1]) === XL[i] ? getHead(XLN[i] + '↓') : XLN[i],
             url: $('#noLoading#').lazyRule((XL) => {
@@ -90,25 +99,25 @@ function erji() {
             }, XL[i]),
             col_type: 'scroll_button',
         });
-    }
-
-    var easy = $("").lazyRule((path) => {
-        eval(request(path));
-        return lazy(input);
-
-    }, ("hiker://files/rules/Src/Juying/自动匹配免嗅.js"));
-    var url = 'https://360yy.cn';
-    cc = url + getMyVar('SrcJuying$XL', XL[0])
-    var 播放 = '//*[@class="fed-play-item fed-drop-item fed-visible"]/ul[2]/li/a/@href'
-    DZ = xpathArray(fetch(cc), 播放)
-    for (var i = 1; i < DZ.length + 1; i++) {
 
         d.push({
             title: i + '',
             url: url + DZ[i - 1] + easy,
             col_type: 'text_4',
         });
+
     }
+
+
+
+    // for (var i = 1; i < DZ.length + 1; i++) {
+
+    //     d.push({
+    //         title: i + '',
+    //         url: url + DZ[i - 1] + easy,
+    //         col_type: 'text_4',
+    //     });
+    // }
 
     setResult(d);
 }
