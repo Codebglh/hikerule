@@ -33,7 +33,7 @@ function yiji() {
     for (var i in BT) {
         d.push({
             title: BT[i],
-            desc: XQ[i],
+            desc: XQ[i].replace("\n\r", ""),
             pic_url: TP[i],
             url: MY_URL + LJ[i],
             col_type: 'movie_3',
