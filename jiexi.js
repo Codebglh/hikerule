@@ -19,8 +19,12 @@ function yiji() {
         col_type: "blank_block"
     });
     //站位符
-    MY_URL = MY_URL + getMyVar('SrcJuying$FL', '1') + MY_URL1;
-    //https://360yy.cn/index.php/vod/show/id/1/page/2.html
+    x = getMyVar('SrcJuying$FL', '1')
+        //https://360yy.cn
+        // MY_URL1 = '/index.php/vod/show/id/'
+        // MY_URL2 = '/page/'
+        // MY_URL2 = '.html'
+        // MY_PAGE
     var html = fetch(MY_URL); //fetch直接访问链接
     var BT = xpathArray(html, 标题);
     var LJ = xpathArray(html, 链接);
@@ -28,7 +32,7 @@ function yiji() {
     var TP = xpathArray(html, 图片);
 
 
-    log(BT)
+    log(XQ)
     for (var i in BT) {
         d.push({
             title: BT[i],
@@ -53,3 +57,7 @@ function yiji() {
     var 链接='';
     */
 }
+
+// function url() {
+//     if (MY_URL == "")
+// }
