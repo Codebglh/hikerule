@@ -19,9 +19,10 @@ function yiji() {
         col_type: "blank_block"
     });
     //站位符
+    url = MY_URL + "/index.php/vod/show/id/" + getMyVar('SrcJuying$FL', '1') + "/page/" + MY_PAGE + ".html"
 
-    log(MY_URL)
-    var html = fetch(MY_URL); //fetch直接访问链接
+    log(url)
+    var html = fetch(url); //fetch直接访问链接
     var BT = xpathArray(html, 标题);
     var LJ = xpathArray(html, 链接);
     var XQ = xpathArray(html, 详情);
@@ -34,7 +35,7 @@ function yiji() {
             title: BT[i],
             desc: XQ[i],
             pic_url: TP[i],
-            url: LJ[i],
+            url: MY_URL + LJ[i],
             col_type: 'movie_3',
         });
 
@@ -46,8 +47,7 @@ function yiji() {
     var FLN=[]; //链接名
     var MY_URL ="";
     var MY_URL ="";
-    var 列表='';//xpath解析规则
-    var 标题='';
+    var 标题='';//xpath解析规则
     var 详情='';
     var 图片='';
     var 链接='';
