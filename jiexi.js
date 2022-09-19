@@ -55,7 +55,7 @@ function yiji() {
 }
 
 function erji() {
-
+    clearMyVar(MY_URL)
     var d = [];
     var html = getResCode();
     d.push({
@@ -82,7 +82,7 @@ function erji() {
         // var a = XL[0];
         // log(a);
         d.push({
-            title: getMyVar('SrcJuying$XL', XL[0]) === XL[i] ? getHead(XLN[i] + '↓') : XLN[i],
+            title: getMyVar('SrcJuying$XL', XL[1]) === XL[i] ? getHead(XLN[i] + '↓') : XLN[i],
             url: $('#noLoading#').lazyRule((XL) => {
                 putMyVar('SrcJuying$XL', XL);
                 refreshPage(false);
