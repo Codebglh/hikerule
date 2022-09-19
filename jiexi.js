@@ -1,13 +1,11 @@
 function yiji() {
     var d = [];
-    var Color = 'blue'
-
     if (MY_PAGE == 1) { //第一页的筛选
         for (var i in FL) {
             var a = FL[0];
             log(a);
             d.push({
-                title: getMyVar('SrcJuying$FL', '') === FL[i] ? getHead(FLN[i] + '↓') : FLN[i],
+                title: getMyVar('SrcJuying$FL', '') === FL[i] ? getHead(FLN[i]) : FLN[i],
                 url: $('#noLoading#').lazyRule((FL) => {
                     putMyVar('SrcJuying$FL', FL);
                     refreshPage(false);
@@ -75,16 +73,14 @@ function erji() {
 
 
 
-    function getHead(title) {
-        return '‘‘’’<strong><font color="' + Color + '">' + title + '</front></strong>';
-    }
+
 
 
 
 
     for (var i in XL) {
-        var a = xl[0];
-        log(a);
+        // var a = XL[0];
+        // log(a);
         d.push({
             title: getMyVar('SrcJuying$XL', XL[0]) === XL[i] ? getHead(XLN[i] + '↓') : XLN[i],
             url: $('#noLoading#').lazyRule((XL) => {
@@ -101,12 +97,6 @@ function erji() {
         return lazy(input);
 
     }, ("hiker://files/rules/Src/Juying/自动匹配免嗅.js"));
-
-
-
-
-
-
     var url = 'https://360yy.cn';
     cc = url + getMyVar('SrcJuying$XL', XL[0])
     var 播放 = '//*[@class="fed-play-item fed-drop-item fed-visible"]/ul[2]/li/a/@href'
@@ -121,6 +111,11 @@ function erji() {
     }
 
     setResult(d);
+}
+
+function getHead(title) {
+    var Color = 'blue'
+    return '‘‘’’<strong><font color="' + Color + '">' + title + '</front></strong>';
 }
 
 function url() {
