@@ -54,6 +54,31 @@ function yiji() {
     */
 }
 
-function url() {
-    var x = getMyVar('SrcJuying$FL', '1')
+function erji() {
+
+    var d = [];
+    var html = getResCode();
+    d.push({
+        title: xpath(html, 标题),
+        desc: xpath(html, 描述),
+        img: xpath(html, 图片),
+        url: MY_URL,
+        col_type: 'movie_1_vertical_pic_blur'
+    });
+    var 线路 = 'body&&.fed-tabs-boxs&&.fed-part-rows&&li&&a&&href';
+    var plays = pdfh(html, 线路);
+    var url = "https://360yy.cn" + plays;
+    var easy = $("").lazyRule((path) => {
+        eval(request(path));
+        return lazy(input);
+
+    }, ("hiker://files/rules/Src/Juying/自动匹配免嗅.js"));
+    d.push({
+        title: pdfh(html, 标题),
+        url: url + easy,
+        col_type: 'text_4',
+    });
+
+
+    setResult(d);
 }
