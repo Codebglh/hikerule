@@ -65,19 +65,19 @@ function erji() {
         url: MY_URL,
         col_type: 'movie_1_vertical_pic_blur'
     });
-    var 线路 = 'body&&.fed-tabs-boxs&&.fed-part-rows&&li&&a&&href';
-    var plays = pdfh(html, 线路);
-    var url = "https://360yy.cn" + plays;
-    var easy = $("").lazyRule((path) => {
-        eval(request(path));
-        return lazy(input);
+    // var 线路 = 'body&&.fed-tabs-boxs&&.fed-part-rows&&li&&a&&href';
+    // var plays = pdfh(html, 线路);
+    // var url = "https://360yy.cn" + plays;
+    // var easy = $("").lazyRule((path) => {
+    //     eval(request(path));
+    //     return lazy(input);
 
-    }, ("hiker://files/rules/Src/Juying/自动匹配免嗅.js"));
-    d.push({
-        title: pdfh(html, 标题),
-        url: url + easy,
-        col_type: 'text_4',
-    });
+    // }, ("hiker://files/rules/Src/Juying/自动匹配免嗅.js"));
+    // d.push({
+    //     title: pdfh(html, 标题),
+    //     url: url + easy,
+    //     col_type: 'text_4',
+    // });
 
 
     setResult(d);
