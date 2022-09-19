@@ -1,5 +1,5 @@
 function yiji() {
-    Version();
+    // Version();
     /*
     addListener("onClose", $.toString(() => {
         clearMyVar('isverifyA');
@@ -171,35 +171,35 @@ function yiji() {
         });
     }
 
-    setResult(d);
-    if (getMyVar('jydingyue', '0') == "0" && JYconfig['codeid2'] && JYconfig['codeid'] != JYconfig['codeid2']) {
-        putMyVar('jydingyue', '1');
-        try {
-            var nowtime = Date.now();
-            var oldtime = parseInt(getItem('dingyuetime', '0').replace('time', ''));
-            if (nowtime > (oldtime + 6 * 60 * 60 * 1000)) {
-                let pasteurl = JYconfig['codeid2'];
-                let text = parsePaste('https://netcut.cn/p/' + aesDecode('Juying', pasteurl));
-                if (pasteurl && !/^error/.test(text)) {
-                    let pastedata = JSON.parse(base64Decode(text));
-                    var jkfilepath = "hiker://files/rules/Src/Juying/jiekou.json";
-                    var jkdatalist = pastedata.jiekou;
-                    if (jkdatalist.length > 0) {
-                        writeFile(jkfilepath, JSON.stringify(jkdatalist));
-                    }
-                    var jxfilepath = "hiker://files/rules/Src/Juying/myjiexi.json";
-                    var jxdatalist = pastedata.jiexi;
-                    if (jxdatalist.length > 0) {
-                        writeFile(jxfilepath, JSON.stringify(jxdatalist));
-                    }
-                    log("自动订阅同步完成");
-                } else {
-                    log("自动订阅同步口令错误或已失效");
-                }
-                setItem('dingyuetime', nowtime + "time");
-            }
-        } catch (e) {
-            log('自动订阅更新失败：' + e.message);
-        }
-    }
+    // setResult(d);
+    // if (getMyVar('jydingyue', '0') == "0" && JYconfig['codeid2'] && JYconfig['codeid'] != JYconfig['codeid2']) {
+    //     putMyVar('jydingyue', '1');
+    //     try {
+    //         var nowtime = Date.now();
+    //         var oldtime = parseInt(getItem('dingyuetime', '0').replace('time', ''));
+    //         if (nowtime > (oldtime + 6 * 60 * 60 * 1000)) {
+    //             let pasteurl = JYconfig['codeid2'];
+    //             let text = parsePaste('https://netcut.cn/p/' + aesDecode('Juying', pasteurl));
+    //             if (pasteurl && !/^error/.test(text)) {
+    //                 let pastedata = JSON.parse(base64Decode(text));
+    //                 var jkfilepath = "hiker://files/rules/Src/Juying/jiekou.json";
+    //                 var jkdatalist = pastedata.jiekou;
+    //                 if (jkdatalist.length > 0) {
+    //                     writeFile(jkfilepath, JSON.stringify(jkdatalist));
+    //                 }
+    //                 var jxfilepath = "hiker://files/rules/Src/Juying/myjiexi.json";
+    //                 var jxdatalist = pastedata.jiexi;
+    //                 if (jxdatalist.length > 0) {
+    //                     writeFile(jxfilepath, JSON.stringify(jxdatalist));
+    //                 }
+    //                 log("自动订阅同步完成");
+    //             } else {
+    //                 log("自动订阅同步口令错误或已失效");
+    //             }
+    //             setItem('dingyuetime', nowtime + "time");
+    //         }
+    //     } catch (e) {
+    //         log('自动订阅更新失败：' + e.message);
+    //     }
+    // }
 }
