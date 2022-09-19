@@ -95,8 +95,9 @@ function erji() {
 
         });
     }
+    clearMyVar('SrcJy$back');
     var xx = getMyVar('SrcJuying$XL', XL[i])
-        // setLists(xx)
+    setLists(xx)
 
     function setLists(bbb) {
         var url = 'https://360yy.cn';
