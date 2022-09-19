@@ -20,7 +20,7 @@ function yiji() {
     });
     //站位符
     MY_URL = MY_URL + getMyVar('SrcJuying$FL', '1') + MY_URL1;
-
+    //https://360yy.cn/index.php/vod/show/id/1/page/2.html
     var html = fetch(MY_URL); //fetch直接访问链接
     var BT = xpathArray(html, 标题);
     var LJ = xpathArray(html, 链接);
@@ -35,7 +35,7 @@ function yiji() {
             desc: XQ[i],
             pic_url: TP[i],
             url: LJ[i],
-            col_type: 'movie_2',
+            col_type: 'movie_3',
         });
 
     }
