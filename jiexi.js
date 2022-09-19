@@ -5,7 +5,7 @@ function yiji() {
     if (MY_PAGE == 1) { //第一页的筛选
         for (var i in FL) {
             d.push({
-                title: getMyVar('SrcJuying$FL', 0) === i ? '““””<b><span style="color:' + Color + '">' + FLN[i] + '</span></b>' : FLN[i],
+                title: getMyVar('SrcJuying$FL', '') === FL[i] ? '““””<b><span style="color:' + Color + '">' + FLN[i] + '</span></b>' : FLN[i],
                 url: $('#noLoading#').lazyRule((FL) => {
                     putMyVar('SrcJuying$FL', FL);
                     refreshPage(false);
@@ -75,7 +75,7 @@ function erji() {
 
     for (var i in XL) {
         d.push({
-            title: getMyVar('SrcJuying$XL', 0) === i ? '““””<b><span style="color:' + Color + '">' + XLN[i] + '↓' + '</span></b>' : XLN[i],
+            title: getMyVar('SrcJuying$XL', '') === XL[i] ? '““””<b><span style="color:' + Color + '">' + XLN[i] + '↓' + '</span></b>' : XLN[i],
             url: $('#noLoading#').lazyRule((XL) => {
                 putMyVar('SrcJuying$XL', XL);
                 refreshPage(false);
