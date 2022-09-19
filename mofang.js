@@ -38,13 +38,13 @@ function yiji() {
         MY_URL = MY_URL + "&order=" + (排序 == "最新" ? "time" : "score");
     }
 
-    var cfgfile = "hiker://files/rules/Src/Juying/config.json";
-    var Juyingcfg = fetch(cfgfile);
-    if (Juyingcfg != "") {
-        eval("var JYconfig=" + Juyingcfg + ";");
-    } else {
-        var JYconfig = {};
-    }
+    // var cfgfile = "hiker://files/rules/Src/Juying/config.json";
+    // var Juyingcfg = fetch(cfgfile);
+    // if (Juyingcfg != "") {
+    //     eval("var JYconfig=" + Juyingcfg + ";");
+    // } else {
+    //     var JYconfig = {};
+    // }
     if (MY_PAGE == 1) {
         // d.push({
         //     title: "管理",
@@ -55,12 +55,12 @@ function yiji() {
         //     pic_url: 'https://lanmeiguojiang.com/tubiao/more/129.png',
         //     col_type: getAppVersion() >= 3188 ? 'icon_5' : 'icon_small_4'
         // });
-        d.push({
-            title: JYconfig['recordentry'] != 2 ? "历史" : "收藏",
-            url: JYconfig['recordentry'] != 2 ? "hiker://history" : "hiker://collection",
-            pic_url: 'https://lanmeiguojiang.com/tubiao/more/109.png',
-            col_type: getAppVersion() >= 3188 ? 'icon_5' : 'icon_small_4'
-        });
+        // d.push({
+        //     title: JYconfig['recordentry'] != 2 ? "历史" : "收藏",
+        //     url: JYconfig['recordentry'] != 2 ? "hiker://history" : "hiker://collection",
+        //     pic_url: 'https://lanmeiguojiang.com/tubiao/more/109.png',
+        //     col_type: getAppVersion() >= 3188 ? 'icon_5' : 'icon_small_4'
+        // });
         // d.push({
         //     title: "搜索",
         //     url: $("hiker://empty#noRecordHistory##noHistory#").rule(() => {
