@@ -4,8 +4,10 @@ function yiji() {
 
     if (MY_PAGE == 1) { //第一页的筛选
         for (var i in FL) {
+            var a = FL[0];
+            log(a);
             d.push({
-                title: getMyVar('SrcJuying$FL', '') === FL[i] ? '““””<b><span style="color:' + Color + '">' + FLN[i] + '</span></b>' : FLN[i],
+                title: getMyVar('SrcJuying$FL', '') === FL[i] ? getHead(FLN[i] + '↓') : FLN[i],
                 url: $('#noLoading#').lazyRule((FL) => {
                     putMyVar('SrcJuying$FL', FL);
                     refreshPage(false);
@@ -73,9 +75,18 @@ function erji() {
 
 
 
+    function getHead(title) {
+        return '‘‘’’<strong><font color="' + Color + '">' + title + '</front></strong>';
+    }
+
+
+
+
     for (var i in XL) {
+        var a = xl[0];
+        log(a);
         d.push({
-            title: getMyVar('SrcJuying$XL', '') === XL[i] ? '““””<b><span style="color:' + Color + '">' + XLN[i] + '↓' + '</span></b>' : XLN[i],
+            title: getMyVar('SrcJuying$XL', XL[0]) === XL[i] ? getHead(XLN[i] + '↓') : XLN[i],
             url: $('#noLoading#').lazyRule((XL) => {
                 putMyVar('SrcJuying$XL', XL);
                 refreshPage(false);
@@ -119,5 +130,5 @@ function url() {
 
 
 
-    setResult(a);
+    return (a);
 }
