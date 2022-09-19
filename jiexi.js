@@ -75,7 +75,7 @@ function erji() {
 
     for (var i in XL) {
         d.push({
-            title: getMyVar('SrcJuying$FL', XL[1]) === XL[i] ? '““””<b><span style="color:' + Color + '">' + XLN[i] + '</span></b>' : XLN[i],
+            title: getMyVar('SrcJuying$FL', XL[0]) === XL[i] ? '““””<b><span style="color:blue">' + XLN[i] + '</span></b>' : XLN[i],
             url: $('#noLoading#').lazyRule((XL) => {
                 putMyVar('SrcJuying$XL', XL);
                 refreshPage(false);
@@ -93,6 +93,22 @@ function erji() {
 
 
     var url = 'https://360yy.cn/';
+    cc = url + getMyVar('SrcJuying$FL', XL[0])
+    var 播放名 = '/html/body/div[3]/div/div[2]/div/div[1]/div[2]/div[1]/ul[2]/li/a/text()'
+    var 播放 = '/html/body/div[3]/div/div[2]/div/div[1]/div[2]/div[1]/ul[2]/li/a/@href'
+    DZ = xpath(fetch(cc), 播放)
+    DZN = xpath(fetch(cc), 播放名)
+    for (var i in XL) {
+        d.push({
+            title: getMyVar('SrcJuying$DZ', DZ[0]) === DZ[i] ? '““””<b><span style="color:blue">' + DZN[i] + '</span></b>' : DZN[i],
+            url: $('#noLoading#').lazyRule((DZ) => {
+                putMyVar('SrcJuying$DZ', DZ);
+                refreshPage(false);
+                return "hiker://empty";
+            }, DZ[i]),
+            col_type: 'scroll_button',
+        });
+    }
     var easy = $("").lazyRule((path) => {
         eval(request(path));
         return lazy(input);
