@@ -65,17 +65,17 @@ function erji() {
         url: MY_URL,
         col_type: 'movie_1_vertical_pic_blur'
     });
-    // var 线路名 = '//*[@class="fed-tabs-boxs"]/div/div/ul/li/a/text()';
-    // var XLN = xpathArray(html, 线路名);
+    var 线路名 = '//*[@class="fed-tabs-boxs"]/div/div/ul/li/a/text()';
+    var XLN = xpathArray(html, 线路名);
     var 线路 = '//*[@class="fed-tabs-boxs"]/div/div/ul/li/a/@href';
     var XL = xpathArray(html, 线路);
-
+    var Color = 'blue'
 
 
 
     for (var i in XL) {
         d.push({
-            title: getMyVar('SrcJuying$FL', XL[0]) === XL[i] ? '““””<b><span style="color:blue">' + XLN[i] + '</span></b>' : XLN[i],
+            title: getMyVar('SrcJuying$FL', XL[0]) === XL[i] ? '““””<b><span style="color:' + Color + '">' + XLN[i] + '</span></b>' : XLN[i],
             url: $('#noLoading#').lazyRule((XL) => {
                 putMyVar('SrcJuying$XL', XL);
                 refreshPage(false);
@@ -92,15 +92,15 @@ function erji() {
 
 
 
-    var url = 'https://360yy.cn/';
-    cc = url + getMyVar('SrcJuying$FL', XL[0])
+    var url = 'https://360yy.cn';
+    cc = url + getMyVar('SrcJuying$XL', XL[0])
     var 播放 = '//*[@class="fed-play-item fed-drop-item fed-visible"]/ul[2]/li/a/@href'
-    DZ = xpath(fetch(cc), 播放)
+    DZ = xpathArray(fetch(cc), 播放)
     for (var i = 1; i < DZ.length + 1; i++) {
 
         d.push({
             title: i,
-            url: DZ[i - 1],
+            url: url + DZ[i - 1] + easy,
             col_type: 'text_4',
         });
     }
