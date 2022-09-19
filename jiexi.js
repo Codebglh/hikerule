@@ -66,7 +66,7 @@ function erji() {
         col_type: 'movie_1_vertical_pic_blur'
     });
     var 线路名 = '//*[@class="fed-tabs-boxs"]/div/div/ul/li/a/text()';
-    var XLM = xpathArray(html, 线路名);
+    var XLN = xpathArray(html, 线路名);
     var 线路 = '//*[@class="fed-tabs-boxs"]/div/div/ul/li/a/@href';
     var XL = xpathArray(html, 线路);
 
