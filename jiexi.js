@@ -35,7 +35,7 @@ function yiji() {
             title: BT[i],
             desc: XQ[i].replace("\r\n", ""),
             pic_url: TP[i],
-            url: "hiker://empty##" + MY_URL + LJ[i] + "#immersiveTheme#",
+            url: MY_URL + LJ[i] + "#immersiveTheme#",
             col_type: 'movie_3',
         });
 
@@ -65,20 +65,38 @@ function erji() {
         url: MY_URL,
         col_type: 'movie_1_vertical_pic_blur'
     });
-    // var 线路 = 'body&&.fed-tabs-boxs&&.fed-part-rows&&li&&a&&href';
-    // var plays = pdfh(html, 线路);
-    // var url = "https://360yy.cn" + plays;
-    // var easy = $("").lazyRule((path) => {
-    //     eval(request(path));
-    //     return lazy(input);
-
-    // }, ("hiker://files/rules/Src/Juying/自动匹配免嗅.js"));
-    // d.push({
-    //     title: pdfh(html, 标题),
-    //     url: url + easy,
-    //     col_type: 'text_4',
-    // });
+    var 线路名 = '//*[@class="fed-tabs-boxs"]/div/div/ul/li/a/text()';
+    var XLM = xpathArray(html, 线路名);
+    var 线路 = '//*[@class="fed-tabs-boxs"]/div/div/ul/li/a/@href';
+    var XL = xpathArray(html, 线路);
 
 
+
+
+    for (var i in XL) {
+        d.push({
+            title: getMyVar('SrcJuying$FL', XL[1]) === XL[i] ? '““””<b><span style="color:' + Color + '">' + XLN[i] + '</span></b>' : XLN[i],
+            url: $('#noLoading#').lazyRule((XL) => {
+                putMyVar('SrcJuying$XL', XL);
+                refreshPage(false);
+                return "hiker://empty";
+            }, XL[i]),
+            col_type: 'scroll_button',
+        });
+    }
+
+
+
+
+
+
+
+
+    var url = 'https://360yy.cn/';
+    var easy = $("").lazyRule((path) => {
+        eval(request(path));
+        return lazy(input);
+
+    }, ("hiker://files/rules/Src/Juying/自动匹配免嗅.js"));
     setResult(d);
 }
