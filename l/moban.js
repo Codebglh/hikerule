@@ -7,3 +7,6 @@ var version = {
     ok: 'https://okjx.cc/?url=',
     jsRoot: 'https://gitcode.net/qq_32394351/dr/-/raw/master/js/',
 };
+
+
+//at.alicdn.com/t/c/font_2761478_58hc3yl1v99.js
