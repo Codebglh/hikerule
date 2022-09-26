@@ -8,19 +8,19 @@ var version = {
     ok: 'https://okjx.cc/?url=',
     jsRoot: 'https://gitcode.net/qq_32394351/dr/-/raw/master/js/',
     url: 'https://ghproxy.com/https://raw.githubusercontent.com/Codebglh/hikerule/main/l/',
-}
+};
 
 function yiji() {
     var d = [];
-    var a = version.url + 'src/1.png'
+    var a = version.url + 'src/1.png';
     log(a);
     if (MY_PAGE == 1) {
         d.push({
             title: "历史",
             url: "hiker://history",
             pic_url: a,
-            col_type: 'icon_5'
+            col_type: 'icon_5',
         });
     }
-    d.push({ col_type: "blank_block" })
+    d.push({ col_type: "blank_block" });
 };
