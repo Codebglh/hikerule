@@ -1,3 +1,4 @@
+var updateLog = '2022/09/26 初制作模版';
 var version = {
     author: "bgcode",
     ver: "0.0.1",
@@ -7,7 +8,7 @@ var version = {
     ok: 'https://okjx.cc/?url=',
     jsRoot: 'https://gitcode.net/qq_32394351/dr/-/raw/master/js/',
     url: 'https://ghproxy.com/https://raw.githubusercontent.com/Codebglh/hikerule/main/l/',
-};
+}
 
 function yiji() {
     var d = [];
@@ -18,4 +19,4 @@ function yiji() {
         col_type: 'icon_small_4'
     });
 
-}
+};
