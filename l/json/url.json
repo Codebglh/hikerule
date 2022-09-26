@@ -1,0 +1,15 @@
+{
+    "resoulist": [
+        "<li uigs=\"in_search_hotword_昆仑神宫\"><a href=\"/v?query=%E6%98%86%E4%BB%91%E7%A5%9E%E5%AE%AB\">昆仑神宫</a></li>",
+        "<li uigs=\"in_search_hotword_请君\"><a href=\"/v?query=%E8%AF%B7%E5%90%9B\">请君</a></li>",
+        "<li uigs=\"in_search_hotword_飞狐外传\"><a href=\"/v?query=%E9%A3%9E%E7%8B%90%E5%A4%96%E4%BC%A0\">飞狐外传</a></li>",
+        "<li uigs=\"in_search_hotword_你好星期六\"><a href=\"/v?query=%E4%BD%A0%E5%A5%BD%E6%98%9F%E6%9C%9F%E5%85%AD\">你好星期六</a></li>",
+        "<li uigs=\"in_search_hotword_今日关注\"><a href=\"/v?query=%E4%BB%8A%E6%97%A5%E5%85%B3%E6%B3%A8\">今日关注</a></li>",
+        "<li uigs=\"in_search_hotword_等着我\"><a href=\"/v?query=%E7%AD%89%E7%9D%80%E6%88%91\">等着我</a></li>",
+        "<li uigs=\"in_search_hotword_斗罗大陆\"><a href=\"/v?query=%E6%96%97%E7%BD%97%E5%A4%A7%E9%99%86\">斗罗大陆</a></li>",
+        "<li uigs=\"in_search_hotword_神探大战\"><a href=\"/v?query=%E7%A5%9E%E6%8E%A2%E5%A4%A7%E6%88%98\">神探大战</a></li>",
+        "<li uigs=\"in_search_hotword_断桥\"><a href=\"/v?query=%E6%96%AD%E6%A1%A5\">断桥</a></li>",
+        "<li uigs=\"in_search_hotword_人生大事\"><a href=\"/v?query=%E4%BA%BA%E7%94%9F%E5%A4%A7%E4%BA%8B\">人生大事</a></li>"
+    ],
+    "updatetime": 1664186233546
+}
