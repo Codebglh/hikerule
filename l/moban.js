@@ -12,13 +12,36 @@ var version = {
 
 function yiji() {
     var d = [];
-    var a = version.url + 'src/1.png';
     log(a);
     if (MY_PAGE == 1) {
         d.push({
             title: "历史",
             url: "hiker://history",
             pic_url: version.url + 'src/1.png',
+            col_type: 'icon_5',
+        });
+        d.push({
+            title: "历史",
+            url: "hiker://history",
+            pic_url: version.url + 'src/2.png',
+            col_type: 'icon_5',
+        });
+        d.push({
+            title: "历史",
+            url: "hiker://history",
+            pic_url: version.url + 'src/3.png',
+            col_type: 'icon_5',
+        });
+        d.push({
+            title: "历史",
+            url: "hiker://history",
+            pic_url: version.url + 'src/4.png',
+            col_type: 'icon_5',
+        });
+        d.push({
+            title: "历史",
+            url: "hiker://history",
+            pic_url: version.url + 'src/5.png',
             col_type: 'icon_5',
         });
     }
