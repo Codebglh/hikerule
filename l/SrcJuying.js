@@ -5,46 +5,46 @@ function jiekouyiji() {
     setPageTitle('接口独立展示');
     var d = [];
     var cfgfile = "hiker://files/rules/Src/Juying/config.json";
-    var Juyingcfg = fetch(cfgfile);
-    if (Juyingcfg != "") {
-        eval("var JYconfig=" + Juyingcfg + ";");
-    } else {
-        var JYconfig = {};
+    var Juyingcfg=fetch(cfgfile);
+    if(Juyingcfg != ""){
+        eval("var JYconfig=" + Juyingcfg+ ";");
+    }else{
+        var JYconfig= {};
     }
-
-    var api_name = JYconfig.Jydouli ? JYconfig.Jydouli.api_name || "" : "";
-    var api_type = JYconfig.Jydouli ? JYconfig.Jydouli.api_type || "" : "";
-    var api_url = JYconfig.Jydouli ? JYconfig.Jydouli.api_url || "" : "";
-    var api_ua = JYconfig.Jydouli ? JYconfig.Jydouli.api_ua || "MOBILE_UA" : MOBILE_UA;
-    api_ua = api_ua == "MOBILE_UA" ? MOBILE_UA : api_ua == "PC_UA" ? PC_UA : api_ua;
-    var xunmitimeout = JYconfig.xunmitimeout || 5;
-    if (api_name) { setPageTitle(api_name); }
-    if (api_name && api_type && api_url) {
-        if (api_type == "v1") {
+    
+    var api_name = JYconfig.Jydouli?JYconfig.Jydouli.api_name||"":"";
+    var api_type = JYconfig.Jydouli?JYconfig.Jydouli.api_type||"":"";
+    var api_url = JYconfig.Jydouli?JYconfig.Jydouli.api_url||"":"";
+    var api_ua = JYconfig.Jydouli?JYconfig.Jydouli.api_ua||"MOBILE_UA":MOBILE_UA;
+    api_ua = api_ua=="MOBILE_UA"?MOBILE_UA:api_ua=="PC_UA"?PC_UA:api_ua;
+    var xunmitimeout = JYconfig.xunmitimeout||5;
+    if(api_name){setPageTitle(api_name);}
+    if(api_name&&api_type&&api_url){
+        if (api_type=="v1") {
             let date = new Date();
-            let mm = date.getMonth() + 1;
+            let mm = date.getMonth()+1;
             let dd = date.getDate();
-            let key = (mm < 10 ? "0" + mm : mm) + "" + (dd < 10 ? "0" + dd : dd);
-            var url = api_url + '/detail?&key=' + key + '&vod_id=';
+            let key = (mm<10?"0"+mm:mm)+""+(dd<10?"0"+dd:dd);
+            var url = api_url + '/detail?&key='+key+'&vod_id=';
             var typeurl = api_url + "/types";
-            var listurl = api_url + '?key=' + key + '&page=';
+            var listurl = api_url + '?key='+key+'&page=';
             var lists = "html.data.list";
-        } else if (api_type == "app") {
+        } else if (api_type=="app") {
             var url = api_url + 'video_detail?id=';
             var typeurl = api_url + "nav";
             var listurl = api_url + 'video?tid=@type_id&pg=';
             var lists = "html.list";
-        } else if (api_type == "v2") {
+        } else if (api_type=="v2") {
             var url = api_url + 'video_detail?id=';
             var typeurl = api_url + "nav";
             var listurl = api_url + 'video?tid=@type_id&pg=';
             var lists = "html.data";
-        } else if (api_type == "iptv") {
+        } else if (api_type=="iptv") {
             var url = api_url + '?ac=detail&ids=';
             var typeurl = api_url + "?ac=flitter";
             var listurl = api_url + '?ac=list&page=';
             var lists = "html.data";
-        } else if (api_type == "cms") {
+        } else if (api_type=="cms") {
             var url = api_url + '?ac=videolist&ids=';
             var typeurl = api_url + "?ac=list";
             var listurl = api_url + '?ac=videolist&pg=';
@@ -53,30 +53,30 @@ function jiekouyiji() {
             log('api类型错误')
         }
     }
-
-    if (MY_PAGE == 1) {
+    
+    if(MY_PAGE==1){
         var filepath = "hiker://files/rules/Src/Juying/jiekou.json";
         var datafile = fetch(filepath);
-        if (datafile != "") {
-            eval("var datalist=" + datafile + ";");
-        } else {
+        if(datafile != ""){
+            eval("var datalist=" + datafile+ ";");
+        }else{
             var datalist = [];
         }
         datalist = datalist.filter(item => {
-            return item.type != "xpath" && item.type != "biubiu";
+            return item.type!="xpath" && item.type!="biubiu";
         })
-        if (datalist.length > 0) {
-            if (!api_url || !datalist.some(item => item.url == api_url)) {
+        if(datalist.length>0){
+            if(!api_url||!datalist.some(item => item.url == api_url)){
                 var cfgfile = "hiker://files/rules/Src/Juying/config.json";
-                var Juyingcfg = fetch(cfgfile);
-                if (Juyingcfg != "") {
-                    eval("var JYconfig=" + Juyingcfg + ";");
-                } else {
-                    var JYconfig = {};
+                var Juyingcfg=fetch(cfgfile);
+                if(Juyingcfg != ""){
+                    eval("var JYconfig=" + Juyingcfg+ ";");
+                }else{
+                    var JYconfig= {};
                 }
-                JYconfig['Jydouli'] = { api_name: datalist[0].name, api_type: datalist[0].type, api_url: datalist[0].url, api_ua: datalist[0].ua };
+                JYconfig['Jydouli'] = {api_name:datalist[0].name, api_type:datalist[0].type, api_url:datalist[0].url, api_ua:datalist[0].ua};
                 writeFile(cfgfile, JSON.stringify(JYconfig));
-                log('未指定接口，默认第一个>' + datalist[0].name + datalist[0].url);
+                log('未指定接口，默认第一个>'+datalist[0].name+datalist[0].url);
                 refreshPage(true);
             }
             for (let i = 0; i < 9; i++) {
@@ -84,42 +84,42 @@ function jiekouyiji() {
                     col_type: "blank_block"
                 })
             }
-            for (let i in datalist) {
-                if (api_url == datalist[i].url) {
+            for(let i in datalist){
+                if(api_url==datalist[i].url){
                     var SrcJydoulisousuodata = [];
                     SrcJydoulisousuodata.push(datalist[i]);
                 }
                 d.push({
-                    title: api_url == datalist[i].url ? '““””<b><span style="color:#3CB371">' + datalist[i].name + '</span></b>' : datalist[i].name,
+                    title: api_url==datalist[i].url?'““””<b><span style="color:#3CB371">' + datalist[i].name + '</span></b>':datalist[i].name,
                     col_type: 'scroll_button',
                     url: $('#noLoading#').lazyRule((Jydouli) => {
                         clearMyVar('SrcJydouli$type_id');
                         var cfgfile = "hiker://files/rules/Src/Juying/config.json";
-                        var Juyingcfg = fetch(cfgfile);
-                        if (Juyingcfg != "") {
-                            eval("var JYconfig=" + Juyingcfg + ";");
-                        } else {
-                            var JYconfig = {};
+                        var Juyingcfg=fetch(cfgfile);
+                        if(Juyingcfg != ""){
+                            eval("var JYconfig=" + Juyingcfg+ ";");
+                        }else{
+                            var JYconfig= {};
                         }
                         JYconfig['Jydouli'] = Jydouli;
                         writeFile(cfgfile, JSON.stringify(JYconfig));
                         refreshPage(true);
                         return "hiker://empty";
-                    }, { api_name: datalist[i].name, api_type: datalist[i].type, api_url: datalist[i].url, api_ua: datalist[i].ua })
+                    }, {api_name:datalist[i].name, api_type:datalist[i].type, api_url:datalist[i].url, api_ua:datalist[i].ua})
                 });
             }
             d.push({
                 col_type: "blank_block"
             });
         }
-
+        
         const Color = "#3399cc";
-        try {
-            let gethtml = request(typeurl, { headers: { 'User-Agent': api_ua }, timeout: xunmitimeout * 1000 });
-            if (api_type == "v1") {
+        try{
+            let gethtml = request(typeurl, { headers: { 'User-Agent': api_ua }, timeout:xunmitimeout*1000 });
+            if (api_type=="v1") {
                 let typehtml = JSON.parse(gethtml);
-                let typelist = typehtml.data.list || typehtml.data.typelist;
-                var typeclass = typelist.map((list) => {
+                let typelist = typehtml.data.list||typehtml.data.typelist;
+                var typeclass = typelist.map((list)=>{
                     return {
                         "type_id": list.type_id,
                         "type_pid": list.type_pid,
@@ -128,15 +128,15 @@ function jiekouyiji() {
                 })
             } else if (/app|v2/.test(api_type)) {
                 let typehtml = JSON.parse(gethtml);
-                let typelist = typehtml.list || typehtml.data;
-                var typeclass = typelist.map((list) => {
+                let typelist = typehtml.list||typehtml.data;
+                var typeclass = typelist.map((list)=>{
                     return {
                         "type_id": list.type_id,
                         "type_pid": 0,
                         "type_name": list.type_name
                     }
                 })
-            } else if (api_type == "iptv") {
+            } else if (api_type=="iptv") {
                 let type_dict = {
                     comic: '动漫',
                     movie: '电影',
@@ -148,8 +148,8 @@ function jiekouyiji() {
                     tiyu: '体育'
                 };
                 let typehtml = JSON.parse(gethtml);
-                var typeclass = typehtml.map((list) => {
-                    if (type_dict[list]) {
+                var typeclass = typehtml.map((list)=>{
+                    if(type_dict[list]){
                         return {
                             "type_id": list,
                             "type_pid": 0,
@@ -158,48 +158,48 @@ function jiekouyiji() {
                     }
                 })
                 typeclass = typeclass.filter(n => n);
-            } else if (api_type == "cms") {
-                if (/<\?xml/.test(gethtml)) {
-                    let typelist = pdfa(gethtml, 'class&&ty');
-                    var typeclass = typelist.map((list) => {
+            } else if (api_type=="cms") {
+                if(/<\?xml/.test(gethtml)){
+                    let typelist = pdfa(gethtml,'class&&ty');
+                    var typeclass = typelist.map((list)=>{
                         return {
-                            "type_id": String(xpath(list, `//ty/@id`)).trim(),
+                            "type_id": String(xpath(list,`//ty/@id`)).trim(),
                             "type_pid": 0,
-                            "type_name": String(xpath(list, `//ty/text()`)).trim()
+                            "type_name": String(xpath(list,`//ty/text()`)).trim()
                         }
                     })
-                } else {
+                }else{
                     let typehtml = JSON.parse(gethtml);
                     var typeclass = typehtml.class;
                 }
             } else {
                 log('api类型错误')
             }
-        } catch (e) {
-            log(api_name + ' 接口访问异常，请更换接口！获取分类失败>' + e.message);
+        }catch(e){
+            log(api_name+' 接口访问异常，请更换接口！获取分类失败>'+e.message);
             var typeclass = [];
         }
 
-        if (typeclass && typeclass.length > 0) {
+        if(typeclass&&typeclass.length>0){
             let type_pids = [];
             let type_ids = [];
-            for (let i in typeclass) {
-                if (type_pids.indexOf(typeclass[i].type_pid) == -1) { type_pids.push(typeclass[i].type_pid) }
-                if (type_ids.indexOf(typeclass[i].type_id) == -1) { type_ids.push(typeclass[i].type_id) }
+            for(let i in typeclass){
+                if(type_pids.indexOf(typeclass[i].type_pid)==-1){type_pids.push(typeclass[i].type_pid)}
+                if(type_ids.indexOf(typeclass[i].type_id)==-1){type_ids.push(typeclass[i].type_id)}
             }
-            if (type_pids.length > 0) {
+            if(type_pids.length > 0){
                 type_pids.sort((a, b) => {
                     return a - b
                 })
             };
-            if (/v2|app/.test(api_type) && !getMyVar('SrcJydouli$type_id')) {
-                putMyVar('SrcJydouli$type_id', type_ids[0]);
+            if(/v2|app/.test(api_type)&&!getMyVar('SrcJydouli$type_id')){
+                putMyVar('SrcJydouli$type_id',type_ids[0]);
             }
             for (var j in type_pids) {
                 for (var i in typeclass) {
-                    if (typeclass[i].type_pid == type_pids[j]) {
+                    if(typeclass[i].type_pid==type_pids[j]){
                         d.push({
-                            title: getMyVar('SrcJydouli$type_id') == typeclass[i].type_id ? '““””<b><span style="color:' + Color + '">' + typeclass[i].type_name + '</span></b>' : typeclass[i].type_name,
+                            title: getMyVar('SrcJydouli$type_id')==typeclass[i].type_id?'““””<b><span style="color:' + Color + '">' + typeclass[i].type_name + '</span></b>':typeclass[i].type_name,
                             url: $('#noLoading#').lazyRule((type_id) => {
                                 putMyVar('SrcJydouli$type_id', type_id);
                                 refreshPage(true);
@@ -213,23 +213,23 @@ function jiekouyiji() {
                     col_type: "blank_block"
                 });
             }
-
+            
         }
         var seachurl = $('').lazyRule((data) => {
-            if (data) {
-                return $('hiker://empty#noRecordHistory##noHistory#').rule((name, data) => {
+            if(data){
+                return $('hiker://empty#noRecordHistory##noHistory#').rule((name,data) => {
                     require(config.依赖.match(/https.*\//)[0] + 'SrcJyXunmi.js');
-                    xunmi(name, data);
-                }, input, data);
-            } else {
+                    xunmi(name,data);
+                }, input,data);
+            }else{
                 return 'toast://未找到接口数据'
             }
-        }, SrcJydoulisousuodata);
+        },SrcJydoulisousuodata);
         d.push({
             title: "🔍",
             url: $.toString((seachurl) => {
-                return input + seachurl;
-            }, seachurl),
+                    return input + seachurl;
+                },seachurl),
             desc: "搜你想看的...",
             col_type: "input",
             extra: {
@@ -237,76 +237,76 @@ function jiekouyiji() {
             }
         });
     }
-
-    try {
+        
+    try{
         MY_URL = listurl + MY_PAGE;
-        if (api_type == "v2" || api_type == "app") {
-            MY_URL = MY_URL.replace('@type_id', getMyVar('SrcJydouli$type_id', '1'));
-        } else if (getMyVar('SrcJydouli$type_id')) {
-            if (api_type == "v1") {
+        if(api_type=="v2"||api_type=="app"){
+            MY_URL = MY_URL.replace('@type_id',getMyVar('SrcJydouli$type_id','1'));
+        }else if(getMyVar('SrcJydouli$type_id')){
+            if (api_type=="v1") {
                 MY_URL = MY_URL + '&type=' + getMyVar('SrcJydouli$type_id');
-            } else if (api_type == "iptv") {
+            } else if (api_type=="iptv") {
                 MY_URL = MY_URL + '&class=' + getMyVar('SrcJydouli$type_id');
-            } else {
+            } else{
                 MY_URL = MY_URL + '&t=' + getMyVar('SrcJydouli$type_id');
             }
         }
-
+        
         try {
-            var gethtml = request(MY_URL, { headers: { 'User-Agent': api_ua }, timeout: xunmitimeout * 1000 });
-            if (/cms/.test(api_type) && /<\?xml/.test(gethtml)) {
-                gethtml = gethtml.replace(/&lt;!\[CDATA\[|\]\]&gt;|<!\[CDATA\[|\]\]>/g, '');
+            var gethtml = request(MY_URL, { headers: { 'User-Agent': api_ua }, timeout:xunmitimeout*1000 });
+            if(/cms/.test(api_type)&&/<\?xml/.test(gethtml)){
+                gethtml = gethtml.replace(/&lt;!\[CDATA\[|\]\]&gt;|<!\[CDATA\[|\]\]>/g,'');
                 let xmllist = [];
-                let videos = pdfa(gethtml, 'list&&video');
-                for (let i in videos) {
-                    let id = String(xpath(videos[i], `//video/id/text()`)).trim();
-                    let name = String(xpath(videos[i], `//video/name/text()`)).trim();
-                    let pic = String(xpath(videos[i], `//video/pic/text()`)).trim();
-                    let note = String(xpath(videos[i], `//video/note/text()`)).trim();
-                    let arr = { "vod_id": id, "vod_name": name, "vod_remarks": note, "vod_pic": pic };
-                    let plays = xpathArray(videos[i], `//video/dl/dd/text()`);
-                    if (plays.length == 1) {
+                let videos = pdfa(gethtml,'list&&video');
+                for(let i in videos){
+                    let id = String(xpath(videos[i],`//video/id/text()`)).trim();
+                    let name = String(xpath(videos[i],`//video/name/text()`)).trim();
+                    let pic = String(xpath(videos[i],`//video/pic/text()`)).trim();
+                    let note = String(xpath(videos[i],`//video/note/text()`)).trim();
+                    let arr = {"vod_id":id,"vod_name":name,"vod_remarks":note,"vod_pic":pic};
+                    let plays = xpathArray(videos[i],`//video/dl/dd/text()`);
+                    if(plays.length==1){
                         let play = plays[0];
-                        if (play.indexOf('$') == -1 && play.indexOf('m3u8') > -1) {
+                        if(play.indexOf('$')==-1&&play.indexOf('m3u8')>-1){
                             arr['play'] = play;
                         }
                     }
                     xmllist.push(arr)
                 }
-                var html = { "list": xmllist };
-            } else if (!/{|}/.test(gethtml) && gethtml != "") {
+                var html = {"list":xmllist};
+            }else if(!/{|}/.test(gethtml)&&gethtml!=""){
                 var decfile = "hiker://files/rules/Src/Juying/appdec.js";
-                var Juyingdec = fetch(decfile);
-                if (Juyingdec != "") {
+                var Juyingdec=fetch(decfile);
+                if(Juyingdec != ""){
                     eval(Juyingdec);
                     var html = JSON.parse(xgdec(gethtml));
                 }
-            } else {
+            }else{
                 var html = JSON.parse(gethtml);
             }
         } catch (e) {
             var html = { data: [] };
         }
-        try {
-            var list = eval(lists) || html.list || html.data.list || html.data || [];
+        try{
+            var list = eval(lists)||html.list||html.data.list||html.data||[];
         } catch (e) {
-            var list = html.list || html.data.list || html.data || [];
+            var list = html.list||html.data.list||html.data||[];
         }
-        let videolist = list.map((list) => {
-            let vodname = list.vod_name || list.title;
-            if (vodname) {
-                let vodpic = list.vod_pic || list.pic;
-                let voddesc = list.vod_remarks || list.state || "";
-                let vodurl = list.vod_id ? url + list.vod_id : list.nextlink;
-                vodpic = vodpic ? vodpic.replace('/img.php?url=', '').replace('/tu.php?tu=', '') + "@Referer=" : "https://www.xawqxh.net/mxtheme/images/loading.gif";
-                if (/^\/upload|^upload/.test(vodpic)) {
+        let videolist = list.map((list)=>{
+            let vodname = list.vod_name||list.title;
+            if(vodname){
+                let vodpic = list.vod_pic||list.pic;
+                let voddesc = list.vod_remarks||list.state||"";
+                let vodurl = list.vod_id?url + list.vod_id:list.nextlink;
+                vodpic = vodpic?vodpic.replace('/img.php?url=','').replace('/tu.php?tu=','') + "@Referer=":"https://www.xawqxh.net/mxtheme/images/loading.gif";
+                if(/^\/upload|^upload/.test(vodpic)){
                     vodpic = vodurl.match(/http(s)?:\/\/(.*?)\//)[0] + vodpic;
                 }
-                if (/^\/\//.test(vodpic)) {
+                if(/^\/\//.test(vodpic)){
                     vodpic = "https" + vodpic;
                 }
-                if (api_type == 'cms' && list.vod_play_url) {
-                    if (list.vod_play_url.indexOf('$') == -1 && list.vod_play_url.indexOf('m3u8') > -1) {
+                if(api_type=='cms'&&list.vod_play_url){
+                    if(list.vod_play_url.indexOf('$')==-1&&list.vod_play_url.indexOf('m3u8')>-1){
                         list['play'] = list.vod_play_url;
                     }
                 }
@@ -314,30 +314,30 @@ function jiekouyiji() {
                     title: vodname,
                     desc: voddesc,
                     pic_url: vodpic,
-                    url: list.play ? list.play : $("hiker://empty##" + vodurl + "#immersiveTheme#").rule((type, ua) => {
-                        require(config.依赖.match(/https.*\//)[0] + 'SrcJyXunmi.js');
-                        xunmierji(type, ua)
-                    }, api_type, api_ua),
+                    url: list.play?list.play:$("hiker://empty##" + vodurl + "#immersiveTheme#").rule((type,ua) => {
+                            require(config.依赖.match(/https.*\//)[0] + 'SrcJyXunmi.js');
+                            xunmierji(type,ua)
+                        },api_type, api_ua),
                     col_type: 'movie_3',
                     extra: {
                         pic: vodpic,
                         name: vodname,
-                        title: vodname + '-' + api_name
+                        title: vodname+'-'+api_name
                     }
                 }
             }
         });
         videolist = videolist.filter(n => n);
         d = d.concat(videolist);
-    } catch (e) {
-        if (!list) {
-            d.push({
+    }catch(e){
+        if(!list){
+           d.push({
                 title: '接口访问异常，请更换接口！',
                 url: '#noHistory#hiker://empty',
                 col_type: 'text_center_1'
-            });
+            }); 
         }
-        log(api_name + ' 接口访问异常，请更换接口！获取影片失败>' + e.message)
+        log(api_name+' 接口访问异常，请更换接口！获取影片失败>'+e.message)
     }
     setResult(d);
 }
@@ -345,6 +345,7 @@ function jiekouyiji() {
 function erji() {
     addListener("onClose", $.toString(() => {
         clearMyVar('SrcM3U8');
+        clearMyVar('SrcXTNH');
     }));
     clearMyVar('SrcJy$back');
     var d = [];
@@ -354,11 +355,11 @@ function erji() {
     //log(plays);
     var shows = json.play_from_open_index;
     //log(shows);
-
-    let actor = json.starring ? '演员：' + json.starring : json.emcee ? '主持：' + json.emcee : '内详';
-    let director = json.director ? '导演：' + json.director : json.tv_station ? json.tv_station : '内详';
-    let area = json.zone ? '地区：' + json.zone : '';
-    let year = json.year ? '   年代：' + json.year : '';
+    
+    let actor = json.starring?'演员：'+json.starring : json.emcee?'主持：'+json.emcee:'内详';
+    let director = json.director?'导演：'+json.director : json.tv_station?json.tv_station:'内详';
+    let area = json.zone?'地区：'+json.zone:'';
+    let year = json.year?'   年代：' + json.year:'';
     let remarks = json.style ? json.style : '';
     let pubdate = json.update_wordstr ? json.update_wordstr : '';
 
@@ -366,10 +367,10 @@ function erji() {
     var details2 = remarks + '\n' + pubdate;
     var pic = MY_PARAMS.pic;
     d.push({
-        title: details1, //详情1
-        desc: details2, //详情2
-        pic_url: pic + '@Referer=', //图片
-        url: pic + '#noHistory#', //链接
+        title: details1,//详情1
+        desc: details2,//详情2
+        pic_url: pic + '@Referer=',//图片
+        url: pic + '#noHistory#',//链接
         col_type: 'movie_1_vertical_pic_blur',
         extra: {
             gradient: true
@@ -378,7 +379,7 @@ function erji() {
     });
     //二级统一菜单
     require(config.依赖.match(/https.*\//)[0] + 'SrcJyMenu.js');
-    for (var i in erjimenu) {
+    for(var i in erjimenu){
         d.push(
             erjimenu[i]
         )
@@ -400,13 +401,12 @@ function erji() {
                 putMyVar(MY_URL, SrcMark.route[MY_URL]);
             }
         }
-    } catch (e) {}
-    var Marksum = 30; //设置记录线路足迹数量
+    } catch (e) { }
+    var Marksum = 30;//设置记录线路足迹数量
 
     //线路部份
     var Color = "#f13b66a";
     var Color1 = "#098AC1";
-
     function getHead(title) {
         return '‘‘’’<strong><font color="' + Color + '">' + title + '</front></strong>';
     }
@@ -418,7 +418,7 @@ function erji() {
 
     function setTabs(tabs, vari) {
         d.push({
-            title: getMyVar('shsort') == '1' ? '““””<b><span style="color: #FF0000">∨</span></b>' : '““””<b><span style="color: #1aad19">∧</span></b>',
+            title: getMyVar('shsort') == '1'?'““””<b><span style="color: #FF0000">∨</span></b>' : '““””<b><span style="color: #1aad19">∧</span></b>',
             url: $("#noLoading#").lazyRule(() => {
                 if (getMyVar('shsort') == '1') { putMyVar('shsort', '0'); } else { putMyVar('shsort', '1') };
                 refreshPage(false);
@@ -463,14 +463,14 @@ function erji() {
             }
         }
     }
-    try {
+    try{
         var playsinfo = plays[0].info;
-    } catch (e) {
+    }catch(e){
         var playsinfo = "";
     }
-    if (playsinfo || shows) {
+    if(playsinfo||shows){
         setTabs(tabs, MY_URL);
-    } else {
+    }else{
         d.push({
             col_type: "line"
         })
@@ -481,32 +481,32 @@ function erji() {
         }
     }
     var easy = $("").lazyRule(() => {
-        try {
-            input = fetch(input, {}).split("('")[1].split("'")[0];
+        try{
+            input=fetch(input,{}).split("('")[1].split("'")[0];
 
-            if (input.match(/ixigua|iqiyi|qq.com|mgtv|le\.com|bili|sohu|youku|pptv|cctv|1905\.com/)) {
-                input = input.split("?")[0];
-            } else if (input.match(/huanxi/)) {
-                input = input.split("&")[0];
-            } else if (input.match(/migu/)) {
+            if(input.match(/ixigua|iqiyi|qq.com|mgtv|le\.com|bili|sohu|youku|pptv|cctv|1905\.com/)){
+                input=input.split("?")[0];
+            }else if(input.match(/huanxi/)){
+                input=input.split("&")[0];
+            }else if(input.match(/migu/)){
                 input = "https://m.miguvideo.com/mgs/msite/prd/detail.html" + input.replace(/\\?.*cid/, '?cid').split("&")[0] + "&mgdbid=";
             }
-
-            if (!/^http/.test(input)) {
+            
+            if(!/^http/.test(input)){
                 return "toast://本集无播放地址，可从更多片源中寻找";
             }
             //log(input)
             require(config.依赖.match(/https.*\//)[0] + 'SrcParseS.js');
             return SrcParseS.聚影(input);
-        } catch (e) {
+        }catch(e){
             return input;
         }
     });
-    var block = ['.m4a', '.mp3', '.mp4', '.flv', '.avi', '.3gp', '.mpeg', '.wmv', '.mov', '.rmvb', '.gif', '.jpg', '.jpeg', '.png', 'hm.baidu.com', '/ads/*.js', 'hm.baidu.com', '/ads/*.js', '.css'];
+    var block = ['.m4a','.mp3','.mp4','.flv','.avi','.3gp','.mpeg','.wmv','.mov','.rmvb','.gif','.jpg','.jpeg','.png','hm.baidu.com','/ads/*.js','hm.baidu.com','/ads/*.js','.css'];
     //选集部份
     function setLists(lists, index) {
         var list = lists[index];
-
+        
         function nolist() {
             d.push({
                 title: '此影片无播放选集！',
@@ -514,12 +514,12 @@ function erji() {
                 col_type: 'text_center_1'
             });
         }
-
-        if (list) {
+        
+        if(list){
             if (list.length == 0) {
                 nolist();
             } else {
-                setLastChapterRule('js:' + $.toString(param => { setResult('更新至：' + param) }, list[list.length - 1].index))
+                setLastChapterRule('js:' + $.toString(param=>{ setResult('更新至：'+param) }, list[list.length-1].index))
                 if (getMyVar('shsort') == '1') {
                     try {
                         for (var j = list.length - 1; j >= 0; j--) {
@@ -528,7 +528,7 @@ function erji() {
                                 d.push({
                                     title: list[j].index + '',
                                     url: url + easy,
-                                    extra: { id: MY_URL + j, jsLoadingInject: true, blockRules: block },
+                                    extra: { id: MY_URL+j, jsLoadingInject: true, blockRules: block },
                                     col_type: 'text_4'
                                 });
                             }
@@ -544,7 +544,7 @@ function erji() {
                                 d.push({
                                     title: list[j].index + '',
                                     url: url + easy,
-                                    extra: { id: MY_URL + j, jsLoadingInject: true, blockRules: block },
+                                    extra: { id: MY_URL+j, jsLoadingInject: true, blockRules: block },
                                     col_type: 'text_4'
                                 });
                             }
@@ -554,7 +554,7 @@ function erji() {
                     }
                 }
             }
-        } else if (shows && plays.length > 0) {
+        }else if (shows&&plays.length>0) {
             var arr = [];
             var zy = shows.item_list[index];
             for (var ii in zy.date) {
@@ -575,7 +575,7 @@ function erji() {
                     }
                 }
             }
-            setLastChapterRule('js:' + $.toString(param => { setResult('更新至：' + param) }, "第" + arr[arr.length - 1] + "期"))
+            setLastChapterRule('js:' + $.toString(param=>{ setResult('更新至：'+param) }, "第" + arr[arr.length-1] + "期"))
             for (var k = 0; k < arr.length; k++) {
                 let url = "https://v.sogou.com/vc/eplay?query=" + arr[k] + "&date=" + arr[k] + "&key=" + json.dockey + "&st=5&tvsite=" + plays[index].site;
                 d.push({
@@ -583,20 +583,18 @@ function erji() {
                     col_type: "text_2",
                     url: url + easy,
                     extra: {
-                        id: MY_URL + k,
-                        jsLoadingInject: true,
-                        blockRules: block
+                        id: MY_URL+k, jsLoadingInject: true, blockRules: block
                     }
                 });
             }
-        } else if (plays.length == 0) {
+        } else if (plays.length==0) {
             nolist();
         } else {
-            setLastChapterRule('js:' + $.toString(param => { setResult(param) }, ""))
+            setLastChapterRule('js:' + $.toString(param=>{ setResult(param) }, ""))
             for (var m in plays) {
                 let url = "https://v.sogou.com" + plays[m].url;
                 d.push({
-                    title: plays[m].flag_list.indexOf('trailer') == -1 ? plays[m].sitename[0] : plays[m].sitename[0] + '—预告',
+                    title: plays[m].flag_list.indexOf('trailer') == -1?plays[m].sitename[0]:plays[m].sitename[0] + '—预告',
                     img: 'http://dlweb.sogoucdn.com/video/wap/static/img/logo/' + plays[m].sitename[1],
                     url: url + easy,
                     col_type: "icon_2",
@@ -613,7 +611,7 @@ function erji() {
         url: 'toast://温馨提示：且用且珍惜！',
         col_type: 'text_center_1'
     });
-
+     
     setResult(d);
 }
 
@@ -629,8 +627,8 @@ function yiji() {
     clearMyVar('SrcJy$back');
     var d = [];
     const Color = "#3399cc";
-    const categorys = ['电视剧', '电影', '动漫', '综艺', '纪录片'];
-    const listTabs = ['teleplay', 'film', 'cartoon', 'tvshow', 'documentary'];
+    const categorys = ['电视剧','电影','动漫','综艺','纪录片'];
+    const listTabs = ['teleplay','film','cartoon','tvshow','documentary'];
     const fold = getMyVar('SrcJuying$fold', "0");
     const 类型 = getMyVar('SrcJuying$类型', '');
     const 地区 = getMyVar('SrcJuying$地区', '');
@@ -638,81 +636,79 @@ function yiji() {
     const 资源 = getMyVar('SrcJuying$资源', '');
     const 明星 = getMyVar('SrcJuying$明星', '');
     const 排序 = getMyVar('SrcJuying$排序', '');
-    MY_URL = "https://waptv.sogou.com/napi/video/classlist?abtest=0&iploc=CN1304&spver=&listTab=" + getMyVar('SrcJuying$listTab', 'teleplay') + "&filter=&start=" + (MY_PAGE - 1) * 15 + "&len=15&fr=filter";
+    MY_URL = "https://waptv.sogou.com/napi/video/classlist?abtest=0&iploc=CN1304&spver=&listTab=" + getMyVar('SrcJuying$listTab', 'teleplay') + "&filter=&start="+ (MY_PAGE-1)*15 +"&len=15&fr=filter";
 
-    if (类型 != "") {
+    if(类型 != ""){
         MY_URL = MY_URL + "&style=" + 类型;
     }
-    if (地区 != "") {
+    if(地区 != ""){
         MY_URL = MY_URL + "&zone=" + 地区;
     }
-    if (年代 != "") {
+    if(年代 != ""){
         MY_URL = MY_URL + "&year=" + 年代;
     }
-    if (资源 != "") {
+    if(资源 != ""){
         MY_URL = MY_URL + "&fee=" + 资源;
     }
-    if (明星 != "") {
+    if(明星 != ""){
         MY_URL = MY_URL + "&emcee=" + 明星;
     }
-    if (排序 != "") {
-        MY_URL = MY_URL + "&order=" + (排序 == "最新" ? "time" : "score");
+    if(排序 != ""){
+        MY_URL = MY_URL + "&order=" + (排序=="最新"?"time":"score");
     }
-
     var cfgfile = "hiker://files/rules/Src/Juying/config.json";
-    var Juyingcfg = fetch(cfgfile);
-    if (Juyingcfg != "") {
-        eval("var JYconfig=" + Juyingcfg + ";");
-    } else {
-        var JYconfig = {};
+    var Juyingcfg=fetch(cfgfile);
+    if(Juyingcfg != ""){
+        eval("var JYconfig=" + Juyingcfg+ ";");
+    }else{
+        var JYconfig= {};
     }
-    if (MY_PAGE == 1) {
-        // d.push({
-        //     title: "管理",
-        //     url: $("hiker://empty#noRecordHistory##noHistory#").rule(() => {
-        //         require(config.依赖.match(/https.*\//)[0] + 'SrcJySet.js');
-        //         SRCSet();
-        //     }),
-        //     pic_url: 'https://lanmeiguojiang.com/tubiao/more/129.png',
-        //     col_type: getAppVersion() >= 3188 ? 'icon_5' : 'icon_small_4'
-        // });
+    if(MY_PAGE==1){
         d.push({
-            title: JYconfig['recordentry'] != 2 ? "历史" : "收藏",
-            url: JYconfig['recordentry'] != 2 ? "hiker://history" : "hiker://collection",
-            pic_url: 'https://lanmeiguojiang.com/tubiao/more/109.png',
-            col_type: getAppVersion() >= 3188 ? 'icon_5' : 'icon_small_4'
+            title: "管理",
+            url: $("hiker://empty#noRecordHistory##noHistory#").rule(() => {
+                    require(config.依赖.match(/https.*\//)[0] + 'SrcJySet.js');
+                    SRCSet();
+                }),
+            pic_url: 'https://lanmeiguojiang.com/tubiao/more/129.png',
+            col_type: 'icon_5'
         });
-        // d.push({
-        //     title: "搜索",
-        //     url: $("hiker://empty#noRecordHistory##noHistory#").rule(() => {
-        //         require(config.依赖);
-        //         sousuo2();
-        //     }),
-        //     pic_url: 'https://lanmeiguojiang.com/tubiao/more/101.png',
-        //     col_type: getAppVersion() >= 3188 ? 'icon_5' : 'icon_small_4'
-        // });
+        d.push({
+            title: JYconfig['recordentry']!=2?"历史":"收藏",
+            url: JYconfig['recordentry']!=2?"hiker://history":"hiker://collection",
+            pic_url: 'https://lanmeiguojiang.com/tubiao/more/109.png',
+            col_type: 'icon_5'
+        });
+        d.push({
+            title: "搜索",
+            url: $("hiker://empty#noRecordHistory##noHistory#").rule(() => {
+                    require(config.依赖);
+                    sousuo2();
+                }),
+            pic_url: 'https://lanmeiguojiang.com/tubiao/more/101.png',
+            col_type: 'icon_5'
+        });
         d.push({
             title: "筛选",
             url: $('#noLoading#').lazyRule((fold) => {
-                putMyVar('SrcJuying$fold', fold === '1' ? '0' : '1');
-                refreshPage(false);
-                return "hiker://empty";
-            }, fold),
-            pic_url: fold === '1' ? 'https://lanmeiguojiang.com/tubiao/more/213.png' : 'https://lanmeiguojiang.com/tubiao/more/172.png',
-            col_type: getAppVersion() >= 3188 ? 'icon_5' : 'icon_small_4'
+                    putMyVar('SrcJuying$fold', fold === '1' ? '0' : '1');
+                    refreshPage(false);
+                    return "hiker://empty";
+                }, fold),
+            pic_url: fold === '1'?'https://lanmeiguojiang.com/tubiao/more/213.png':'https://lanmeiguojiang.com/tubiao/more/172.png',
+            col_type: 'icon_5'
         });
-        if (getAppVersion() >= 3188) {
-            d.push({
-                title: "展示",
-                url: $("hiker://empty##fypage#noRecordHistory##noHistory#").rule(() => {
+        d.push({
+            title: "展示",
+            url: $("hiker://empty##fypage#noRecordHistory##noHistory#").rule(() => {
                     require(config.依赖);
                     jiekouyiji();
                 }),
-                pic_url: 'https://lanmeiguojiang.com/tubiao/more/105.png',
-                col_type: 'icon_5'
-            });
-        }
-
+            pic_url: 'https://lanmeiguojiang.com/tubiao/more/105.png',
+            col_type: 'icon_5'
+        });
+        
+        
         d.push({
             col_type: 'line'
         });
@@ -726,40 +722,40 @@ function yiji() {
             d.push({
                 title: getMyVar('SrcJuying$listTab', 'teleplay') === listTabs[i] ? '““””<b><span style="color:' + Color + '">' + categorys[i] + '</span></b>' : categorys[i],
                 url: $('#noLoading#').lazyRule((listTab) => {
-                    putMyVar('SrcJuying$listTab', listTab);
-                    refreshPage(false);
-                    return "hiker://empty";
-                }, listTabs[i]),
+                        putMyVar('SrcJuying$listTab', listTab);
+                        refreshPage(false);
+                        return "hiker://empty";
+                    }, listTabs[i]),
                 col_type: 'scroll_button'
             });
         }
         d.push({
             col_type: "blank_block"
         });
-
+        
         var html = JSON.parse(request(MY_URL));
 
-        if (fold === '1') {
+        if(fold==='1'){
             var filter = html.listData.list.filter_list;
             for (var i in filter) {
                 d.push({
-                    title: filter[i].name == "排序" ? 排序 == "" ? '““””<span style="color:red">最热</span>' : "最热" : (类型 == "" && filter[i].name == "类型") || (地区 == "" && filter[i].name == "地区") || (年代 == "" && filter[i].name == "年代") || (资源 == "" && filter[i].name == "资源") || (明星 == "" && filter[i].name == "明星") ? '““””<span style="color:red">全部</span>' : "全部",
+                    title: filter[i].name=="排序"?排序==""?'““””<span style="color:red">最热</span>':"最热":(类型==""&&filter[i].name=="类型")||(地区==""&&filter[i].name=="地区")||(年代==""&&filter[i].name=="年代")||(资源==""&&filter[i].name=="资源")||(明星==""&&filter[i].name=="明星")?'““””<span style="color:red">全部</span>':"全部",
                     url: $('#noLoading#').lazyRule((name) => {
-                        putMyVar('SrcJuying$' + name, '');
-                        refreshPage(false);
-                        return "hiker://empty";
-                    }, filter[i].name),
+                            putMyVar('SrcJuying$'+name, '');
+                            refreshPage(false);
+                            return "hiker://empty";
+                        }, filter[i].name),
                     col_type: 'scroll_button',
                 })
                 let option_list = filter[i].option_list;
                 for (var j in option_list) {
                     d.push({
-                        title: getMyVar('SrcJuying$' + filter[i].name, '') == option_list[j] ? '““””<span style="color:red">' + option_list[j] + '</span>' : option_list[j],
-                        url: $('#noLoading#').lazyRule((name, option) => {
-                            putMyVar('SrcJuying$' + name, option);
-                            refreshPage(false);
-                            return "hiker://empty";
-                        }, filter[i].name, option_list[j]),
+                        title: getMyVar('SrcJuying$'+filter[i].name, '')==option_list[j]?'““””<span style="color:red">'+option_list[j]+'</span>':option_list[j],
+                        url: $('#noLoading#').lazyRule((name,option) => {
+                                putMyVar('SrcJuying$'+name, option);
+                                refreshPage(false);
+                                return "hiker://empty";
+                            }, filter[i].name, option_list[j]),
                         col_type: 'scroll_button'
                     });
                 }
@@ -768,7 +764,7 @@ function yiji() {
                 });
             }
         }
-    } else {
+    }else{
         var html = JSON.parse(request(MY_URL));
     }
     var seachurl = $('').lazyRule(() => {
@@ -777,14 +773,14 @@ function yiji() {
             xunmi(name);
         }, input);
     });
-
+    
     var list = html.listData.results;
     for (var i in list) {
         d.push({
             title: list[i].name,
             img: list[i].v_picurl + '@Referer=',
-            url: JYconfig['erjimode'] != 2 ? "hiker://empty##https://v.sogou.com" + list[i].url.replace('teleplay', 'series').replace('cartoon', 'series') + "#immersiveTheme#" : list[i].name + seachurl,
-            desc: list[i].ipad_play_for_list.finish_episode ? list[i].ipad_play_for_list.episode == list[i].ipad_play_for_list.finish_episode ? "全集" + list[i].ipad_play_for_list.finish_episode : "连载" + list[i].ipad_play_for_list.episode + "/" + list[i].ipad_play_for_list.finish_episode : "",
+            url: JYconfig['erjimode']!=2?"hiker://empty##https://v.sogou.com" + list[i].url.replace('teleplay', 'series').replace('cartoon', 'series') + "#immersiveTheme#":list[i].name + seachurl,
+            desc: list[i].ipad_play_for_list.finish_episode?list[i].ipad_play_for_list.episode==list[i].ipad_play_for_list.finish_episode?"全集"+list[i].ipad_play_for_list.finish_episode:"连载"+list[i].ipad_play_for_list.episode+"/"+list[i].ipad_play_for_list.finish_episode:"",
             extra: {
                 pic: list[i].v_picurl,
                 name: list[i].name
@@ -793,34 +789,34 @@ function yiji() {
     }
 
     setResult(d);
-    if (getMyVar('jydingyue', '0') == "0" && JYconfig['codeid2'] && JYconfig['codeid'] != JYconfig['codeid2']) {
-        putMyVar('jydingyue', '1');
-        try {
+    if(getMyVar('jydingyue','0')=="0"&&JYconfig['codeid2']&&JYconfig['codeid']!=JYconfig['codeid2']){
+        putMyVar('jydingyue','1');
+        try{
             var nowtime = Date.now();
-            var oldtime = parseInt(getItem('dingyuetime', '0').replace('time', ''));
-            if (nowtime > (oldtime + 6 * 60 * 60 * 1000)) {
+            var oldtime = parseInt(getItem('dingyuetime','0').replace('time',''));
+            if(nowtime > (oldtime+6*60*60*1000)){
                 let pasteurl = JYconfig['codeid2'];
-                let text = parsePaste('https://netcut.cn/p/' + aesDecode('Juying', pasteurl));
-                if (pasteurl && !/^error/.test(text)) {
+                let text = parsePaste('https://netcut.cn/p/'+aesDecode('Juying', pasteurl));
+                if(pasteurl&&!/^error/.test(text)){
                     let pastedata = JSON.parse(base64Decode(text));
                     var jkfilepath = "hiker://files/rules/Src/Juying/jiekou.json";
                     var jkdatalist = pastedata.jiekou;
-                    if (jkdatalist.length > 0) {
+                    if(jkdatalist.length>0){
                         writeFile(jkfilepath, JSON.stringify(jkdatalist));
                     }
                     var jxfilepath = "hiker://files/rules/Src/Juying/myjiexi.json";
                     var jxdatalist = pastedata.jiexi;
-                    if (jxdatalist.length > 0) {
+                    if(jxdatalist.length>0){
                         writeFile(jxfilepath, JSON.stringify(jxdatalist));
                     }
                     log("自动订阅同步完成");
-                } else {
+                }else{
                     log("自动订阅同步口令错误或已失效");
                 }
-                setItem('dingyuetime', nowtime + "time");
+                setItem('dingyuetime',nowtime+"time");
             }
         } catch (e) {
-            log('自动订阅更新失败：' + e.message);
+            log('自动订阅更新失败：'+e.message); 
         }
     }
 }
@@ -831,32 +827,32 @@ function sousuo2() {
         clearMyVar('sousuo$input');
     }));
     var seachurl = $('').lazyRule(() => {
-        return $('hiker://empty#noRecordHistory##noHistory#').rule((name) => {
-            require(config.依赖.match(/https.*\//)[0] + 'SrcJyXunmi.js');
-            xunmi(name);
-        }, input);
-    });
+            return $('hiker://empty#noRecordHistory##noHistory#').rule((name) => {
+                require(config.依赖.match(/https.*\//)[0] + 'SrcJyXunmi.js');
+                xunmi(name);
+            }, input);
+        });
     var d = [];
     d.push({
         title: "🔍",
         url: $.toString((seachurl) => {
-            return input + seachurl;
-        }, seachurl),
+                return input + seachurl;
+            },seachurl),
         desc: "搜你想看的...",
         col_type: "input",
         extra: {
             titleVisible: true,
             id: "input",
             onChange: $.toString((seachurl) => {
-                if (input.length == 1) { deleteItemByCls('suggest'); }
-                if (input.length > 1 && input != getMyVar('sousuo$input', '')) {
+                if(input.length==1){deleteItemByCls('suggest');}
+                if(input.length>1&&input!=getMyVar('sousuo$input', '')){
                     putMyVar('sousuo$input', input);
                     deleteItemByCls('suggest');
-                    var html = request("https://movie.douban.com/j/subject_suggest?q=" + input, { timeout: 3000 });
-                    var list = JSON.parse(html) || [];
-                    let suggest = list.map((sug) => {
+                    var html = request("https://movie.douban.com/j/subject_suggest?q=" + input, {timeout: 3000});
+                    var list = JSON.parse(html)||[];
+                    let suggest = list.map((sug)=>{
                         try {
-                            if (sug.img != "") {
+                            if(sug.img!=""){
                                 return {
                                     title: sug.title,
                                     img: sug.img + '@Referer=',
@@ -867,7 +863,7 @@ function sousuo2() {
                                         cls: 'suggest'
                                     }
                                 }
-                            } else {
+                            }else{
                                 return {
                                     title: "⚡" + sug.title,
                                     url: sug.title + seachurl,
@@ -877,9 +873,9 @@ function sousuo2() {
                                     }
                                 }
                             }
-                        } catch (e) {}
+                        } catch (e) {  }
                     });
-                    if (suggest.length > 0) {
+                    if(suggest.length>0){
                         addItemAfter('input', suggest);
                     }
                 }
@@ -893,19 +889,19 @@ function sousuo2() {
         pic_url: 'https://ss1.baidu.com/6ONXsjip0QIZ8tyhnq/it/u=3779990328,1416553241&fm=179&app=35&f=PNG?w=60&h=70&s=E7951B62A4639D153293A4E90300401B',
         col_type: 'icon_small_3'
     });
-
+    
     var resoufile = "hiker://files/rules/Src/Juying/resou.json";
-    var Juyingresou = fetch(resoufile);
-    if (Juyingresou != "") {
-        eval("var JYresou=" + Juyingresou + ";");
+    var Juyingresou=fetch(resoufile);
+    if(Juyingresou != ""){
+        eval("var JYresou=" + Juyingresou+ ";");
         var list = JYresou['resoulist'] || [];
-    } else {
-        var JYresou = {};
+    }else{
+        var JYresou= {};
         var list = [];
     }
     var nowtime = Date.now();
-    var oldtime = JYresou.updatetime || 0;
-    if (list.length == 0 || nowtime > (oldtime + 24 * 60 * 60 * 1000)) {
+    var oldtime = JYresou.updatetime||0;
+    if(list.length==0||nowtime > (oldtime+24*60*60*1000)){
         var html = request("https://waptv.sogou.com/hotsugg");
         var list = pdfa(html, "body&&.hot-list&&li");
         JYresou['resoulist'] = list;
@@ -915,7 +911,7 @@ function sousuo2() {
 
     for (var i in list) {
         d.push({
-            title: i == "0" ? '““””<span style="color:#ff3300">' + (parseInt(i) + 1).toString() + '</span>' + "\t\t\t" + pdfh(list[i], "a&&Text") : i == "1" ? '““””<span style="color:#ff6600">' + (parseInt(i) + 1).toString() + '</span>' + "\t\t\t" + pdfh(list[i], "a&&Text") : i == "2" ? '““””<span style="color:#ff9900">' + (parseInt(i) + 1).toString() + '</span>' + "\t\t\t" + pdfh(list[i], "a&&Text") : '““””<span>' + (parseInt(i) + 1).toString() + '</span>' + "\t\t\t" + pdfh(list[i], "a&&Text"),
+            title: i=="0"?'““””<span style="color:#ff3300">' + (parseInt(i)+1).toString() + '</span>' + "\t\t\t" + pdfh(list[i], "a&&Text"):i=="1"?'““””<span style="color:#ff6600">' + (parseInt(i)+1).toString() + '</span>' + "\t\t\t" + pdfh(list[i], "a&&Text"):i=="2"?'““””<span style="color:#ff9900">' + (parseInt(i)+1).toString() + '</span>' + "\t\t\t" + pdfh(list[i], "a&&Text"):'““””<span>' + (parseInt(i)+1).toString() + '</span>' + "\t\t\t" + pdfh(list[i], "a&&Text"),
             url: pdfh(list[i], "a&&Text") + seachurl,
             col_type: "text_1"
         }, );
@@ -927,64 +923,64 @@ function sousuo2() {
 //搜索
 function sousuo() {
     var cfgfile = "hiker://files/rules/Src/Juying/config.json";
-    var Juyingcfg = fetch(cfgfile);
-    if (Juyingcfg != "") {
-        eval("var JYconfig=" + Juyingcfg + ";");
+    var Juyingcfg=fetch(cfgfile);
+    if(Juyingcfg != ""){
+        eval("var JYconfig=" + Juyingcfg+ ";");
     }
-    if (!fileExist('hiker://files/rules/Src/Juying/jiekou.json') || JYconfig.sousuoms == 1) {
+    if(!fileExist('hiker://files/rules/Src/Juying/jiekou.json')||JYconfig.sousuoms==1){
         var d = [];
         var html = getResCode();
         try {
             var list = JSON.parse(html.match(/INITIAL_STATE.*?({.*});/)[1]).result.longVideo.results;
             for (var i = 0; i < list.length; i++) {
-                if (list[i].play.item_list) {
+                if (list[i].play.item_list){
                     d.push({
-                        title: list[i].name.replace(/|/g, ''),
+                        title: list[i].name.replace(/|/g,''),
                         url: 'hiker://empty##https://v.sogou.com' + list[i].tiny_url + "#immersiveTheme#",
                         desc: list[i].list_category.join(','),
                         content: list[i].introduction,
                         pic_url: list[i].v_picurl,
                         extra: {
                             pic: list[i].v_picurl,
-                            name: list[i].name.replace(/|/g, '')
+                            name: list[i].name.replace(/|/g,'')
                         }
                     })
                 }
             }
-        } catch (e) {}
+        } catch (e) { }
         setResult(d);
-    } else {
-        try {
+    }else{
+        try{
             let name = MY_URL.match(/query=(.*?)&/)[1];
             require(config.依赖.match(/https.*\//)[0] + 'SrcJyXunmi.js');
-            xunmi(name, false, true);
-        } catch (e) {}
+            xunmi(name,false,true);
+        }catch(e){}
     }
-
+    
 }
 
 //版本检测
 function Version() {
-    var nowVersion = "4.2"; //现在版本
+    var nowVersion = "4.4";//现在版本
     var nowtime = Date.now();
-    var oldtime = parseInt(getItem('VersionChecktime', '0').replace('time', ''));
-    if (getMyVar('SrcJuying-VersionCheck', '0') == '0' && nowtime > (oldtime + 6 * 60 * 60 * 1000)) {
+    var oldtime = parseInt(getItem('VersionChecktime','0').replace('time',''));
+    if (getMyVar('SrcJuying-VersionCheck', '0') == '0' && nowtime > (oldtime+6*60*60*1000)) {
         try {
             eval(fetch(config.依赖.match(/https.*\//)[0] + 'SrcTmplVersion.js'))
             if (parseFloat(newVersion.SrcJuying) > parseFloat(nowVersion)) {
                 confirm({
-                    title: '发现新版本，是否更新？',
-                    content: nowVersion + '=>' + newVersion.SrcJuying + '\n' + newVersion.SrcJuyingdesc[newVersion.SrcJuying],
-                    confirm: `deleteCache();refreshPage();`,
-                    cancel: ''
+                    title:'发现新版本，是否更新？', 
+                    content:nowVersion+'=>'+newVersion.SrcJuying+'\n'+newVersion.SrcJuyingdesc[newVersion.SrcJuying], 
+                    confirm:`deleteCache();refreshPage();`, 
+                    cancel:''
                 })
-                log('检测到新版本！\nV' + newVersion.SrcJuying + '版本》' + newVersion.SrcJuyingdesc[newVersion.SrcJuying]);
+                log('检测到新版本！\nV'+newVersion.SrcJuying+'版本》'+newVersion.SrcJuyingdesc[newVersion.SrcJuying]);
             }
-            putMyVar('SrcJuying-Version', '-V' + newVersion.SrcJuying);
-        } catch (e) {}
+            putMyVar('SrcJuying-Version', '-V'+newVersion.SrcJuying);
+        } catch (e) { }
         putMyVar('SrcJuying-VersionCheck', '1');
-        setItem('VersionChecktime', nowtime + "time");
-    } else {
-        putMyVar('SrcJuying-Version', '-V' + nowVersion);
+        setItem('VersionChecktime',nowtime+"time");
+    }else{
+        putMyVar('SrcJuying-Version', '-V'+nowVersion);
     }
 }
