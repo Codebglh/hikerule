@@ -23,4 +23,8 @@ function yiji() {
         });
     }
     d.push({ col_type: "blank_block" });
+
+
+
+    setResult(d);
 };
