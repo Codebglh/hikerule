@@ -18,7 +18,7 @@ function yiji() {
         d.push({
             title: "历史",
             url: "hiker://history",
-            pic_url: a,
+            pic_url: version.url + 'src/1.png',
             col_type: 'icon_5',
         });
     }
