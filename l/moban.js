@@ -15,13 +15,13 @@ function yiji() {
     log(a);
     if (MY_PAGE == 1) {
         d.push({
-            title: "历史",
+            title: "主页",
             url: "hiker://history",
             pic_url: version.url + 'src/1.png',
             col_type: 'icon_5',
         });
         d.push({
-            title: "历史",
+            title: "设置",
             url: "hiker://history",
             pic_url: version.url + 'src/2.png',
             col_type: 'icon_5',
@@ -33,13 +33,13 @@ function yiji() {
             col_type: 'icon_5',
         });
         d.push({
-            title: "历史",
+            title: "收藏",
             url: "hiker://history",
             pic_url: version.url + 'src/4.png',
             col_type: 'icon_5',
         });
         d.push({
-            title: "历史",
+            title: "搜索",
             url: "hiker://history",
             pic_url: version.url + 'src/5.png',
             col_type: 'icon_5',
