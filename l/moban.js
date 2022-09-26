@@ -14,11 +14,13 @@ function yiji() {
     var d = [];
     var a = version.url + 'src/1.png'
     log(a);
-    d.push({
-        title: "历史",
-        url: "hiker://history",
-        pic_url: a,
-        col_type: 'icon_small_4'
-    });
-
+    if (MY_PAGE == 1) {
+        d.push({
+            title: "历史",
+            url: "hiker://history",
+            pic_url: a,
+            col_type: 'icon_5'
+        });
+    }
+    d.push({ col_type: "blank_block" })
 };
