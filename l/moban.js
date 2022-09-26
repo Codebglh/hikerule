@@ -13,13 +13,11 @@ var version = {
 function yiji() {
     var d = [];
     var a = version.url + 'src/1.png'
-    log(
-        a
-    );
+    log(a);
     d.push({
         title: "历史",
         url: "hiker://history",
-        pic_url: version.url + 'src/1.png',
+        pic_url: a,
         col_type: 'icon_small_4'
     });
 
