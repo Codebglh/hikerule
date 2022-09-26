@@ -12,7 +12,6 @@ var version = {
 
 function yiji() {
     var d = [];
-    log(a);
     if (MY_PAGE == 1) {
         d.push({
             title: "主页",
