@@ -12,6 +12,10 @@ var version = {
 
 function yiji() {
     var d = [];
+    var a = version.url + 'src/1.png'
+    log(
+        a
+    );
     d.push({
         title: "历史",
         url: "hiker://history",
