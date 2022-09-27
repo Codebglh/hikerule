@@ -168,7 +168,37 @@ function yjm() {
         title: '规则使用xpath选择器',
         desc: '使用具体教程请百度xpath语法或观看B站视频',
         col_type: 'text_1',
-    })
+    });
+    d.push({
+        title: "标题",
+        url: '',
+        desc: "输入xpath语法例如：//*[@class=\"fed-tabs-boxs\"]/text()",
+        col_type: 'input',
+    });
+    d.push({
+        title: "描述",
+        url: '',
+        desc: "输入xpath语法例如：//*[@class=\"fed-tabs-boxs\"]/text()",
+        col_type: 'input',
+    });
+    d.push({
+        title: "链接",
+        url: '',
+        desc: "输入xpath语法例如：//*[@class=\"fed-tabs-boxs\"]/@href",
+        col_type: 'input',
+    });
+    d.push({
+        title: "图片",
+        url: '',
+        desc: "输入xpath语法例如：//*[@class=\"fed-tabs-boxs\"]/@src",
+        col_type: 'input',
+    });
+    d.push({
+        title: "类型",
+        url: '',
+        desc: "输入海阔自带类型例如：movie_1,movie_2,movie_3等等",
+        col_type: 'input',
+    });
 
 
 
