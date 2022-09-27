@@ -148,8 +148,196 @@ function sousuo() {
 };
 
 function moban() {
+    var d = [];
+    let root = 'hiker://files/rules/bgHouse/json/'
+    let names = ['一级模板', '二级模板', '搜索模板'];
+    for (let name of names) {
+        d.push({
+            title: name === getMyVar('name', names[1]) ? '““””<span style="color: #12b668">' + name + '</span>' : name,
+            url: $('#noLoading#').lazyRule((name) => {
+                putMyVar('name', name);
+                refreshPage(false);
+                return "hiker://empty";
+            }, name),
+            col_type: 'text_1',
+        });
+    }
 
+    let fileName = getMyVar('name', names[1]);
+    let filePath = `${root}${fileName}.json`;
+    let code = request(filePath);
+    d.push({
+        title: 'L模板注意事项',
+        col_type: 'text_1',
+        desc: '请仔细观看操作步骤和格式在进行更改',
+        url: 'toast://不懂就问在频道找我'
+    });
+
+    d.push({
+        title: '初始化',
+        col_type: 'text_3',
+        url: $('#noLoading#').lazyRule((filePath, fileName) => {
+            return $(`确认初始化本地模板文件:${fileName}?将公开模板覆盖本地模板文件`).confirm((filePath, fileName) => {
+                let api = 'https://ghproxy.com/https://raw.githubusercontent.com/Codebglh/hikerule/main/l/json/'
+                let location = 'hiker://files/rules/bgHouse/json/';
+                let mobans = {
+                    一级模板: api + '1',
+                    二级模板: api + '2',
+                    搜索模板: api + '3',
+                }
+                let moban = mobans[fileName];
+                let code = request(moban);
+
+                if (code && code.length > 30) {
+                    writeFile(filePath, code);
+                    refreshPage(false);
+                    return 'toast://已初始化重置模板:' + fileName + '=>' + muban
+                } else {
+                    return 'toast://仓库服务器通讯异常，请稍候再试...\n' + code
+                }
+            }, filePath, fileName)
+        }, filePath, fileName)
+    });
+    d.push({
+        title: '新增',
+        col_type: 'text_3',
+        url: $("{{clipboard}}", "自动识别剪切板内容或手动输入JSON文本").input((filePath) => {
+            let obj = {};
+            try {
+                obj = JSON.parse(input)
+            } catch (e) {
+                return 'toast://新增失败,JSON校验不通过:' + e.message
+            }
+            let localmubans = JSON.parse(fetch(filePath) || '[]'); //本地的模板
+            let idex = localmubans.findIndex(it => it.名称 === obj.名称);
+            if (idex > -1) {
+                return 'toast://你的第' + idex + '个跟待新增的冲突了，自己改名新增或者去编辑原来那个模板吧'
+            }
+            localmubans.push(obj);
+            writeFile(filePath, JSON.stringify(localmubans));
+            refreshPage(false);
+            return 'toast://已成功新增到:' + filePath
+        }, filePath)
+    });
+    d.push({
+        title: '导入',
+        col_type: 'text_3',
+        url: $("{{clipboard}}", "自动识别剪切板内容或手动输入口令").input((filePath, fileName) => {
+            if (!/一级模板|二级模板|搜索模板/.test(input)) {
+                return 'toast://无法识别的模板导入口令.必须包含字符串一级模板|二级模板|搜索模板'
+            }
+            if (!input.includes(fileName)) {
+                return 'toast://当前位置仅允许导入:' + fileName + ',你的是:' + input.split('：')[0]
+            }
+            try {
+                input = input.split('\n')[1].trim();
+                let text = parsePaste(input);
+                let obj = JSON.parse(base64Decode(text));
+                // log(obj);
+                let localmubans = JSON.parse(fetch(filePath) || '[]'); //本地的模板
+                let titles = localmubans.map(it => it.名称); // 模板标题
+
+                //单条导入
+                let idex = titles.indexOf(obj.名称);
+                if (idex < 0) {
+                    localmubans.push(obj);
+                    writeFile(filePath, JSON.stringify(localmubans));
+                    refreshPage(false);
+                    return 'toast://成功导入到:' + filePath
+                } else {
+                    return $('检测到已有订阅:' + obj.名称 + ',是否覆盖?').confirm((filePath, idex, obj) => {
+                        let localmubans = JSON.parse(fetch(filePath) || '[]');
+                        localmubans[idex] = obj;
+                        writeFile(filePath, JSON.stringify(localmubans));
+                        refreshPage(false);
+                        return 'toast://覆盖并导入成功'
+                    }, filePath, idex, obj)
+                }
+            } catch (e) {
+                return 'toast://内容有误啊兄弟:' + input + '\n' + e.message
+            }
+
+        }, filePath, fileName)
+    });
+
+    try {
+        let localmubans = JSON.parse(code);
+        for (let i in localmubans) {
+            let muban = localmubans[i];
+            d.push({
+                title: i + ':' + muban.名称,
+                col_type: 'text_1',
+                url: $('hiker://empty#noHistory##noRecordHistory##noRefresh#').rule((muban) => {
+                    setPageTitle('编辑:' + muban.名称);
+                    setResult([{ title: JSON.stringify(muban), col_type: 'rich_text' }]);
+                }, muban),
+                extra: {
+                    lineVisible: false
+                }
+            });
+            d.push({
+                title: '编辑',
+                col_type: 'text_3',
+                url: $(JSON.stringify(muban), '请输入编辑后的内容').input((localmubans, i, filePath) => {
+                    let ret = {};
+                    try {
+                        ret = JSON.parse(input)
+                    } catch (e) {
+                        return 'toast://JSON校验失败，不允许保存'
+                    }
+                    if (JSON.stringify(localmubans[i]) !== input) {
+                        localmubans[i] = ret;
+                        writeFile(filePath, JSON.stringify(localmubans));
+                        refreshPage(false);
+                        return 'toast://已修改并保存'
+                    } else {
+                        return 'toast://原文件无变化'
+                    }
+                }, localmubans, i, filePath)
+            });
+            d.push({
+                title: '导出',
+                col_type: 'text_3',
+                url: $('#noLoading#').lazyRule((muban, fileName) => {
+                    try {
+                        let shareText = base64Encode(JSON.stringify(muban));
+                        var pastes = getPastes();
+                        var url = sharePaste(shareText, pastes.slice(-1)[0]);
+                        let import_rule = fileName + "：" + muban.名称 + '\n' + url;
+                        copy(import_rule);
+                        return 'toast://已导出并复制到剪切板，快去分享吧';
+                    } catch (e) {
+                        return 'toast://发生错误:' + e.message
+                    }
+                }, muban, fileName)
+            });
+            d.push({
+                title: '删除',
+                col_type: 'text_3',
+                url: $(`确认删除${getMyVar('mubanManage',files[1])}:${muban.名称}`).confirm((localmubans, i, filePath, name) => {
+                    localmubans.splice(i, 1); //删除
+                    writeFile(filePath, JSON.stringify(localmubans));
+                    refreshPage(false);
+                    return 'toast://已删除' + name
+                }, localmubans, i, filePath, muban.名称)
+            });
+        }
+    } catch (e) { log(e.message) };
+    setResult(d);
 };
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 function yjm() {
     // addListener("onClose", $.toString(() => {

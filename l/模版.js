@@ -5,6 +5,7 @@ var location = 'hiker://files/rules/bgHouse/json/';
 
 function moban_init() {
     let api = 'https://ghproxy.com/https://raw.githubusercontent.com/Codebglh/hikerule/main/l/json/'
+    let location = 'hiker://files/rules/bgHouse/json/';
     let moban = {
         yiji: api + '1',
         erji: api + '2',
