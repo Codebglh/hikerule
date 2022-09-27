@@ -59,6 +59,14 @@ function yiji() {
         desc: "所见即所得，只要你能看见你就能做出来",
         col_type: 'text_1',
     });
+    d.push({
+        title: "🔍",
+        url: $.toString(() => {
+            return input;
+        }, input),
+        desc: "请输入URL",
+        col_type: "input",
+    });
 
     d.push({
         title: '一级模版制作',
