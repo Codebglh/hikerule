@@ -177,7 +177,7 @@ function moban() {
                 refreshPage(false);
                 return "hiker://empty";
             }, name),
-            col_type: 'text_1',
+            col_type: 'text_3',
         });
     }
 
