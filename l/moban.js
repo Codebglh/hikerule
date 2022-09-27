@@ -157,9 +157,9 @@ function moban() {
         let api = 'https://ghproxy.com/https://raw.githubusercontent.com/Codebglh/hikerule/main/l/json/'
         let location = 'hiker://files/rules/bgHouse/json/';
         let moban = {
-            yiji: api + '1',
-            erji: api + '2',
-            sousuo: api + '3',
+            yiji: api + '1.json',
+            erji: api + '2.json',
+            sousuo: api + '3.json',
         }
         requireDownload(moban.yiji, `${location}一级模板.json`);
         requireDownload(moban.erji, `${location}二级模板.json`);
@@ -209,7 +209,7 @@ function moban() {
                 if (code && code.length > 30) {
                     writeFile(filePath, code);
                     refreshPage(false);
-                    return 'toast://已初始化重置模板:' + fileName + '=>' + muban
+                    return 'toast://已初始化重置模板:' + fileName + '=>' + moban
                 } else {
                     return 'toast://仓库服务器通讯异常，请稍候再试...\n' + code
                 }
@@ -277,18 +277,18 @@ function moban() {
 
         }, filePath, fileName)
     });
-
+    d.push({ col_type: 'text_1', });
     try {
         let localmubans = JSON.parse(code);
         for (let i in localmubans) {
-            let muban = localmubans[i];
+            let moban = localmubans[i];
             d.push({
-                title: i + ':' + muban.名称,
+                title: i + ':' + moban.名称,
                 col_type: 'text_1',
-                url: $('hiker://empty#noHistory##noRecordHistory##noRefresh#').rule((muban) => {
-                    setPageTitle('编辑:' + muban.名称);
-                    setResult([{ title: JSON.stringify(muban), col_type: 'rich_text' }]);
-                }, muban),
+                url: $('hiker://empty#noHistory##noRecordHistory##noRefresh#').rule((moban) => {
+                    setPageTitle('编辑:' + moban.名称);
+                    setResult([{ title: JSON.stringify(moban), col_type: 'rich_text' }]);
+                }, moban),
                 extra: {
                     lineVisible: false
                 }
@@ -296,7 +296,7 @@ function moban() {
             d.push({
                 title: '编辑',
                 col_type: 'text_3',
-                url: $(JSON.stringify(muban), '请输入编辑后的内容').input((localmubans, i, filePath) => {
+                url: $(JSON.stringify(moban), '请输入编辑后的内容').input((localmubans, i, filePath) => {
                     let ret = {};
                     try {
                         ret = JSON.parse(input)
@@ -316,28 +316,28 @@ function moban() {
             d.push({
                 title: '导出',
                 col_type: 'text_3',
-                url: $('#noLoading#').lazyRule((muban, fileName) => {
+                url: $('#noLoading#').lazyRule((moban, fileName) => {
                     try {
-                        let shareText = base64Encode(JSON.stringify(muban));
+                        let shareText = base64Encode(JSON.stringify(moban));
                         var pastes = getPastes();
                         var url = sharePaste(shareText, pastes.slice(-1)[0]);
-                        let import_rule = fileName + "：" + muban.名称 + '\n' + url;
+                        let import_rule = fileName + "：" + moban.名称 + '\n' + url;
                         copy(import_rule);
                         return 'toast://已导出并复制到剪切板，快去分享吧';
                     } catch (e) {
                         return 'toast://发生错误:' + e.message
                     }
-                }, muban, fileName)
+                }, moban, fileName)
             });
             d.push({
                 title: '删除',
                 col_type: 'text_3',
-                url: $(`确认删除${getMyVar('mubanManage',names[0])}:${muban.名称}`).confirm((localmubans, i, filePath, name) => {
+                url: $(`确认删除${getMyVar('mubanManage',names[0])}:${moban.名称}`).confirm((localmubans, i, filePath, name) => {
                     localmubans.splice(i, 1); //删除
                     writeFile(filePath, JSON.stringify(localmubans));
                     refreshPage(false);
                     return 'toast://已删除' + name
-                }, localmubans, i, filePath, muban.名称)
+                }, localmubans, i, filePath, moban.名称)
             });
         }
     } catch (e) { log(e.message) };
