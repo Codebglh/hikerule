@@ -148,6 +148,24 @@ function sousuo() {
 };
 
 function moban() {
+    var yijimoban = [];
+    var erjimoban = [];
+    var sousuomoban = [];
+    var location = 'hiker://files/rules/bgHouse/json/';
+
+    function moban_init() {
+        let api = 'https://ghproxy.com/https://raw.githubusercontent.com/Codebglh/hikerule/main/l/json/'
+        let location = 'hiker://files/rules/bgHouse/json/';
+        let moban = {
+            yiji: api + '1',
+            erji: api + '2',
+            sousuo: api + '3',
+        }
+        requireDownload(moban.yiji, `${location}一级模板.json`);
+        requireDownload(moban.erji, `${location}二级模板.json`);
+        requireDownload(moban.sousuo, `${location}搜索模板.json`);
+    }
+    moban_init()
     var d = [];
     let root = 'hiker://files/rules/bgHouse/json/'
     let names = ['一级模板', '二级模板', '搜索模板'];
@@ -180,7 +198,7 @@ function moban() {
             return $(`确认初始化本地模板文件:${fileName}?将公开模板覆盖本地模板文件`).confirm((filePath, fileName) => {
                 let api = 'https://ghproxy.com/https://raw.githubusercontent.com/Codebglh/hikerule/main/l/json/'
                 let mobans = {
-                    一级模板: api + '1',
+                    一级模板: api + '1.json',
                     二级模板: api + '2',
                     搜索模板: api + '3',
                 }
@@ -314,7 +332,7 @@ function moban() {
             d.push({
                 title: '删除',
                 col_type: 'text_3',
-                url: $(`确认删除${getMyVar('mubanManage',files[1])}:${muban.名称}`).confirm((localmubans, i, filePath, name) => {
+                url: $(`确认删除${getMyVar('mubanManage',names[0])}:${muban.名称}`).confirm((localmubans, i, filePath, name) => {
                     localmubans.splice(i, 1); //删除
                     writeFile(filePath, JSON.stringify(localmubans));
                     refreshPage(false);
