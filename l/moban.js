@@ -50,66 +50,23 @@ function yiji() {
         pic_url: version.url + 'src/5.png',
         col_type: 'icon_5',
     });
-    // for (var i in FL) {
-    //     d.push({
-    //         title: getMyVar('FL', 'FL[0]') === FL[i] ? '““””<b><span style="color:' + Color + '">' + FLN[i] + '</span></b>' : FLN[i],
-    //         url: $('#noLoading#').lazyRule((FL) => {
-    //             putMyVar('FL', FL);
-    //             refreshPage(false);
-    //             return "hiker://empty";
-    //         }, FL[i]),
-    //         col_type: 'scroll_button'
-    //     });
-    // }
-
-    // d.push({ col_type: "blank_block" });
-    // var html = request(url); //fetch直接访问链接
-    // var BT = xpathArray(html, 标题);
-    // var LJ = xpathArray(html, 链接);
-    // var XQ = xpathArray(html, 详情);
-    // var TP = xpathArray(html, 图片);
-
-
-
-
-
-
-
-    // 设置(d)
-
-
-    setResult(d);
-};
-
-
-function sousuo() {
-    addListener("onClose", $.toString(() => {
-        clearMyVar('sousuo$input');
-    }));
-    var d = [];
     d.push({
-        title: '<span style="color:#ff6600"><b>\t热搜榜\t\t\t</b></span>',
-        url: "hiker://empty",
-        pic_url: 'https://ss1.baidu.com/6ONXsjip0QIZ8tyhnq/it/u=3779990328,1416553241&fm=179&app=35&f=PNG?w=60&h=70&s=E7951B62A4639D153293A4E90300401B',
-        col_type: 'icon_small_3'
+        title: 'L模版说明-点击管理模版',
+        url: '',
+        detail: "所见即所得，只要你能看见你就能做出来",
+        col_type: 'text_1',
     });
 
 
 
-    setResult(d);
-};
 
-function shezhi() {
-    addListener("onClose", $.toString(() => {
-        clearMyVar('shezhi$input');
-    }));
-    var d = [];
-    d.push({
-        title: '<span style="color:#ff6600"><b>\t热搜榜\t\t\t</b></span>',
-        url: "hiker://empty",
-        pic_url: 'https://ss1.baidu.com/6ONXsjip0QIZ8tyhnq/it/u=3779990328,1416553241&fm=179&app=35&f=PNG?w=60&h=70&s=E7951B62A4639D153293A4E90300401B',
-        col_type: 'icon_small_3'
-    });
+
+
+
+
+
+
+
 
 
 
@@ -127,8 +84,35 @@ function zhuye() {
         pic_url: 'https://ss1.baidu.com/6ONXsjip0QIZ8tyhnq/it/u=3779990328,1416553241&fm=179&app=35&f=PNG?w=60&h=70&s=E7951B62A4639D153293A4E90300401B',
         col_type: 'icon_small_3'
     });
+    setResult(d);
+};
 
 
+function shezhi() {
+    addListener("onClose", $.toString(() => {
+        clearMyVar('shezhi$input');
+    }));
+    var d = [];
+    d.push({
+        title: '<span style="color:#ff6600"><b>\t热搜榜\t\t\t</b></span>',
+        url: "hiker://empty",
+        pic_url: 'https://ss1.baidu.com/6ONXsjip0QIZ8tyhnq/it/u=3779990328,1416553241&fm=179&app=35&f=PNG?w=60&h=70&s=E7951B62A4639D153293A4E90300401B',
+        col_type: 'icon_small_3'
+    });
+    setResult(d);
+};
 
+
+function sousuo() {
+    addListener("onClose", $.toString(() => {
+        clearMyVar('sousuo$input');
+    }));
+    var d = [];
+    d.push({
+        title: '<span style="color:#ff6600"><b>\t热搜榜\t\t\t</b></span>',
+        url: "hiker://empty",
+        pic_url: 'https://ss1.baidu.com/6ONXsjip0QIZ8tyhnq/it/u=3779990328,1416553241&fm=179&app=35&f=PNG?w=60&h=70&s=E7951B62A4639D153293A4E90300401B',
+        col_type: 'icon_small_3'
+    });
     setResult(d);
 };
