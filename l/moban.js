@@ -157,13 +157,21 @@ function yjm() {
     // }));
     var d = [];
     d.push({
-        title: "🔍",
+        title: "获取",
         url: $.toString(() => {
             return input;
         }),
         desc: "请输入URL",
         col_type: "input",
     });
+    d.push({
+        title: '规则使用xpath选择器',
+        desc: '使用具体教程请百度xpath语法或观看B站视频',
+        col_type: 'text_1',
+    })
+
+
+
     setResult(d);
 };
 
