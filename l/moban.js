@@ -179,13 +179,13 @@ function moban() {
         url: $('#noLoading#').lazyRule((filePath, fileName) => {
             return $(`确认初始化本地模板文件:${fileName}?将公开模板覆盖本地模板文件`).confirm((filePath, fileName) => {
                 let api = 'https://ghproxy.com/https://raw.githubusercontent.com/Codebglh/hikerule/main/l/json/'
-                let location = 'hiker://files/rules/bgHouse/json/';
                 let mobans = {
                     一级模板: api + '1',
                     二级模板: api + '2',
                     搜索模板: api + '3',
                 }
                 let moban = mobans[fileName];
+                log(moban)
                 let code = fetch(moban);
 
                 if (code && code.length > 30) {
