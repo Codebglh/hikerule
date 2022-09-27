@@ -38,7 +38,7 @@ function yiji() {
     d.push({
         title: "搜索",
         url: $("hiker://empty#noRecordHistory##noHistory#").rule(() => {
-            require(config.依赖);
+            // require(config.依赖);
             sousuo();
         }),
         pic_url: version.url + 'src/5.png',
@@ -80,12 +80,6 @@ function sousuo() {
     addListener("onClose", $.toString(() => {
         clearMyVar('sousuo$input');
     }));
-    var seachurl = $('').lazyRule(() => {
-        return $('hiker://empty#noRecordHistory##noHistory#').rule((name) => {
-            require(config.依赖.match(/https.*\//)[0] + 'SrcJyXunmi.js');
-            xunmi(name);
-        }, input);
-    });
     var d = [];
     d.push({
         title: '<span style="color:#ff6600"><b>\t热搜榜\t\t\t</b></span>',
