@@ -151,18 +151,30 @@ function moban() {
 };
 
 function yjm() {
+    // addListener("onClose", $.toString(() => {
+    //     clearMyVar('zhuye$input');
+    // }));
+    var d = [];
     d.push({
 
     })
 };
 
 function ejm() {
+    // addListener("onClose", $.toString(() => {
+    //     clearMyVar('zhuye$input');
+    // }));
+    var d = [];
     d.push({
 
     })
 };
 
 function ssm() {
+    // addListener("onClose", $.toString(() => {
+    //     clearMyVar('zhuye$input');
+    // }));
+    var d = [];
     d.push({
 
     })
