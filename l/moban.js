@@ -174,30 +174,50 @@ function yjm() {
         url: '',
         desc: "输入语法例如：//*[@class=\"fed-tabs-boxs\"]/text()",
         col_type: 'input',
+        extra: {
+            type: 'textarea',
+            height: 2
+        },
     });
     d.push({
         title: "描述",
         url: '',
         desc: "输入语法例如：//*[@class=\"fed-tabs-boxs\"]/text()",
         col_type: 'input',
+        extra: {
+            type: 'textarea',
+            height: 2
+        },
     });
     d.push({
         title: "链接",
         url: '',
         desc: "输入语法例如：//*[@class=\"fed-tabs-boxs\"]/@href",
         col_type: 'input',
+        extra: {
+            type: 'textarea',
+            height: 2
+        },
     });
     d.push({
         title: "图片",
         url: '',
         desc: "输入语法例如：//*[@class=\"fed-tabs-boxs\"]/@src",
         col_type: 'input',
+        extra: {
+            type: 'textarea',
+            height: 2
+        },
     });
     d.push({
         title: "类型",
         url: '',
         desc: "输入海阔自带类型例如：movie_1,movie_2,movie_3等等",
         col_type: 'input',
+        extra: {
+            type: 'textarea',
+            height: 2
+        }
     });
 
 
