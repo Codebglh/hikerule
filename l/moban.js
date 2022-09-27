@@ -52,14 +52,43 @@ function yiji() {
     });
     d.push({
         title: 'L模版说明-点击管理模版',
-        url: '',
-        detail: "所见即所得，只要你能看见你就能做出来",
+        url: $("hiker://empty#noRecordHistory##noHistory#").rule(() => {
+            require(config.依赖);
+            moban();
+        }),
+        desc: "所见即所得，只要你能看见你就能做出来",
         col_type: 'text_1',
     });
 
+    d.push({
+        title: '一级模版制作',
+        url: $("hiker://empty#noRecordHistory##noHistory#").rule(() => {
+            require(config.依赖);
+            yjm();
+        }),
+        desc: "所见即所得，只要你能看见你就能做出来",
+        col_type: 'text_3',
+    });
 
+    d.push({
+        title: '二级模版制作',
+        url: $("hiker://empty#noRecordHistory##noHistory#").rule(() => {
+            require(config.依赖);
+            ejm();
+        }),
+        desc: "所见即所得，只要你能看见你就能做出来",
+        col_type: 'text_3',
+    });
 
-
+    d.push({
+        title: '搜索模版制作',
+        url: $("hiker://empty#noRecordHistory##noHistory#").rule(() => {
+            require(config.依赖);
+            ssm();
+        }),
+        desc: "所见即所得，只要你能看见你就能做出来",
+        col_type: 'text_3',
+    });
 
 
 
@@ -115,4 +144,26 @@ function sousuo() {
         col_type: 'icon_small_3'
     });
     setResult(d);
+};
+
+function moban() {
+
+};
+
+function yjm() {
+    d.push({
+
+    })
+};
+
+function ejm() {
+    d.push({
+
+    })
+};
+
+function ssm() {
+    d.push({
+
+    })
 };
