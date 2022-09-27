@@ -186,7 +186,7 @@ function moban() {
                     搜索模板: api + '3',
                 }
                 let moban = mobans[fileName];
-                let code = request(moban);
+                let code = fetch(moban);
 
                 if (code && code.length > 30) {
                     writeFile(filePath, code);
