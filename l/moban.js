@@ -14,6 +14,7 @@ function yiji() {
     d.push({
         title: "主页",
         url: $("hiker://empty#noRecordHistory##noHistory#").rule(() => {
+            require(config.依赖)
             zhuye();
         }),
         pic_url: version.url + 'src/1.png',
@@ -34,6 +35,7 @@ function yiji() {
     d.push({
         title: "设置",
         url: $("hiker://empty#noRecordHistory##noHistory#").rule(() => {
+            require(config.依赖)
             shezhi();
         }),
         pic_url: version.url + 'src/4.png',
@@ -42,6 +44,7 @@ function yiji() {
     d.push({
         title: "搜索",
         url: $("hiker://empty#noRecordHistory##noHistory#").rule(() => {
+            require(config.依赖)
             sousuo();
         }),
         pic_url: version.url + 'src/5.png',
