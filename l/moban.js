@@ -368,7 +368,7 @@ function yjm() {
         url: $.toString(() => {
             putMyVar('name', input);
             refreshPage(false);
-            return 'toast://已清空详情页标识'
+            return 'toast://完成访问'
         }, ),
         desc: "请输入URL",
         col_type: "input",
