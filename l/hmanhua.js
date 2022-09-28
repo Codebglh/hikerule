@@ -43,18 +43,18 @@ function yiji() {
     });
     const Color = "#3399cc";
     const categorys = ['全部', '热门资源', 'f2d资源', 'hy资源', 'zmw资源', 'msn资源', 'ysj资源', 'xn资源', 'bp资源', 'xsm资源', 'hav资源', '9c资源', 'btt资源', 'lb资源'];
-    const listTab = ['', 'zizhi', 'f2d', 'hy', 'zmw', 'msn', 'ysj', 'xn', 'bp', 'xsm', 'hav', '9c', 'btt', 'lb'];
+    const listTabs = ['', 'zizhi', 'f2d', 'hy', 'zmw', 'msn', 'ysj', 'xn', 'bp', 'xsm', 'hav', '9c', 'btt', 'lb'];
     d.push({
         col_type: 'line'
     });
-    for (var category in categorys) {
+    for (var i in categorys) {
         d.push({
-            title: categorys === getMyVar('categorys', categorys[0]) ? '““””<span style="color: #12b668">' + categorys + '</span>' : categorys,
+            title: getMyVar('SrcJuying$listTab', '') === listTabs[i] ? '““””<b><span style="color:blue">' + categorys[i] + '</span></b>' : categorys[i],
             url: $('#noLoading#').lazyRule((listTab) => {
-                putMyVar('listTab', listTab);
+                putMyVar('SrcJuying$listTab', listTab);
                 refreshPage(false);
                 return "hiker://empty";
-            }, listTab[i]),
+            }, listTabs[i]),
             col_type: 'scroll_button'
         });
     }
