@@ -11,54 +11,56 @@ var version = {
 
 function yiji() {
     var d = [];
-    d.push({
-        title: "收藏",
-        url: "hiker://collection",
-        pic_url: version.url + 'src/2.png',
-        col_type: 'icon_4',
-    });
-    d.push({
-        title: "历史",
-        url: "hiker://history",
-        pic_url: version.url + 'src/3.png',
-        col_type: 'icon_4',
-    });
-    d.push({
-        title: "设置",
-        url: $("hiker://empty#noRecordHistory##noHistory#").rule(() => {
-            require(config.依赖);
-            shezhi();
-        }),
-        pic_url: version.url + 'src/4.png',
-        col_type: 'icon_4',
-    });
-    d.push({
-        title: "搜索",
-        url: $("hiker://empty#noRecordHistory##noHistory#").rule(() => {
-            require(config.依赖);
-            sousuo();
-        }),
-        pic_url: version.url + 'src/5.png',
-        col_type: 'icon_4',
-    });
-    const Color = "#3399cc";
-    const categorys = ['全部', '热门资源', 'f2d资源', 'hy资源', 'zmw资源', 'msn资源', 'ysj资源', 'xn资源', 'bp资源', 'xsm资源', 'hav资源', '9c资源', 'btt资源', 'lb资源'];
-    const listTabs = ['', 'zizhi', 'f2d', 'hy', 'zmw', 'msn', 'ysj', 'xn', 'bp', 'xsm', 'hav', '9c', 'btt', 'lb'];
-    d.push({
-        col_type: 'line'
-    });
-    for (var i in categorys) {
+    if (MY_PAGE == 1) { //第一页的筛选
         d.push({
-            title: getMyVar('listTab', '') === listTabs[i] ? '““””<b><span style="color:blue">' + categorys[i] + '</span></b>' : categorys[i],
-            url: $('#noLoading#').lazyRule((listTab) => {
-                putMyVar('listTab', listTab);
-                refreshPage(false);
-                return "hiker://empty";
-            }, listTabs[i]),
-            col_type: 'scroll_button'
+            title: "收藏",
+            url: "hiker://collection",
+            pic_url: version.url + 'src/2.png',
+            col_type: 'icon_4',
         });
+        d.push({
+            title: "历史",
+            url: "hiker://history",
+            pic_url: version.url + 'src/3.png',
+            col_type: 'icon_4',
+        });
+        d.push({
+            title: "设置",
+            url: $("hiker://empty#noRecordHistory##noHistory#").rule(() => {
+                require(config.依赖);
+                shezhi();
+            }),
+            pic_url: version.url + 'src/4.png',
+            col_type: 'icon_4',
+        });
+        d.push({
+            title: "搜索",
+            url: $("hiker://empty#noRecordHistory##noHistory#").rule(() => {
+                require(config.依赖);
+                sousuo();
+            }),
+            pic_url: version.url + 'src/5.png',
+            col_type: 'icon_4',
+        });
+        const Color = "#3399cc";
+        const categorys = ['全部', '热门资源', 'f2d资源', 'hy资源', 'zmw资源', 'msn资源', 'ysj资源', 'xn资源', 'bp资源', 'xsm资源', 'hav资源', '9c资源', 'btt资源', 'lb资源'];
+        const listTabs = ['', 'zizhi', 'f2d', 'hy', 'zmw', 'msn', 'ysj', 'xn', 'bp', 'xsm', 'hav', '9c', 'btt', 'lb'];
+        d.push({
+            col_type: 'line'
+        });
+        for (var i in categorys) {
+            d.push({
+                title: getMyVar('listTab', '') === listTabs[i] ? '““””<b><span style="color:blue">' + categorys[i] + '</span></b>' : categorys[i],
+                url: $('#noLoading#').lazyRule((listTab) => {
+                    putMyVar('listTab', listTab);
+                    refreshPage(false);
+                    return "hiker://empty";
+                }, listTabs[i]),
+                col_type: 'scroll_button'
+            });
+        }
     }
-    var url = 'https://www.mhww.xyz'
+    var url = 'https://www.onetgb.xyz'
     var MY_URL = "https://www.onetgb.xyz/0/index?filmName=&page.currentPage=" + MY_PAGE + "&target=" + getMyVar('listTab', '') + "&orderType=1&createTimeType=";
     var html = fetch(MY_URL);
     var BT = xpathArray(html, 标题);
@@ -124,3 +126,69 @@ function sousuo() {
     });
     setResult(d);
 };
+
+function erji() {
+
+    var d = [];
+    var html = getResCode();
+    d.push({
+        title: xpath(html, 标题),
+        desc: xpath(html, 描述),
+        img: xpath(html, 图片),
+        url: MY_URL,
+        col_type: 'movie_1_vertical_pic_blur'
+    });
+    var 线路名 = '//*[@class="fed-tabs-boxs"]/div/div/ul/li/a/text()';
+    var XLN = xpathArray(html, 线路名);
+    var 线路 = '//*[@class="fed-tabs-boxs"]/div/div/ul/li/a/@href';
+    var XL = xpathArray(html, 线路);
+    var Color = 'blue'
+
+
+    var easy = $("").lazyRule((path) => {
+        eval(request(path));
+        return lazy(input);
+
+    }, ("hiker://files/rules/Src/Juying/自动匹配免嗅.js"));
+
+
+
+
+    clearMyVar(XL)
+
+    for (var i in XL) {
+        d.push({
+            title: getMyVar('SrcJuying$XL', "") === XL[i] ? getHead(XLN[i] + '↓') : XLN[i],
+            url: $('#noLoading#').lazyRule((XL) => {
+                putMyVar('SrcJuying$XL', XL);
+                refreshPage(false);
+                return "hiker://empty";
+            }, XL[i]),
+            col_type: 'scroll_button',
+
+        });
+    }
+
+    var xx = getMyVar('SrcJuying$XL', XL[i])
+    var url = 'https://360yy.cn';
+    cc = url + bbb
+    setLists(cc)
+
+
+
+    function setLists(bbb) {
+        var 播放 = '//*[@class="fed-play-item fed-drop-item fed-visible"]/ul[2]/li/a/@href'
+        DZ = xpathArray(bbb, 播放)
+        for (var i = 1; i < DZ.length + 1; i++) {
+
+            d.push({
+                title: i + '',
+                url: url + DZ[i - 1] + easy,
+                col_type: 'text_4',
+            });
+        }
+    }
+
+
+    setResult(d);
+}
