@@ -64,7 +64,7 @@ function yiji() {
     d.push({
         title: '一级模版制作',
         url: $("hiker://empty#noRecordHistory##noHistory#").rule(() => {
-            require(config.依赖);
+            require(version.url + '模版.js');
             yjm();
         }),
         desc: "所见即所得，只要你能看见你就能做出来",
