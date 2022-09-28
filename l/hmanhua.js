@@ -150,9 +150,10 @@ function erji() {
     }, ("hiker://files/rules/Src/Juying/自动匹配免嗅.js"));
 
     for (var i in XL) {
+        var url = 网站 + XL[i].replace(/amp\;/g, "")
         d.push({
-            title: "播放",
-            url: 网站 + XL[i].replace(/amp\;/g, "") + easy,
+            title: i + "",
+            url: url + easy,
             col_type: 'text_4',
         });
     }
