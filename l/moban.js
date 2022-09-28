@@ -372,9 +372,8 @@ function yjm() {
             height: 2
         },
     });
-    // let 标题 = getMyVar('name', input)
-    // var BT = xpathArray(code, 标题);
-    // log(BT)
+
+
     // d.push({
     //     title: "描述",
     //     url: '',
@@ -417,9 +416,10 @@ function yjm() {
     // });
     let b = getMyVar('url', input);
     log(b)
-    let html = getMyVar('name', input);
-    let code = request(html);
-    if (code && code.length > 30) { 'toast://成功' } else { 'toast://无法访问' }
+    let 标题 = getMyVar('name', input)
+    var BT = xpathArray(code, 标题);
+    log(BT)
+    let code = request(b);
 
 
     setResult(d);
