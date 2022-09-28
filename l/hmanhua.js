@@ -49,7 +49,7 @@ function yiji() {
     });
     for (var i in categorys) {
         d.push({
-            title: getMyVar('SrcJuying$listTab', '') === listTabs[i] ? '““””<b><span style="color:blue">' + categorys[i] + '</span></b>' : categorys[i],
+            title: getMyVar('SrcJuying$listTab', 'hy') === listTabs[i] ? '““””<b><span style="color:blue">' + categorys[i] + '</span></b>' : categorys[i],
             url: $('#noLoading#').lazyRule((listTab) => {
                 putMyVar('SrcJuying$listTab', listTab);
                 refreshPage(false);
