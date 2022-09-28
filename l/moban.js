@@ -358,9 +358,9 @@ function moban() {
 
 
 function yjm() {
-    // addListener("onClose", $.toString(() => {
-    //     clearMyVar('zhuye$input');
-    // }));
+    addListener("onClose", $.toString(() => {
+        clearMyVar('moban$input');
+    }));
     var d = [];
     let input = ['https://360yy.cn'];
     d.push({
