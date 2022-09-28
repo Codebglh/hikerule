@@ -362,11 +362,11 @@ function yjm() {
     //     clearMyVar('zhuye$input');
     // }));
     var d = [];
-    let input = ['https://360yy.cn'];
+    let myurl = ['https://360yy.cn'];
     d.push({
         title: "获取",
         url: $.toString(() => {
-            putMyVar('name', input);
+            putMyVar('name', myurl);
             refreshPage(false);
             return 'toast://完成访问'
         }, ),
@@ -374,15 +374,15 @@ function yjm() {
         col_type: "input",
 
         extra: {
-            defaultValue: getMyVar('name', '请输入URL'),
-            onChange: "putMyVar('name',input)",
+            defaultValue: getMyVar('name', ''),
+            onChange: "putMyVar('name',myurl)",
             titleVisible: true,
             textSize: 13,
             type: "textarea",
             height: 1,
         }
     });
-    let html = getMyVar('name', input);
+    let html = getMyVar('name', myurl);
     let code = request(html);
     log(code);
     d.push({
