@@ -62,7 +62,7 @@ function yiji() {
             title: BT[i],
             desc: XQ[i].replace("\r\n", ""),
             pic_url: TP[i],
-            url: url + LJ[i] + "#immersiveTheme#",
+            url: url + LJ[i].replace(/window\.open\('|\'\)/g, "") + "#immersiveTheme#",
             col_type: 'text_2',
         });
 
