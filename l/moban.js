@@ -333,55 +333,45 @@ function yjm() {
     clearMyVar('moban$input');
 
     var d = [];
-    let input = ['https://360yy.cn'];
+    // let input = ['https://360yy.cn'];
     d.push({
         title: "获取",
         url: $.toString(() => {
             putMyVar('url', input);
             refreshPage(false);
             return 'toast://完成访问'
-
         }, ),
         desc: "请输入URL",
         col_type: "input",
         extra: {
             defaultValue: getMyVar('url', ''),
-            // onChange: "putMyVar('url',input)",
-            // titleVisible: true,
-            // textSize: 13,
+            textSize: 13,
             type: "textarea",
             height: 1,
         }
     });
-    let b = getMyVar('url', input);
-    log()
-        // let html = getMyVar('name', input);
-        // let code = request(html);
-        // if (code && code.length > 30) { 'toast://成功' } else { 'toast://无法访问' }
-        // d.push({
-        //     title: '规则使用xpath选择器',
-
-    //     desc: '使用具体教程请百度xpath语法或观看B站视频',
-    //     col_type: 'text_1',
-    // });
-    // d.push({
-    //     title: "标题",
-    //     url: $.toString(() => {
-    //         putMyVar('name', input);
-    //         refreshPage(false);
-    //         return 'toast://完成访问'
-    //     }, ),
-    //     desc: "输入xpath语法例如：//*[@class=\"fed-tabs-boxs\"]/text()",
-    //     col_type: 'input',
-    //     extra: {
-    //         defaultValue: getMyVar('name', ''),
-    //         onChange: "putMyVar('name',input)",
-    //         titleVisible: true,
-    //         textSize: 13,
-    //         type: "textarea",
-    //         height: 2
-    //     },
-    // });
+    d.push({
+        title: '规则使用xpath选择器',
+        desc: '使用具体教程请百度xpath语法或观看B站视频',
+        col_type: 'text_1',
+        url: 'toast://请阅读源码自取'
+    });
+    d.push({
+        title: "标题",
+        url: $.toString(() => {
+            putMyVar('title', input);
+            refreshPage(false);
+            return 'toast://完成访问'
+        }, ),
+        desc: "输入xpath语法例如：//*[@class=\"fed-tabs-boxs\"]/text()",
+        col_type: 'input',
+        extra: {
+            defaultValue: getMyVar('title', ''),
+            textSize: 13,
+            type: "textarea",
+            height: 2
+        },
+    });
     // let 标题 = getMyVar('name', input)
     // var BT = xpathArray(code, 标题);
     // log(BT)
@@ -425,7 +415,11 @@ function yjm() {
     //         height: 2
     //     }
     // });
-
+    let b = getMyVar('url', input);
+    log(b)
+    let html = getMyVar('name', input);
+    let code = request(html);
+    if (code && code.length > 30) { 'toast://成功' } else { 'toast://无法访问' }
 
 
     setResult(d);
