@@ -61,10 +61,10 @@ function yiji() {
     var url = 'https://www.mhww.xyz'
     var MY_URL = "https://www.onetgb.xyz/0/index?filmName=&page.currentPage=" + MY_PAGE + "&target=" + getMyVar('listTab', '') + "&orderType=1&createTimeType=";
     var html = fetch(MY_URL);
-    // var BT = xpathArray(html, 标题);
-    // var LJ = xpathArray(html, 链接);
-    // var XQ = xpathArray(html, 详情);
-    // var TP = xpathArray(html, 图片);
+    var BT = xpathArray(html, 标题);
+    var LJ = xpathArray(html, 链接);
+    var XQ = xpathArray(html, 详情);
+    var TP = xpathArray(html, 图片);
 
     log(html)
     for (var i in BT) {
