@@ -12,25 +12,16 @@ var version = {
 function yiji() {
     var d = [];
     d.push({
-        title: "主页",
-        url: $("hiker://empty#noRecordHistory##noHistory#").rule(() => {
-            require(config.依赖);
-            zhuye();
-        }),
-        pic_url: version.url + 'src/1.png',
-        col_type: 'icon_5',
-    });
-    d.push({
         title: "收藏",
         url: "hiker://collection",
         pic_url: version.url + 'src/2.png',
-        col_type: 'icon_5',
+        col_type: 'icon_4',
     });
     d.push({
         title: "历史",
         url: "hiker://history",
         pic_url: version.url + 'src/3.png',
-        col_type: 'icon_5',
+        col_type: 'icon_4',
     });
     d.push({
         title: "设置",
@@ -39,7 +30,7 @@ function yiji() {
             shezhi();
         }),
         pic_url: version.url + 'src/4.png',
-        col_type: 'icon_5',
+        col_type: 'icon_4',
     });
     d.push({
         title: "搜索",
@@ -48,7 +39,7 @@ function yiji() {
             sousuo();
         }),
         pic_url: version.url + 'src/5.png',
-        col_type: 'icon_5',
+        col_type: 'icon_4',
     });
 
 
@@ -60,9 +51,6 @@ function yiji() {
 };
 
 function zhuye() {
-    addListener("onClose", $.toString(() => {
-        clearMyVar('zhuye$input');
-    }));
     var d = [];
     d.push({
         title: '<span style="color:#ff6600"><b>\t热搜榜\t\t\t</b></span>',
