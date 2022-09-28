@@ -362,16 +362,31 @@ function yjm() {
     //     clearMyVar('zhuye$input');
     // }));
     var d = [];
-    let url = "https://";
+    let input = [];
     d.push({
         title: "获取",
-        url: $('#noLoading#').toString((url) => {
-            putMyVar('name', url + input);
-            refreshPage(false);
-            // return input + seachurl;
-        }, url),
+        // url: $.toString(() => {
+        //     putMyVar('name', input);
+        //     // refreshPage(false);
+        // }, ),
+        url: $.toString(() => {
+            return $('清空输入?').confirm(() => {
+                putMyVar('detailUrl', '');
+                refreshPage(false);
+                return 'toast://已清空详情页标识'
+            });
+        }),
         desc: "请输入URL",
         col_type: "input",
+
+        extra: {
+            defaultValue: getMyVar('detailUrl', 'detail'),
+            onChange: "putMyVar('detailUrl',input)",
+            titleVisible: true,
+            textSize: 13,
+            type: "textarea",
+            height: 1,
+        }
     });
     let html = getMyVar('name', input);
     let code = request(html);
