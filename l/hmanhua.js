@@ -41,13 +41,30 @@ function yiji() {
         pic_url: version.url + 'src/5.png',
         col_type: 'icon_4',
     });
+    const Color = "#3399cc";
+    const categorys = ['全部', '热门资源', 'f2d资源', 'hy资源', 'zmw资源', 'msn资源', 'ysj资源', 'xn资源', 'bp资源', 'xsm资源', 'hav资源', '9c资源', 'btt资源', 'lb资源'];
+    const listTab = ['', 'zizhi', 'f2d', 'hy', 'zmw', 'msn', 'ysj', 'xn', 'bp', 'xsm', 'hav', '9c', 'btt', 'lb'];
+    d.push({
+        col_type: 'line'
+    });
+    for (var category in categorys) {
+        d.push({
+            title: category === getMyVar('category', categorys[0]) ? '““””<span style="color: #12b668">' + category + '</span>' : category,
+            url: $('#noLoading#').lazyRule((listTab) => {
+                putMyVar('listTab', listTab);
+                refreshPage(false);
+                return "hiker://empty";
+            }, listTab[i]),
+            col_type: 'scroll_button'
+        });
+    }
     var url = 'https://www.mhww.xyz'
-    var MY_URL = 'https://www.mhww.xyz/?page.currentPage=' + MY_PAGE + '&orderType=3&subjectName=&filmName='
+    var MY_URL = "https://www.onetgb.xyz/0/index?filmName=&page.currentPage=" + MY_PAGE + "&target=" + getMyVar('listTab', '') + "&orderType=1&createTimeType=";
     var html = fetch(MY_URL);
-    var BT = xpathArray(html, 标题);
-    var LJ = xpathArray(html, 链接);
-    var XQ = xpathArray(html, 详情);
-    var TP = xpathArray(html, 图片);
+    // var BT = xpathArray(html, 标题);
+    // var LJ = xpathArray(html, 链接);
+    // var XQ = xpathArray(html, 详情);
+    // var TP = xpathArray(html, 图片);
 
     log(html)
     for (var i in BT) {

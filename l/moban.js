@@ -182,8 +182,8 @@ function moban() {
                 let api = 'https://ghproxy.com/https://raw.githubusercontent.com/Codebglh/hikerule/main/l/json/'
                 let mobans = {
                     一级模板: api + '1.json',
-                    二级模板: api + '2',
-                    搜索模板: api + '3',
+                    二级模板: api + '2.json',
+                    搜索模板: api + '3.json',
                 }
                 let moban = mobans[fileName];
                 // log(moban)
