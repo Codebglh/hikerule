@@ -49,7 +49,7 @@ function yiji() {
     var XQ = xpathArray(html, 详情);
     var TP = xpathArray(html, 图片);
 
-    log(XQ)
+    log(html)
     for (var i in BT) {
         d.push({
             title: BT[i],
