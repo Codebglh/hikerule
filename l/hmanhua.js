@@ -64,16 +64,16 @@ function yiji() {
     var BT = xpathArray(html, 标题);
     var LJ = xpathArray(html, 链接);
     var XQ = xpathArray(html, 详情);
-    var TP = xpathArray(html, 图片);
+    // var TP = xpathArray(html, 图片);
 
     log(TP)
     for (var i in BT) {
         d.push({
             title: BT[i],
             desc: XQ[i].replace("\r\n", ""),
-            pic_url: TP[i],
+            // pic_url: TP[i],
             url: url + LJ[i] + "#immersiveTheme#",
-            col_type: 'movie_3',
+            col_type: 'text_2',
         });
 
     }
