@@ -171,7 +171,7 @@ function moban() {
     let names = ['一级模板', '二级模板', '搜索模板'];
     for (let name of names) {
         d.push({
-            title: name === getMyVar('name', names[1]) ? '““””<span style="color: #12b668">' + name + '</span>' : name,
+            title: name === getMyVar('name', names[0]) ? '““””<span style="color: #12b668">' + name + '</span>' : name,
             url: $('#noLoading#').lazyRule((name) => {
                 putMyVar('name', name);
                 refreshPage(false);
