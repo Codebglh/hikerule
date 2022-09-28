@@ -181,7 +181,7 @@ function moban() {
         });
     }
 
-    let fileName = getMyVar('name', names[1]);
+    let fileName = getMyVar('name', names[0]);
     let filePath = `${root}${fileName}.json`;
     let code = request(filePath);
     d.push({
