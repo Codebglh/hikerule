@@ -333,7 +333,7 @@ function yjm() {
     clearMyVar('moban$input');
 
     var d = [];
-    // let input = ['https://360yy.cn'];
+    let input = [];
     d.push({
         title: "获取",
         url: $.toString(() => {
