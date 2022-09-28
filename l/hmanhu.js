@@ -55,7 +55,7 @@ function yiji() {
     var LJ = xpathArray(html, 链接);
     var XQ = xpathArray(html, 详情);
     var TP = xpathArray(html, 图片);
-
+    //
     // log(TP)
     for (var i in BT) {
         d.push({
