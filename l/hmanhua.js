@@ -152,7 +152,7 @@ function erji() {
     for (var i in XL) {
         d.push({
             title: "播放",
-            url: 网站 + XL[i] + easy,
+            url: 网站 + XL[i].replace(/amp\;/g, "") + easy,
             col_type: 'text_4',
         });
     }
