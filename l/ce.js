@@ -1,14 +1,42 @@
-function test(a, b) {
-    var c
-    c = a + b
-    if (c > 1) {
-        return false
+d.push({
+    title: '详情页标识',
+    url: $.toString(() => {
+        return $('清空输入?').confirm(() => {
+            putMyVar('detailUrl', '');
+            refreshPage(false);
+            return 'toast://已清空详情页标识'
+        });
+    }),
+    col_type: "input",
+    desc: "输入网站的影片详情页标识或完整链接,必填",
+    pic_url: "",
+    extra: {
+        defaultValue: getMyVar('detailUrl', 'detail'),
+        onChange: "putMyVar('detailUrl',input)",
+        titleVisible: true,
+        textSize: 13,
+        type: "textarea",
+        height: 1,
     }
-}
-if (!test(1, 2)) {
-    console.log(22)
-} else {
-    console.log(2)
-}
-
-//为啥同一个文件夹用vs code的终端会报错？？？？苹果自带终端不报错
+});
+d.push({
+    title: '系统功能',
+    url: $.toString(() => {
+        return $('清空输入?').confirm(() => {
+            putMyVar('system', '');
+            refreshPage(false);
+            return 'toast://已清空系统功能链接'
+        });
+    }),
+    col_type: "input",
+    desc: "拦截网站的某个可点击链接进行注入模板的设置功能,选填。不拦截填true",
+    pic_url: "",
+    extra: {
+        defaultValue: getMyVar('system', 'true'),
+        onChange: "putMyVar('system',input)",
+        titleVisible: true,
+        textSize: 13,
+        type: "textarea",
+        height: 2,
+    }
+});
