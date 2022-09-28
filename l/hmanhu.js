@@ -57,8 +57,8 @@ function yiji() {
     var TP = xpathArray(html, 图片);
     //
     // log(TP)
-    for (var i in BT) {
-        var a = LJ[i].replace(/window\.open\('|\'\)/g, "");
+    for (var i = 0; i < BT.length; i++) {
+        var a = LJ[i].replace("/window\.open\('|\'\)/g", "");
         d.push({
 
             title: BT[i],
