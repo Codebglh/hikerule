@@ -1,5 +1,4 @@
 function yiji() {
-    clearMyVar('SrcJy$back');
     var d = [];
     const Color = "#3399cc";
     const categorys = ['全部', '热门资源', 'f2d资源', 'hy资源', 'zmw资源', 'msn资源', 'ysj资源', 'xn资源', 'bp资源', 'xsm资源', 'hav资源', '9c资源', 'btt资源', 'lb资源'];
