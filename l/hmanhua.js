@@ -66,13 +66,13 @@ function yiji() {
     var XQ = xpathArray(html, 详情);
     var TP = xpathArray(html, 图片);
 
-    log(html)
+    // log(html)
     for (var i in BT) {
         d.push({
             title: BT[i],
             desc: XQ[i],
             pic_url: TP[i],
-            url: url + LJ[i].replace(/window\.open\(\'|\'\)/g, "") + "#immersiveTheme#",
+            url: url + LJ[i] + "#immersiveTheme#",
             col_type: 'movie_3',
         });
 
