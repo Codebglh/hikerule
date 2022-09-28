@@ -41,7 +41,7 @@ function yiji() {
         pic_url: version.url + 'src/5.png',
         col_type: 'icon_4',
     });
-    var MY_URL = 'https://www.mhww.xyz/?page.currentPage=' + fypage + '&orderType=3&subjectName=&filmName='
+    var MY_URL = 'https://www.mhww.xyz/?page.currentPage=' + MY_PAGE + '&orderType=3&subjectName=&filmName='
     var html = fetch(MY_URL);
     var BT = xpathArray(html, 标题);
     var LJ = xpathArray(html, 链接);
