@@ -68,7 +68,7 @@ function yiji() {
     var XQ = xpathArray(html, 详情);
     // var TP = xpathArray(html, 图片);
 
-    log(TP)
+    // log(TP)
     for (var i in BT) {
         d.push({
             title: BT[i],
@@ -134,15 +134,14 @@ function erji() {
     d.push({
         title: xpath(html, 标题),
         desc: xpath(html, 描述),
-        img: xpath(html, 图片),
-        url: MY_URL,
+        img: xpath(html, 图片) + '#noHistory#',
+        url: MY_URL + '#noHistory#',
         col_type: 'movie_1_vertical_pic_blur'
     });
-    var 线路名 = '//*[@class="fed-tabs-boxs"]/div/div/ul/li/a/text()';
-    var XLN = xpathArray(html, 线路名);
-    var 线路 = '//*[@class="fed-tabs-boxs"]/div/div/ul/li/a/@href';
+
     var XL = xpathArray(html, 线路);
-    var Color = 'blue'
+
+    var url = 网站 + XL;
 
 
     var easy = $("").lazyRule((path) => {
@@ -152,42 +151,13 @@ function erji() {
     }, ("hiker://files/rules/Src/Juying/自动匹配免嗅.js"));
 
 
+    d.push({
+        title: "播放",
+        url: url + easy,
+        col_type: 'text_4',
+    });
 
 
-    clearMyVar(XL)
-
-    for (var i in XL) {
-        d.push({
-            title: getMyVar('SrcJuying$XL', "") === XL[i] ? getHead(XLN[i] + '↓') : XLN[i],
-            url: $('#noLoading#').lazyRule((XL) => {
-                putMyVar('SrcJuying$XL', XL);
-                refreshPage(false);
-                return "hiker://empty";
-            }, XL[i]),
-            col_type: 'scroll_button',
-
-        });
-    }
-
-    var xx = getMyVar('SrcJuying$XL', XL[i])
-    var url = 'https://360yy.cn';
-    cc = url + bbb
-    setLists(cc)
-
-
-
-    function setLists(bbb) {
-        var 播放 = '//*[@class="fed-play-item fed-drop-item fed-visible"]/ul[2]/li/a/@href'
-        DZ = xpathArray(bbb, 播放)
-        for (var i = 1; i < DZ.length + 1; i++) {
-
-            d.push({
-                title: i + '',
-                url: url + DZ[i - 1] + easy,
-                col_type: 'text_4',
-            });
-        }
-    }
 
 
     setResult(d);
