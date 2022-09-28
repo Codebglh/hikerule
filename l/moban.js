@@ -337,24 +337,23 @@ function yjm() {
     d.push({
         title: "获取",
         url: $.toString(() => {
-            return $('清空输入?').confirm(() => {
-                putMyVar('url', input);
-                refreshPage(false);
-                return 'toast://完成访问'
-            });
+            putMyVar('url', input);
+            refreshPage(false);
+            return 'toast://完成访问'
+
         }, ),
         desc: "请输入URL",
         col_type: "input",
         extra: {
             defaultValue: getMyVar('url', ''),
-            onChange: "putMyVar('url',input)",
-            titleVisible: true,
-            textSize: 13,
+            // onChange: "putMyVar('url',input)",
+            // titleVisible: true,
+            // textSize: 13,
             type: "textarea",
             height: 1,
         }
     });
-    let b = getMyVar('url', '');
+    let b = getMyVar('url', input);
     log()
         // let html = getMyVar('name', input);
         // let code = request(html);
