@@ -372,54 +372,78 @@ function yjm() {
             height: 2
         },
     });
+    d.push({
+        title: "描述",
+        url: $.toString(() => {
+            putMyVar('detail', input);
+            refreshPage(false);
+            return 'toast://完成访问'
+        }, ),
+        desc: "输入xpath语法例如：//*[@class=\"fed-tabs-boxs\"]/text()",
+        col_type: 'input',
+        extra: {
+            defaultValue: getMyVar('detail', ''),
+            textSize: 13,
+            type: "textarea",
+            height: 2
+        },
+    });
+    d.push({
+        title: "链接",
+        url: $.toString(() => {
+            putMyVar('myurl', input);
+            refreshPage(false);
+            return 'toast://完成访问'
+        }, ),
+        desc: "输入xpath语法例如：//*[@class=\"fed-tabs-boxs\"]/@href",
+        col_type: 'input',
+        extra: {
+            defaultValue: getMyVar('myurl', ''),
+            textSize: 13,
+            type: "textarea",
+            height: 2
+        },
+    });
+    d.push({
+        title: "图片",
+        url: $.toString(() => {
+            putMyVar('img', input);
+            refreshPage(false);
+            return 'toast://完成访问'
+        }, ),
+        desc: "输入xpath语法例如：//*[@class=\"fed-tabs-boxs\"]/@src",
+        col_type: 'input',
+        extra: {
+            defaultValue: getMyVar('img', ''),
+            textSize: 13,
+            type: "textarea",
+            height: 2
+        },
+    });
+    d.push({
+        title: "类型",
+        url: $.toString(() => {
+            putMyVar('type', input);
+            refreshPage(false);
+            return 'toast://完成访问'
+        }, ),
+        desc: "输入海阔自带类型例如：movie_1,movie_2,movie_3等等",
+        col_type: 'input',
+        extra: {
+            defaultValue: getMyVar('type', ''),
+            textSize: 13,
+            type: "textarea",
+            height: 2
+        }
+    });
+    log(input)
+        // let b = getMyVar('url', input);
+        // log(b)
+        // let 标题 = getMyVar('title', input)
+        // let code = request(b);
+        // var BT = xpathArray(code, 标题);
+        // log(BT)
 
-
-    // d.push({
-    //     title: "描述",
-    //     url: '',
-    //     desc: "输入xpath语法例如：//*[@class=\"fed-tabs-boxs\"]/text()",
-    //     col_type: 'input',
-    //     extra: {
-    //         type: 'textarea',
-    //         height: 2
-    //     },
-    // });
-    // d.push({
-    //     title: "链接",
-    //     url: '',
-    //     desc: "输入xpath语法例如：//*[@class=\"fed-tabs-boxs\"]/@href",
-    //     col_type: 'input',
-    //     extra: {
-    //         type: 'textarea',
-    //         height: 2
-    //     },
-    // });
-    // d.push({
-    //     title: "图片",
-    //     url: '',
-    //     desc: "输入xpath语法例如：//*[@class=\"fed-tabs-boxs\"]/@src",
-    //     col_type: 'input',
-    //     extra: {
-    //         type: 'textarea',
-    //         height: 2
-    //     },
-    // });
-    // d.push({
-    //     title: "类型",
-    //     url: '',
-    //     desc: "输入海阔自带类型例如：movie_1,movie_2,movie_3等等",
-    //     col_type: 'input',
-    //     extra: {
-    //         type: 'textarea',
-    //         height: 2
-    //     }
-    // });
-    let b = getMyVar('url', input);
-    log(b)
-    let 标题 = getMyVar('name', input)
-    var BT = xpathArray(code, 标题);
-    log(BT)
-    let code = request(b);
 
 
     setResult(d);
