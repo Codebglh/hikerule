@@ -141,7 +141,6 @@ function erji() {
 
     var XL = xpathArray(html, 线路);
 
-    var url = 网站 + XL;
 
 
     var easy = $("").lazyRule((path) => {
@@ -150,13 +149,13 @@ function erji() {
 
     }, ("hiker://files/rules/Src/Juying/自动匹配免嗅.js"));
 
-
-    d.push({
-        title: "播放",
-        url: url + easy,
-        col_type: 'text_4',
-    });
-
+    for (var i in XL) {
+        d.push({
+            title: "播放",
+            url: 网站 + XL[i] + easy,
+            col_type: 'text_4',
+        });
+    }
 
 
 
