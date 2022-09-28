@@ -41,6 +41,7 @@ function yiji() {
         pic_url: version.url + 'src/5.png',
         col_type: 'icon_4',
     });
+    var url = 'https://www.mhww.xyz'
     var MY_URL = 'https://www.mhww.xyz/?page.currentPage=' + MY_PAGE + '&orderType=3&subjectName=&filmName='
     var html = fetch(MY_URL);
     var BT = xpathArray(html, 标题);
@@ -48,13 +49,13 @@ function yiji() {
     var XQ = xpathArray(html, 详情);
     var TP = xpathArray(html, 图片);
 
-    // log(XQ)
+    log(XQ)
     for (var i in BT) {
         d.push({
             title: BT[i],
             desc: XQ[i],
             pic_url: TP[i],
-            url: MY_URL + LJ[i].replace(/window\.open\(\'|\'\)/g, "") + "#immersiveTheme#",
+            url: url + LJ[i].replace(/window\.open\(\'|\'\)/g, "") + "#immersiveTheme#",
             col_type: 'movie_3',
         });
 
