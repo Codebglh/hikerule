@@ -365,23 +365,17 @@ function yjm() {
     let input = [];
     d.push({
         title: "获取",
-        // url: $.toString(() => {
-        //     putMyVar('name', input);
-        //     // refreshPage(false);
-        // }, ),
         url: $.toString(() => {
-            return $('清空输入?').confirm(() => {
-                putMyVar('detailUrl', '');
-                refreshPage(false);
-                return 'toast://已清空详情页标识'
-            });
-        }),
+            putMyVar('name', input);
+            refreshPage(false);
+            return 'toast://已清空详情页标识'
+        }, ),
         desc: "请输入URL",
         col_type: "input",
 
         extra: {
-            defaultValue: getMyVar('detailUrl', 'detail'),
-            onChange: "putMyVar('detailUrl',input)",
+            defaultValue: getMyVar('name', '请输入URL'),
+            onChange: "putMyVar('name',input)",
             titleVisible: true,
             textSize: 13,
             type: "textarea",
