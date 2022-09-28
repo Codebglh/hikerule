@@ -48,7 +48,7 @@ function yiji() {
         });
 
     }
-    // var url = 'https://www.onetgb.xyz'
+    var url = 'https://www.mhww.xyz/'
     var MY_URL = " https://www.mhww.xyz/?page.currentPage=" + MY_PAGE + "&orderType=3&subjectName=%E9%9F%93%E6%BC%AB&filmName=";
     var html = fetch(MY_URL);
     var BT = xpathArray(html, 标题);
