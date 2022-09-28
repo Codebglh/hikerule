@@ -123,3 +123,23 @@ function ssm() {
 
     })
 };
+
+
+var yijimoban = [];
+var erjimoban = [];
+var sousuomoban = [];
+var location = 'hiker://files/rules/bgHouse/json/';
+
+function moban_init() {
+    let api = 'https://ghproxy.com/https://raw.githubusercontent.com/Codebglh/hikerule/main/l/json/'
+    let location = 'hiker://files/rules/bgHouse/json/';
+    let moban = {
+        yiji: api + '1.json',
+        erji: api + '2.json',
+        sousuo: api + '3.json',
+    }
+    requireDownload(moban.yiji, `${location}一级模板.json`);
+    requireDownload(moban.erji, `${location}二级模板.json`);
+    requireDownload(moban.sousuo, `${location}搜索模板.json`);
+}
+moban_init()
