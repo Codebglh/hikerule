@@ -362,13 +362,14 @@ function yjm() {
     //     clearMyVar('zhuye$input');
     // }));
     var d = [];
+    let url = "https://";
     d.push({
         title: "获取",
-        url: $('#noLoading#').lazyRule((input) => {
-            putMyVar('name', input);
+        url: $('#noLoading#').toString((url) => {
+            putMyVar('name', url + input);
             refreshPage(false);
-            return "hiker://empty";
-        }, input),
+            // return input + seachurl;
+        }, url),
         desc: "请输入URL",
         col_type: "input",
     });
