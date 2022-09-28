@@ -48,7 +48,7 @@ function yiji() {
         });
 
     }
-    var url = 'https://www.mhww.xyz/'
+    var url = 'https://www.mhww.xyz'
     var MY_URL = " https://www.mhww.xyz/?page.currentPage=" + MY_PAGE + "&orderType=3&subjectName=%E9%9F%93%E6%BC%AB&filmName=";
     var html = fetch(MY_URL);
     var BT = xpathArray(html, 标题);
@@ -58,13 +58,13 @@ function yiji() {
     //
     // log(TP)
     for (var i = 0; i < BT.length; i++) {
-        var a = LJ[i].replace("/window\.open\('|\'\)/g", "");
+        var a = LJ[i];
         d.push({
 
             title: BT[i],
             desc: XQ[i].replace("\r\n", ""),
             pic_url: TP[i],
-            url: url + a + "#immersiveTheme#",
+            url: url + a.replace(/window\.open\('|\'\)/g, "") + "#immersiveTheme#",
             col_type: 'movie_3',
         });
 
