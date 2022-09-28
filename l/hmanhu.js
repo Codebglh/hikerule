@@ -58,11 +58,13 @@ function yiji() {
     //
     // log(TP)
     for (var i in BT) {
+        var a = LJ[i].replace(/window\.open\('|\'\)/g, "");
         d.push({
+
             title: BT[i],
             desc: XQ[i].replace("\r\n", ""),
             pic_url: TP[i],
-            url: url + LJ[i].replace(/window\.open\('|\'\)/g, "") + "#immersiveTheme#",
+            url: url + a + "#immersiveTheme#",
             col_type: 'movie_3',
         });
 
