@@ -203,7 +203,7 @@ function moban() {
                     搜索模板: api + '3',
                 }
                 let moban = mobans[fileName];
-                log(moban)
+                // log(moban)
                 let code = fetch(moban);
 
                 if (code && code.length > 30) {
@@ -364,12 +364,17 @@ function yjm() {
     var d = [];
     d.push({
         title: "获取",
-        url: $.toString(() => {
-            return input;
-        }),
+        url: $('#noLoading#').lazyRule((input) => {
+            putMyVar('name', input);
+            refreshPage(false);
+            return "hiker://empty";
+        }, input),
         desc: "请输入URL",
         col_type: "input",
     });
+    let html = getMyVar('name', input);
+    let code = request(html);
+    log(code);
     d.push({
         title: '规则使用xpath选择器',
         desc: '使用具体教程请百度xpath语法或观看B站视频',
