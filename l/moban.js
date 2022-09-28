@@ -362,11 +362,11 @@ function yjm() {
     //     clearMyVar('zhuye$input');
     // }));
     var d = [];
-    let myurl = ['https://360yy.cn'];
+    let input = ['https://360yy.cn'];
     d.push({
         title: "获取",
         url: $.toString(() => {
-            putMyVar('name', myurl);
+            putMyVar('name', input);
             refreshPage(false);
             return 'toast://完成访问'
         }, ),
@@ -375,7 +375,7 @@ function yjm() {
 
         extra: {
             defaultValue: getMyVar('name', ''),
-            onChange: "putMyVar('name',myurl)",
+            onChange: "putMyVar('name',input)",
             titleVisible: true,
             textSize: 13,
             type: "textarea",
