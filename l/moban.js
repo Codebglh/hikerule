@@ -1,7 +1,7 @@
 var updateLog = '2022/09/26 初制作模版';
 var version = {
     author: "bgcode",
-    ver: "0.0.1",
+    ver: "0.0.2",
     Id: "https://ghproxy.com/https://raw.githubusercontent.com/Codebglh/hikerule/main/l/moban.js",
     update: '2022/09/26 14:25',
     info: updateLog,
