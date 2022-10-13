@@ -132,12 +132,12 @@ function update() {
         模板: 'https://ghproxy.com/https://raw.githubusercontent.com/Codebglh/hikerule/main/l/moban.js'
     }
     require(config['模板']);
-    let requireId = version.requireId;
+    let Id = version.Id;
     let ver = version.ver;
     let update = version.update;
     let localDate = new Date(update);
     try {
-        var webLib = fetch(requireId);
+        var webLib = fetch(Id);
         var webVer = (function (webLib) {
             eval(webLib);
             return version;
