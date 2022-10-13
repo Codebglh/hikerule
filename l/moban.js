@@ -43,7 +43,7 @@ function yiji() {
     });
     d.push({
         title: "更新",
-        url: $("hiker://empty#noRecordHistory##noHistory#").rule(() => {
+        url: $('#noLoading#').rule(() => {
             require(config.依赖);
             update();
         }),
@@ -125,48 +125,46 @@ function shezhi() {
 };
 
 
-function sousuo() {
-    $('#noLoading#').lazyRule(() => {
-        showLoading('升级检测中,请稍等...');
-        require('https://ghproxy.com/https://raw.githubusercontent.com/Codebglh/hikerule/main/l/moban.js');
-        config = {
-            模板: 'https://ghproxy.com/https://raw.githubusercontent.com/Codebglh/hikerule/main/l/moban.js'
-        }
-        require(config['模板']);
-        let requireId = version.requireId;
-        let ver = version.ver;
-        let update = version.update;
-        let localDate = new Date(update);
-        try {
-            var webLib = fetch(requireId);
-            var webVer = (function (webLib) {
-                eval(webLib);
-                return version;
-                log(version)
-            })(webLib);
-        } catch (e) {
-            hideLoading();
-            return 'toast://远程服务器通讯错误,本次检测升级失败\n' + e.message;
-        }
-        let webDate = new Date(webVer.update);
-        // $.dateFormat(new Date(parseInt(localDate)),"yyyy-MM-dd HH:mm:ss");
-        if (webDate > localDate || webVer.ver !== ver) { //网页更新时间大于本地库时间或者版本号不等
-            hideLoading();
-            let msg = '本地依赖更新时间:' + update + ',版本:' + ver + '\n云端依赖更新时间:' + webVer.update + ',版本:' + webVer.ver + '\n有升级:[' + ver + ']=>[' + webVer.ver + '],立即升级?';
-            return $(msg).confirm((Id, webLib) => {
-                let jsp = 'hiker://files/libs/' + md5(Id) + '.js';
-                log('本地依赖模块路径=> ' + jsp);
-                deleteCache();
-                clearMyVar('是否进入规则');
-                writeFile(jsp, webLib)
-                refreshPage(false);
-                return 'toast://升级成功!模块依赖缓存已清除'
-            }, requireId, webLib);
-        } else {
-            hideLoading();
-            return 'toast://经检测已经是最新的[' + ver + ']了!'
-        }
-    })
+function update() {
+    showLoading('升级检测中,请稍等...');
+    require('https://ghproxy.com/https://raw.githubusercontent.com/Codebglh/hikerule/main/l/moban.js');
+    config = {
+        模板: 'https://ghproxy.com/https://raw.githubusercontent.com/Codebglh/hikerule/main/l/moban.js'
+    }
+    require(config['模板']);
+    let requireId = version.requireId;
+    let ver = version.ver;
+    let update = version.update;
+    let localDate = new Date(update);
+    try {
+        var webLib = fetch(requireId);
+        var webVer = (function (webLib) {
+            eval(webLib);
+            return version;
+            log(version)
+        })(webLib);
+    } catch (e) {
+        hideLoading();
+        return 'toast://远程服务器通讯错误,本次检测升级失败\n' + e.message;
+    }
+    let webDate = new Date(webVer.update);
+    // $.dateFormat(new Date(parseInt(localDate)),"yyyy-MM-dd HH:mm:ss");
+    if (webDate > localDate || webVer.ver !== ver) { //网页更新时间大于本地库时间或者版本号不等
+        hideLoading();
+        let msg = '本地依赖更新时间:' + update + ',版本:' + ver + '\n云端依赖更新时间:' + webVer.update + ',版本:' + webVer.ver + '\n有升级:[' + ver + ']=>[' + webVer.ver + '],立即升级?';
+        return $(msg).confirm((Id, webLib) => {
+            let jsp = 'hiker://files/libs/' + md5(Id) + '.js';
+            log('本地依赖模块路径=> ' + jsp);
+            deleteCache();
+            clearMyVar('是否进入规则');
+            writeFile(jsp, webLib)
+            refreshPage(false);
+            return 'toast://升级成功!模块依赖缓存已清除'
+        }, requireId, webLib);
+    } else {
+        hideLoading();
+        return 'toast://经检测已经是最新的[' + ver + ']了!'
+    }
 
 
 };
