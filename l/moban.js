@@ -142,6 +142,7 @@ function sousuo() {
             var webVer = (function (webLib) {
                 eval(webLib);
                 return version;
+                log(version)
             })(webLib);
         } catch (e) {
             hideLoading();
