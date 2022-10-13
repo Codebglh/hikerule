@@ -126,7 +126,10 @@ function shezhi() {
 
 
 function update() {
-    showLoading('升级检测中,请稍等...');
+    return {
+        showLoading('升级检测中,请稍等...'
+)
+    ;
     require('https://ghproxy.com/https://raw.githubusercontent.com/Codebglh/hikerule/main/l/moban.js');
     config = {
         模板: 'https://ghproxy.com/https://raw.githubusercontent.com/Codebglh/hikerule/main/l/moban.js'
@@ -164,7 +167,7 @@ function update() {
         hideLoading();
         return 'toast://经检测已经是最新的[' + ver + ']了!'
     }
-
+}
 
 };
 
