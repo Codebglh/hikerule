@@ -42,12 +42,12 @@ function yiji() {
         col_type: 'icon_5',
     });
     d.push({
-        title: "搜索",
+        title: "更新",
         url: $("hiker://empty#noRecordHistory##noHistory#").rule(() => {
             require(config.依赖);
-            sousuo();
+            update();
         }),
-        pic_url: version.url + 'src/5.png',
+        pic_url: version.url + 'src/update.png',
         col_type: 'icon_5',
     });
     d.push({
@@ -92,14 +92,6 @@ function yiji() {
     });
 
 
-
-
-
-
-
-
-
-
     setResult(d);
 };
 
@@ -134,17 +126,48 @@ function shezhi() {
 
 
 function sousuo() {
-    addListener("onClose", $.toString(() => {
-        clearMyVar('sousuo$input');
-    }));
-    var d = [];
-    d.push({
-        title: '<span style="color:#ff6600"><b>\t热搜榜\t\t\t</b></span>',
-        url: "hiker://empty",
-        pic_url: 'https://ss1.baidu.com/6ONXsjip0QIZ8tyhnq/it/u=3779990328,1416553241&fm=179&app=35&f=PNG?w=60&h=70&s=E7951B62A4639D153293A4E90300401B',
-        col_type: 'icon_small_3'
-    });
-    setResult(d);
+    $('#noLoading#').lazyRule(() => {
+        showLoading('升级检测中,请稍等...');
+        require('https://ghproxy.com/https://raw.githubusercontent.com/Codebglh/hikerule/main/l/moban.js');
+        config = {
+            模板: 'https://ghproxy.com/https://raw.githubusercontent.com/Codebglh/hikerule/main/l/moban.js'
+        }
+        require(config['模板']);
+        let requireId = version.requireId;
+        let ver = version.ver;
+        let update = version.update;
+        let localDate = new Date(update);
+        try {
+            var webLib = fetch(requireId);
+            var webVer = (function (webLib) {
+                eval(webLib);
+                return version;
+            })(webLib);
+        } catch (e) {
+            hideLoading();
+            return 'toast://远程服务器通讯错误,本次检测升级失败\n' + e.message;
+        }
+        let webDate = new Date(webVer.update);
+        // $.dateFormat(new Date(parseInt(localDate)),"yyyy-MM-dd HH:mm:ss");
+        if (webDate > localDate || webVer.ver !== ver) { //网页更新时间大于本地库时间或者版本号不等
+            hideLoading();
+            let msg = '本地依赖更新时间:' + update + ',版本:' + ver + '\n云端依赖更新时间:' + webVer.update + ',版本:' + webVer.ver + '\n有升级:[' + ver + ']=>[' + webVer.ver + '],立即升级?';
+            return $(msg).confirm((Id, webLib) => {
+                let jsp = 'hiker://files/libs/' + md5(Id) + '.js';
+                log('本地依赖模块路径=> ' + jsp);
+                deleteCache();
+                clearMyVar('是否进入规则');
+                writeFile(jsp, webLib)
+                refreshPage(false);
+                return 'toast://升级成功!模块依赖缓存已清除'
+            }, requireId, webLib);
+        } else {
+            hideLoading();
+            return 'toast://经检测已经是最新的[' + ver + ']了!'
+        }
+    })
+
+
 };
 
 function moban() {
@@ -260,7 +283,7 @@ function moban() {
 
         }, filePath, fileName)
     });
-    d.push({ col_type: 'text_1', });
+    d.push({col_type: 'text_1',});
     try {
         let localmubans = JSON.parse(code);
         for (let i in localmubans) {
@@ -270,7 +293,7 @@ function moban() {
                 col_type: 'text_1',
                 url: $('hiker://empty#noHistory##noRecordHistory##noRefresh#').rule((moban) => {
                     setPageTitle('编辑:' + moban.名称);
-                    setResult([{ title: JSON.stringify(moban), col_type: 'rich_text' }]);
+                    setResult([{title: JSON.stringify(moban), col_type: 'rich_text'}]);
                 }, moban),
                 extra: {
                     lineVisible: false
@@ -315,7 +338,7 @@ function moban() {
             d.push({
                 title: '删除',
                 col_type: 'text_3',
-                url: $(`确认删除${getMyVar('mubanManage',names[0])}:${moban.名称}`).confirm((localmubans, i, filePath, name) => {
+                url: $(`确认删除${getMyVar('mubanManage', names[0])}:${moban.名称}`).confirm((localmubans, i, filePath, name) => {
                     localmubans.splice(i, 1); //删除
                     writeFile(filePath, JSON.stringify(localmubans));
                     refreshPage(false);
@@ -323,7 +346,10 @@ function moban() {
                 }, localmubans, i, filePath, moban.名称)
             });
         }
-    } catch (e) { log(e.message) };
+    } catch (e) {
+        log(e.message)
+    }
+    ;
     setResult(d);
 };
 
@@ -340,7 +366,7 @@ function yjm() {
             putMyVar('url', input);
             refreshPage(false);
             return 'toast://完成访问'
-        }, ),
+        },),
         desc: "请输入URL",
         col_type: "input",
         extra: {
@@ -362,7 +388,7 @@ function yjm() {
             putMyVar('title', input);
             refreshPage(false);
             return 'toast://完成访问'
-        }, ),
+        },),
         desc: "输入xpath语法例如：//*[@class=\"fed-tabs-boxs\"]/text()",
         col_type: 'input',
         extra: {
@@ -378,7 +404,7 @@ function yjm() {
             putMyVar('detail', input);
             refreshPage(false);
             return 'toast://完成访问'
-        }, ),
+        },),
         desc: "输入xpath语法例如：//*[@class=\"fed-tabs-boxs\"]/text()",
         col_type: 'input',
         extra: {
@@ -394,7 +420,7 @@ function yjm() {
             putMyVar('myurl', input);
             refreshPage(false);
             return 'toast://完成访问'
-        }, ),
+        },),
         desc: "输入xpath语法例如：//*[@class=\"fed-tabs-boxs\"]/@href",
         col_type: 'input',
         extra: {
@@ -410,7 +436,7 @@ function yjm() {
             putMyVar('img', input);
             refreshPage(false);
             return 'toast://完成访问'
-        }, ),
+        },),
         desc: "输入xpath语法例如：//*[@class=\"fed-tabs-boxs\"]/@src",
         col_type: 'input',
         extra: {
@@ -426,7 +452,7 @@ function yjm() {
             putMyVar('type', input);
             refreshPage(false);
             return 'toast://完成访问'
-        }, ),
+        },),
         desc: "输入海阔自带类型例如：movie_1,movie_2,movie_3等等",
         col_type: 'input',
         extra: {
