@@ -1,3 +1,14 @@
+var updateLog = '2022/09/26 初制作模版';
+var version = {
+    author: "bgcode",
+    ver: "0.0.1",
+    Id: "https://ghproxy.com/https://raw.githubusercontent.com/Codebglh/hikerule/main/l/moban.js",
+    update: '2022/09/26 14:25',
+    info: updateLog,
+    ok: 'https://okjx.cc/?url=',
+    url: 'https://ghproxy.com/https://raw.githubusercontent.com/Codebglh/hikerule/main/l/',
+};
+
 function yiji() {
     var d = [];
     if (MY_PAGE == 1) { //第一页的筛选
@@ -72,11 +83,8 @@ function yiji() {
     }
 
 
-
-
     setResult(d);
 };
-
 
 
 function erji() {
@@ -94,7 +102,6 @@ function erji() {
     var XL = xpathArray(html, 线路);
 
 
-
     var easy = $("").lazyRule((path) => {
         eval(request(path));
         return lazy(input);
@@ -109,7 +116,6 @@ function erji() {
             col_type: 'text_4',
         });
     }
-
 
 
     setResult(d);
