@@ -11,80 +11,31 @@ var version = {
 
 function yiji() {
     var d = [];
-    if (MY_PAGE == 1) { //第一页的筛选
-        d.push({
-            title: "收藏",
-            url: "hiker://collection",
-            pic_url: version.url + 'src/2.png',
-            col_type: 'icon_4',
-        });
-        d.push({
-            title: "历史",
-            url: "hiker://history",
-            pic_url: version.url + 'src/3.png',
-            col_type: 'icon_4',
-        });
-        d.push({
-            title: "设置",
-            url: $("hiker://empty#noRecordHistory##noHistory#").rule(() => {
-                require(config.依赖);
-                shezhi();
-            }),
-            pic_url: version.url + 'src/4.png',
-            col_type: 'icon_4',
-        });
-        d.push({
-            title: "搜索",
-            url: $("hiker://empty#noRecordHistory##noHistory#").rule(() => {
-                require(config.依赖);
-                sousuo();
-            }),
-            pic_url: version.url + 'src/5.png',
-            col_type: 'icon_4',
-        });
-        const Color = "#3399cc";
-        const categorys = ['全部', '热门资源', 'f2d资源', 'hy资源', 'zmw资源', 'msn资源', 'ysj资源', 'xn资源', 'bp资源', 'xsm资源', 'hav资源', '9c资源', 'btt资源', 'lb资源'];
-        const listTabs = ['', 'zizhi', 'f2d', 'hy', 'zmw', 'msn', 'ysj', 'xn', 'bp', 'xsm', 'hav', '9c', 'btt', 'lb'];
-        d.push({
-            col_type: 'line'
-        });
-        for (var i in categorys) {
-            d.push({
-                title: getMyVar('listTab', '') === listTabs[i] ? '““””<b><span style="color:blue">' + categorys[i] + '</span></b>' : categorys[i],
-                url: $('#noLoading#').lazyRule((listTab) => {
-                    putMyVar('listTab', listTab);
-                    refreshPage(false);
-                    return "hiker://empty";
-                }, listTabs[i]),
-                col_type: 'scroll_button'
-            });
-        }
-    }
     var url = 'http://51smt4.xyz/api.php/provide/vod/?ac=detail&t=23&pg=4'
-    var MY_URL = "http://51smt4.xyz/api.php/provide/vod/?ac=detail&t=" + getMyVar('listTab', '') + "&pg=" + MY_PAGE;
+    var MY_URL = "http://51smt4.xyz/api.php/provide/vod/?ac=detail&t=23&pg=" + MY_PAGE;
     var html = fetch(MY_URL);
     let av = JSON.parse(html)
     log(av)
-    var BT = xpathArray(html, 标题);
-    var LJ = xpathArray(html, 链接);
-    var XQ = xpathArray(html, 详情);
+    // var BT = xpathArray(html, 标题);
+    // var LJ = xpathArray(html, 链接);
+    // var XQ = xpathArray(html, 详情);
     // var TP = xpathArray(html, 图片);
 
     // log(TP)
-    for (var i in BT) {
-        d.push({
-            title: BT[i],
-            desc: XQ[i].replace("\r\n", ""),
-            // pic_url: TP[i],
-            url: url + LJ[i] + "#immersiveTheme#",
-            col_type: 'text_2',
-        });
+    // for (var i in BT) {
+    //     d.push({
+    //         title: BT[i],
+    //         desc: XQ[i].replace("\r\n", ""),
+    //         // pic_url: TP[i],
+    //         url: url + LJ[i] + "#immersiveTheme#",
+    //         col_type: 'text_2',
+    //     });
 
-    }
+// }
 
 
-    setResult(d);
-};
+    // setResult(d);
+}
 
 
 function erji() {
