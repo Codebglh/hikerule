@@ -23,10 +23,10 @@ function yiji() {
     for (var i in BT) {
         d.push({
             title: BT[i].vod_name,
-            // desc: XQ[i].replace("\r\n", ""),
-            // pic_url: TP[i],
-            // url: url + LJ[i] + "#immersiveTheme#",
-            col_type: 'text_2',
+            desc: BT[i].vod_class,
+            pic_url: BT[i].vod_pic,
+            url: BT[i].vod_play_url + "#immersiveTheme#",
+            col_type: 'movie_3',
         });
 
     }
