@@ -15,26 +15,24 @@ function yiji() {
     var MY_URL = "http://51smt4.xyz/api.php/provide/vod/?ac=detail&t=23&pg=" + MY_PAGE;
     var html = fetch(MY_URL);
     let av = JSON.parse(html)
-    log(av)
-    // var BT = xpathArray(html, 标题);
-    // var LJ = xpathArray(html, 链接);
-    // var XQ = xpathArray(html, 详情);
-    // var TP = xpathArray(html, 图片);
-
-    // log(TP)
-    // for (var i in BT) {
-    //     d.push({
-    //         title: BT[i],
-    //         desc: XQ[i].replace("\r\n", ""),
-    //         // pic_url: TP[i],
-    //         url: url + LJ[i] + "#immersiveTheme#",
-    //         col_type: 'text_2',
-    //     });
-
-// }
+    // log(av.list.length)
+    var BT = av.list;
 
 
-    // setResult(d);
+    log(BT)
+    for (var i in BT) {
+        d.push({
+            title: BT[i].vod_name,
+            // desc: XQ[i].replace("\r\n", ""),
+            // pic_url: TP[i],
+            // url: url + LJ[i] + "#immersiveTheme#",
+            col_type: 'text_2',
+        });
+
+    }
+
+
+    setResult(d);
 }
 
 
