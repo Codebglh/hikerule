@@ -1,4 +1,4 @@
-var a = [];
-const i = [a++];
+var a = 2;
+var i = a++;
 
 console.log(i)

@@ -51,10 +51,14 @@ function yiji() {
     var url = 'https://www.mhww.xyz'
     var MY_URL = " https://www.mhww.xyz/?page.currentPage=" + MY_PAGE + "&orderType=3&subjectName=%E9%9F%93%E6%BC%AB&filmName=";
     var html = fetch(MY_URL);
-    var BT = xpathArray(html, 标题);
-    var LJ = xpathArray(html, 链接);
-    var XQ = xpathArray(html, 详情);
-    var TP = xpathArray(html, 图片);
+    const 标题 = '//*[@id="booklist"]/div/div/div/p/span/text()';
+    const 链接 = '//*[@id="booklist"]/div/div/@onclick';
+    const 详情 = '//*[@id="booklist"]/div/div/div[2]/p[2]/text()';
+    const 图片 = '//*[@id="booklist"]/div/div/div[1]/img/@src';
+    const BT = xpathArray(html, 标题);
+    const LJ = xpathArray(html, 链接);
+    const XQ = xpathArray(html, 详情);
+    const TP = xpathArray(html, 图片);
     //
     // log(TP)
     for (var i = 0; i < BT.length; i++) {
@@ -66,7 +70,9 @@ function yiji() {
             pic_url: TP[i],
             url: url + a.replace(/window\.open\('|\'\)/g, "") + "#immersiveTheme#",
             col_type: 'movie_3',
-        });
+            extra: url = url + a.replace(/window\\.open\\(\'|\\'\\)/g, ""),
+        })
+        ;
 
     }
 
@@ -78,20 +84,16 @@ function erji() {
     var d = [];
 
     var html = fetch(url);
-    var BT = xpathArray(html, 标题);
-    var LJ = xpathArray(html, 链接);
+
+    var BT = xpathArray(html, "标题");
+    var LJ = xpathArray(html, "//*[@id=\"xl3\"]/@onclick");
     var XQ = xpathArray(html, 详情);
     var TP = xpathArray(html, 图片);
     for (var i = 0; i < BT.length; i++) {
         var a = LJ[i];
         d.push({
-
             title: BT[i],
-            desc: XQ[i].replace("\r\n", ""),
-            pic_url: TP[i],
-            url:
-
-                url + a.replace(/window\.open\('|\'\)/g, "") + "#immersiveTheme#",
+            url: url + a.replace(/window\.open\('|\'\)/g, "") + "#immersiveTheme#",
             col_type: 'text_2',
         });
 
