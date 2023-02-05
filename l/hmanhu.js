@@ -82,13 +82,9 @@ function yiji() {
 
 function erji() {
     var d = [];
-
     var html = fetch(url);
-
-    var BT = xpathArray(html, "标题");
+    var BT = xpathArray(html, "//*[@class=\"cell-title\"]/text()");
     var LJ = xpathArray(html, "//*[@id=\"xl3\"]/@onclick");
-    var XQ = xpathArray(html, 详情);
-    var TP = xpathArray(html, 图片);
     for (var i = 0; i < BT.length; i++) {
         var a = LJ[i];
         d.push({
