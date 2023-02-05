@@ -54,11 +54,11 @@ function yiji() {
     const 标题 = '//*[@id="booklist"]/div/div/div/p/span/text()';
     const 链接 = '//*[@id="booklist"]/div/div/@onclick';
     const 详情 = '//*[@id="booklist"]/div/div/div[2]/p[2]/text()';
-    const 图片 = '//*[@id="booklist"]/div/div/div[1]/img/@src';
+    // const 图片 = '//*[@id="booklist"]/div/div/div[1]/img/@src';
     const BT = xpathArray(html, 标题);
     const LJ = xpathArray(html, 链接);
     const XQ = xpathArray(html, 详情);
-    const TP = xpathArray(html, 图片);
+    // const TP = xpathArray(html, 图片);
     //
     // log(TP)
     for (var i = 0; i < BT.length; i++) {
@@ -68,10 +68,10 @@ function yiji() {
 
             title: BT[i],
             desc: XQ[i].replace("\r\n", ""),
-            pic_url: TP[i],
+            // pic_url: TP[i],
             url: b,
             col_type: 'movie_3',
-            extra: b,
+
         })
         ;
 
