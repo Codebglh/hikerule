@@ -63,14 +63,15 @@ function yiji() {
     // log(TP)
     for (var i = 0; i < BT.length; i++) {
         var a = LJ[i];
+        const b = url + a.replace(/window\.open\(\'|\'\)/g, "")
         d.push({
 
             title: BT[i],
             desc: XQ[i].replace("\r\n", ""),
             pic_url: TP[i],
-            url: url + a.replace(/window\.open\('|\'\)/g, "") + "#immersiveTheme#",
+            url: b,
             col_type: 'movie_3',
-            extra: url = url + a.replace(/window\\.open\\(\'|\\'\\)/g, ""),
+            extra: b,
         })
         ;
 
@@ -81,8 +82,9 @@ function yiji() {
 };
 
 function erji() {
-    var d = [];
-    var html = fetch(url);
+    var html = getResCode()
+    // var d = [];
+    // var html = fetch(url);
     var BT = xpathArray(html, "//*[@class=\"cell-title\"]/text()");
     var LJ = xpathArray(html, "//*[@id=\"xl3\"]/@onclick");
     for (var i = 0; i < BT.length; i++) {
