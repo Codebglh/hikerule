@@ -90,7 +90,8 @@ function erji() {
         d.push({
             title: BT[i],
             url: $(url).lazyRule(() => {
-                sanji(url)
+                require(config.依赖);
+                sanji(input)
             }),
             col_type: 'text_2',
         });
