@@ -102,7 +102,6 @@ function erji() {
 
 function sanji(url) {
     var html = fetch(url)
-    var d = [];
     var xx = xpathArray(html, "//*[@id=\"imgList\"]/img/@src");
     var BT = xpathArray(html, "//*[@id=\"imgList\"]/img/@data-original");
     var ll = "pics://"
@@ -117,7 +116,9 @@ function sanji(url) {
             ll = ll + BT[i] + '&&'
         }
     }
+    log(ll)
     return ll
+
 }
 
 function zhuye() {
