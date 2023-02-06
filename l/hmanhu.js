@@ -67,7 +67,7 @@ function yiji() {
             // desc: XQ[i].replace("\r\n", ""),
             // pic_url: TP[i],
             url: b,
-            col_type: 'movie_3',
+            col_type: 'text_2',
 
         })
         ;
@@ -151,8 +151,9 @@ function a(x) {
 
 function openMH(bookid, id, name) {
     var localhost = 'https://www.mhdnf.xyz/'
-    const url = localhost + '/play?linkId=' + bookid + '&bookId=' + id + "&path=" + name + '&key=' + a(id)
+    var idx = id.toString()
+    const url = localhost + '/play?linkId=' + bookid + '&bookId=' + id + "&path=" + name + '&key=' + a(idx)
     return url
 }
 
-console.log(openMH(1497, 1575371, 3))
+log(openMH('1497', '1575371', 3))
