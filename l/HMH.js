@@ -104,10 +104,15 @@ function sanji() {
     var BT = xpathArray(html, "//*[@id=\"imgList\"]/img/@data-original");
     var ll = "pics://"
     for (var i = 1; i < xx.length; i++) {
-        ll = ll + xx[i]
+        ll = ll + xx[i] + '&&'
     }
     for (var i = 0; i < BT.length; i++) {
-        ll = ll + BT[i]
+
+        if (i != BT.length - 1) {
+            ll = ll + BT[i]
+        } else {
+            ll = ll + BT[i] + '&&'
+        }
     }
     return ll
 }
