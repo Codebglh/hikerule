@@ -67,7 +67,7 @@ function yiji() {
             desc: XQ[i].replace("\r\n", ""),
             pic_url: TP[i],
             url: b,
-            col_type: 'text_2',
+            col_type: 'movie_3',
 
         })
         ;
