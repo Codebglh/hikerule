@@ -86,7 +86,7 @@ function erji() {
     for (var i = 0; i < BT.length; i++) {
         var a = LJ[i];
         const url = eval(a)
-        log(url)
+        // log(url)
         d.push({
             title: BT[i],
             url: url + "#immersiveTheme#",
@@ -150,9 +150,12 @@ function a(x) {
     return jg.toString();
 }
 
-function openMH(bookid, id, name) {
+// const CryptoJS = require('crypto-js')
+
+function openMH(bookid, linkid, path) {
     var localhost = 'https://www.mhdnf.xyz'
-    var idx = id.toString()
-    const url = localhost + '/play?linkId=' + bookid + '&bookId=' + id + "&path=" + name + '&key=' + a(idx)
+    // var idx = id.toString()
+    const url = localhost + '/play?linkId=' + linkid + '&bookId=' + bookid + "&path=" + path + '&key=' + a(linkid)
     return url
 }
+
