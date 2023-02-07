@@ -87,9 +87,8 @@ function erji() {
     var GX = xpath(html, "//*[@id=\"book\"]/div[1]/p[3]/text()")
     var XQ = xpath(html, "//*[@id=\"book\"]/div[1]/p[4]/text()")
     d.push({
-
         title: SM,
-        desc: ZZ + "\n" + GX + "\n" + XQ,
+        desc: "作者" + ZZ + "\n" + GX + "\n" + XQ,
         pic_url: FM,
         col_type: 'movie_1_vertical_pic_blur',
 
@@ -100,7 +99,7 @@ function erji() {
     var LJ = xpathArray(html, "//*[@id=\"xl3\"]/@onclick");
     for (var i = 0; i < BT.length; i++) {
         var a = LJ[i];
-        const url = eval(a)
+        let url = eval(a)
         // log(url)
         d.push({
             title: BT[i],
@@ -194,7 +193,7 @@ function a(x) {
 function openMH(bookid, linkid, path) {
     var localhost = 'https://www.mhdnf.xyz'
     // var idx = id.toString()
-    const url = localhost + '/play?linkId=' + linkid + '&bookId=' + bookid + "&path=" + path + '&key=' + a(linkid)
+    let url = localhost + '/play?linkId=' + linkid + '&bookId=' + bookid + "&path=" + path + '&key=' + a(linkid)
     return url
 }
 
