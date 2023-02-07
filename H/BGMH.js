@@ -137,14 +137,9 @@ function search() {
             url: b + "#immersiveTheme#",
             img: TP[i],
             desc: XQ[i].replace("\r\n", ""),
-            col_type: 'movie_3',
-
-
         });
 
     }
-
-
     setResult(d);
 }
 
@@ -220,7 +215,6 @@ function a(x) {
     return jg.toString();
 }
 
-// const CryptoJS = require('crypto-js')
 
 function openMH(bookid, linkid, path) {
     var localhost = 'https://www.mhdnf.xyz'
