@@ -39,17 +39,13 @@ function yiji() {
     var url = 'https://www.mhww.xyz'
     var MY_URL = " https://www.mhww.xyz/?page.currentPage=" + MY_PAGE + "&orderType=3&subjectName=%E9%9F%93%E6%BC%AB&filmName=";
     var html = fetch(MY_URL);
-    const 标题 = '//*[@id="booklist"]/div/div/div/p/span/text()';
-    const 链接 = '//*[@id="booklist"]/div/div/@onclick';
-    const 详情 = '//*[@id="booklist"]/div/div/div[2]/p[2]/text()';
-    const 图片 = '//*[@id="booklist"]/div/div/div[1]/img/@src';
-    const BT = xpathArray(html, 标题);
-    const LJ = xpathArray(html, 链接);
-    const XQ = xpathArray(html, 详情);
-    const TP = xpathArray(html, 图片);
+    var BT = xpathArray(html, '//*[@id="booklist"]/div/div/div/p/span/text()');
+    var LJ = xpathArray(html, '//*[@id="booklist"]/div/div/@onclick');
+    var XQ = xpathArray(html, '//*[@id="booklist"]/div/div/div[2]/p[2]/text()');
+    var TP = xpathArray(html, '//*[@id="booklist"]/div/div/div[1]/img/@src');
     for (var i = 0; i < BT.length; i++) {
         var a = LJ[i];
-        const b = url + a.replace(/window\.open\(\'|\'\)/g, "")
+        var b = url + a.replace(/window\.open\(\'|\'\)/g, "")
         d.push({
             title: BT[i],
             desc: XQ[i].replace("\r\n", ""),
@@ -109,7 +105,7 @@ function sanji(url) {
     var xx = xpathArray(html, "//*[@id=\"imgList\"]/img/@src");
     var BT = xpathArray(html, "//*[@id=\"imgList\"]/img/@data-original");
     var ll = "pics://"
-    for (var i = 1; i < xx.length; i++) {
+    for (var i = 0; i < 3; i++) {
         ll = ll + xx[i] + '&&'
     }
     for (var i = 0; i < BT.length; i++) {
@@ -123,6 +119,34 @@ function sanji(url) {
 
     return ll
 
+}
+
+function search() {
+    var d = [];
+    var url = 'https://www.mhww.xyz'
+    var MY_URL = " https://www.mhww.xyz/?page.currentPage=" + MY_PAGE + "&orderType=3&subjectName=%E9%9F%93%E6%BC%AB&filmName=" + input;
+    var html = fetch(MY_URL);
+    var BT = xpathArray(html, '//*[@id="booklist"]/div/div/div/p/span/text()');
+    var LJ = xpathArray(html, '//*[@id="booklist"]/div/div/@onclick');
+    var XQ = xpathArray(html, '//*[@id="booklist"]/div/div/div[2]/p[2]/text()');
+    var TP = xpathArray(html, '//*[@id="booklist"]/div/div/div[1]/img/@src');
+    for (var i = 0; i < BT.length; i++) {
+        var a = LJ[i];
+        var b = url + a.replace(/window\.open\(\'|\'\)/g, "")
+        d.push({
+            title: BT[i],
+            url: b + "#immersiveTheme#",
+            img: TP[i],
+            desc: XQ[i].replace("\r\n", ""),
+            col_type: 'movie_3',
+
+
+        });
+
+    }
+
+
+    setResult(d);
 }
 
 function zhuye() {
