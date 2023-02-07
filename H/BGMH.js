@@ -182,24 +182,24 @@ function sousuo() {
         col_type: 'icon_small_3'
     });
     var url = 'https://www.mhww.xyz'
-    var MY_URL = " https://www.mhww.xyz/?page.currentPage=" + MY_PAGE + "&orderType=3&subjectName=%E9%9F%93%E6%BC%AB&filmName=" + input;
-    var html = fetch(MY_URL);
-    var BT = xpathArray(html, '//*[@id="booklist"]/div/div/div/p/span/text()');
-    var LJ = xpathArray(html, '//*[@id="booklist"]/div/div/@onclick');
-    var XQ = xpathArray(html, '//*[@id="booklist"]/div/div/div[2]/p[2]/text()');
-    var TP = xpathArray(html, '//*[@id="booklist"]/div/div/div[1]/img/@src');
-    for (var i = 0; i < BT.length; i++) {
-        var a = LJ[i];
-        var b = url + a.replace(/window\.open\(\'|\'\)/g, "")
-        d.push({
-            title: BT[i],
-            url: b + "#immersiveTheme#",
-            img: TP[i],
-            desc: XQ[i].replace("\r\n", ""),
-        });
-
-    }
-
+    // var MY_URL = " https://www.mhww.xyz/?page.currentPage=" + MY_PAGE + "&orderType=3&subjectName=%E9%9F%93%E6%BC%AB&filmName=" + input;
+    // var html = fetch(MY_URL);
+    // var BT = xpathArray(html, '//*[@id="booklist"]/div/div/div/p/span/text()');
+    // var LJ = xpathArray(html, '//*[@id="booklist"]/div/div/@onclick');
+    // var XQ = xpathArray(html, '//*[@id="booklist"]/div/div/div[2]/p[2]/text()');
+    // var TP = xpathArray(html, '//*[@id="booklist"]/div/div/div[1]/img/@src');
+    // for (var i = 0; i < BT.length; i++) {
+    //     var a = LJ[i];
+    //     var b = url + a.replace(/window\.open\(\'|\'\)/g, "")
+    //     d.push({
+    //         title: BT[i],
+    //         url: b + "#immersiveTheme#",
+    //         img: TP[i],
+    //         desc: XQ[i].replace("\r\n", ""),
+    //     });
+    //
+    // }
+    //
 
     setResult(d);
 };
