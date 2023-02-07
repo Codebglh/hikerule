@@ -51,7 +51,11 @@ function yiji() {
         var a = LJ[i];
         const b = url + a.replace(/window\.open\(\'|\'\)/g, "")
         d.push({
-            title: BT[i], desc: XQ[i].replace("\r\n", ""), pic_url: TP[i], url: b, col_type: 'movie_3',
+            title: BT[i],
+            desc: XQ[i].replace("\r\n", ""),
+            pic_url: TP[i],
+            url: b + "#immersiveTheme#",
+            col_type: 'movie_3',
 
         });
 
