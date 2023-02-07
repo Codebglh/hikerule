@@ -13,34 +13,22 @@ function yiji() {
     var d = [];
     if (MY_PAGE == 1) { //第一页的筛选
         d.push({
-            title: "收藏",
-            url: "hiker://collection",
-            pic_url: version.url + 'src/2.png',
-            col_type: 'icon_4',
+            title: "收藏", url: "hiker://collection", pic_url: version.url + 'src/2.png', col_type: 'icon_4',
         });
         d.push({
-            title: "历史",
-            url: "hiker://history",
-            pic_url: version.url + 'src/3.png',
-            col_type: 'icon_4',
+            title: "历史", url: "hiker://history", pic_url: version.url + 'src/3.png', col_type: 'icon_4',
         });
         d.push({
-            title: "设置",
-            url: $("hiker://empty#noRecordHistory##noHistory#").rule(() => {
+            title: "设置", url: $("hiker://empty#noRecordHistory##noHistory#").rule(() => {
                 require(config.依赖);
                 shezhi();
-            }),
-            pic_url: version.url + 'src/4.png',
-            col_type: 'icon_4',
+            }), pic_url: version.url + 'src/4.png', col_type: 'icon_4',
         });
         d.push({
-            title: "搜索",
-            url: $("hiker://empty#noRecordHistory##noHistory#").rule(() => {
+            title: "搜索", url: $("hiker://empty#noRecordHistory##noHistory#").rule(() => {
                 require(config.依赖);
                 sousuo();
-            }),
-            pic_url: version.url + 'src/5.png',
-            col_type: 'icon_4',
+            }), pic_url: version.url + 'src/5.png', col_type: 'icon_4',
         });
 
         d.push({
@@ -63,14 +51,9 @@ function yiji() {
         var a = LJ[i];
         const b = url + a.replace(/window\.open\(\'|\'\)/g, "")
         d.push({
-            title: BT[i],
-            desc: XQ[i].replace("\r\n", ""),
-            pic_url: TP[i],
-            url: b,
-            col_type: 'movie_3',
+            title: BT[i], desc: XQ[i].replace("\r\n", ""), pic_url: TP[i], url: b, col_type: 'movie_3',
 
-        })
-        ;
+        });
 
     }
 
@@ -84,11 +67,16 @@ function erji() {
     var FM = xpath(html, "//*[@id=\"book\"]/div[1]/p[1]/img/@src")
     var SM = xpath(html, "//*[@id=\"book\"]/div[1]/h1/text()")
     var ZZ = xpath(html, "//*[@id=\"book\"]/div[1]/p[2]/a/text()")
+    var a1 = xpath(html, "//*[@id=\"book\"]/div[1]/h1/span[1]/text()")
+    var a2 = xpath(html, "//*[@id=\"book\"]/div[1]/h1/span[2]/text()")
     var GX = xpath(html, "//*[@id=\"book\"]/div[1]/p[3]/text()")
     var XQ = xpath(html, "//*[@id=\"book\"]/div[1]/p[4]/text()")
     d.push({
-        title: SM,
-        desc: "作者" + ZZ + "\n" + GX + "\n" + XQ,
+        title: "‘‘’’<b>" + SM + '</b>' + "\n" + ' <small> \n作者：<font color="#FA7298">' + ZZ + '/n' +
+            '</font> \n类型：' + a1 + a2 +
+            "</small>",
+        desc: '‘‘’’<font color="#f8ecc9">' + GX + "\n" + XQ + "</font>",
+
         pic_url: FM,
         col_type: 'movie_1_vertical_pic_blur',
 
@@ -102,12 +90,10 @@ function erji() {
         let url = eval(a)
         // log(url)
         d.push({
-            title: BT[i],
-            url: $(url).lazyRule(() => {
+            title: BT[i], url: $(url).lazyRule(() => {
                 require(config.依赖);
                 return sanji(input)
-            }),
-            col_type: 'text_2',
+            }), col_type: 'text_2',
         });
 
     }
@@ -182,8 +168,7 @@ function a(x) {
     const j = CryptoJS.enc.Utf8.parse('12cdefgabcdefg12');
     let j1 = CryptoJS.enc.Utf8.parse(x);
     let jg = CryptoJS.AES.encrypt(j1, j, {
-        'mode': CryptoJS.mode.ECB,
-        'padding': CryptoJS.pad.Pkcs7
+        'mode': CryptoJS.mode.ECB, 'padding': CryptoJS.pad.Pkcs7
     });
     return jg.toString();
 }
