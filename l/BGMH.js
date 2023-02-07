@@ -91,7 +91,7 @@ function erji() {
             title: BT[i],
             url: $(url).lazyRule(() => {
                 require(config.依赖);
-                sanji(input)
+                return sanji(input)
             }),
             col_type: 'text_2',
         });
@@ -110,13 +110,13 @@ function sanji(url) {
     }
     for (var i = 0; i < BT.length; i++) {
 
-        if (i != BT.length - 1) {
+        if (i == BT.length - 1) {
             ll = ll + BT[i]
         } else {
             ll = ll + BT[i] + '&&'
         }
     }
-    log(ll)
+
     return ll
 
 }
