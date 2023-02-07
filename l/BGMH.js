@@ -89,10 +89,10 @@ function erji() {
     d.push({
 
         title: SM,
-        desc: SM + "\n" + ZZ + "\n" + GX + "\n" + "XQ",
+        desc: ZZ + "\n" + GX + "\n" + XQ,
         pic_url: FM,
         col_type: 'movie_1_vertical_pic_blur',
-        extra: {gradient: true}
+
     })
 
 
