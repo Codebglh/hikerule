@@ -123,9 +123,8 @@ function sanji(url) {
 
 function search() {
     var d = [];
+    var html = getResCode()
     var url = 'https://www.mhww.xyz'
-    var MY_URL = " https://www.mhww.xyz/?page.currentPage=" + MY_PAGE + "&orderType=3&subjectName=%E9%9F%93%E6%BC%AB&filmName=" + input;
-    var html = fetch(MY_URL);
     var BT = xpathArray(html, '//*[@id="booklist"]/div/div/div/p/span/text()');
     var LJ = xpathArray(html, '//*[@id="booklist"]/div/div/@onclick');
     var XQ = xpathArray(html, '//*[@id="booklist"]/div/div/div[2]/p[2]/text()');
@@ -187,6 +186,26 @@ function sousuo() {
         pic_url: 'https://ss1.baidu.com/6ONXsjip0QIZ8tyhnq/it/u=3779990328,1416553241&fm=179&app=35&f=PNG?w=60&h=70&s=E7951B62A4639D153293A4E90300401B',
         col_type: 'icon_small_3'
     });
+    var url = 'https://www.mhww.xyz'
+    var MY_URL = " https://www.mhww.xyz/?page.currentPage=" + MY_PAGE + "&orderType=3&subjectName=%E9%9F%93%E6%BC%AB&filmName=" + input;
+    var html = fetch(MY_URL);
+    var BT = xpathArray(html, '//*[@id="booklist"]/div/div/div/p/span/text()');
+    var LJ = xpathArray(html, '//*[@id="booklist"]/div/div/@onclick');
+    var XQ = xpathArray(html, '//*[@id="booklist"]/div/div/div[2]/p[2]/text()');
+    var TP = xpathArray(html, '//*[@id="booklist"]/div/div/div[1]/img/@src');
+    for (var i = 0; i < BT.length; i++) {
+        var a = LJ[i];
+        var b = url + a.replace(/window\.open\(\'|\'\)/g, "")
+        d.push({
+            title: BT[i],
+            url: b + "#immersiveTheme#",
+            img: TP[i],
+            desc: XQ[i].replace("\r\n", ""),
+        });
+
+    }
+
+
     setResult(d);
 };
 
