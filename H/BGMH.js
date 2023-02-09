@@ -1,14 +1,3 @@
-var updateLog = '2022/09/26 初制作模版';
-var version = {
-    author: "bgcode",
-    ver: "0.0.1",
-    Id: "https://ghproxy.com/https://raw.githubusercontent.com/Codebglh/hikerule/main/l/moban.js",
-    update: '2022/09/26 14:25',
-    info: updateLog,
-    ok: 'https://okjx.cc/?url=',
-    url: 'https://ghproxy.com/https://raw.githubusercontent.com/Codebglh/hikerule/main/l/',
-};
-
 function yiji() {
     var d = [];
     if (MY_PAGE == 1) { //第一页的筛选
@@ -72,12 +61,23 @@ function erji() {
     var GX = xpath(html, "//*[@id=\"book\"]/div[1]/p[3]/text()")
     var XQ = xpath(html, "//*[@id=\"book\"]/div[1]/p[4]/text()")
     d.push({
-        title: SM + "作者：" + ZZ + "类型：" + a1 + a2,
+        title: '<b>' + SM + '</b>' + "\n" + "作者：" + ZZ + "\n" + "类型：" + a1 + a2,
         desc: '‘‘’’<font color="#f8ecc9">' + GX + "\n" + XQ + "</font>",
         pic_url: FM,
+        url: FM + "@Referer=#noHistory#",
         col_type: 'movie_1_vertical_pic_blur',
+        extra: {"gradient": true},
     })
-
+    d.push({
+            title: "剧情简介",
+            url: "empty#noRecordHistory##noHistory#",
+            pic_url: FM,
+            col_type: 'icon_small_3',
+        }
+    )
+    d.push({
+        col_type: 'line_blank'
+    })
 
     var BT = xpathArray(html, "//*[@class=\"cell-title\"]/text()");
     var LJ = xpathArray(html, "//*[@id=\"xl3\"]/@onclick");
@@ -116,27 +116,27 @@ function sanji(url) {
 
 }
 
-// function search() {
-//     var d = [];
-//     var html = getResCode()
-//     var url = 'https://www.mhww.xyz'
-//     var BT = xpathArray(html, '//*[@id="booklist"]/div/div/div/p/span/text()');
-//     var LJ = xpathArray(html, '//*[@id="booklist"]/div/div/@onclick');
-//     var XQ = xpathArray(html, '//*[@id="booklist"]/div/div/div[2]/p[2]/text()');
-//     var TP = xpathArray(html, '//*[@id="booklist"]/div/div/div[1]/img/@src');
-//     for (var i = 0; i < BT.length; i++) {
-//         var a = LJ[i];
-//         var b = url + a.replace(/window\.open\(\'|\'\)/g, "")
-//         d.push({
-//             title: BT[i],
-//             url: b + "#immersiveTheme#",
-//             img: TP[i],
-//             desc: XQ[i].replace("\r\n", ""),
-//         });
-//
-//     }
-//     setResult(d);
-// }
+function search() {
+    var d = [];
+    var html = getResCode()
+    var url = 'https://www.mhww.xyz'
+    var BT = xpathArray(html, '//*[@id="booklist"]/div/div/div/p/span/text()');
+    var LJ = xpathArray(html, '//*[@id="booklist"]/div/div/@onclick');
+    var XQ = xpathArray(html, '//*[@id="booklist"]/div/div/div[2]/p[2]/text()');
+    var TP = xpathArray(html, '//*[@id="booklist"]/div/div/div[1]/img/@src');
+    for (var i = 0; i < BT.length; i++) {
+        var a = LJ[i];
+        var b = url + a.replace(/window\.open\(\'|\'\)/g, "")
+        d.push({
+            title: BT[i],
+            url: b + "#immersiveTheme#",
+            img: TP[i],
+            desc: XQ[i].replace("\r\n", ""),
+        });
+
+    }
+    setResult(d);
+}
 
 function zhuye() {
     var d = [];
@@ -179,24 +179,6 @@ function sousuo() {
     setResult(d);
 };
 
-
-// function a(x) {
-//     eval(getCryptoJS());
-//     const j = CryptoJS.enc.Utf8.parse('12cdefgabcdefg12');
-//     let j1 = CryptoJS.enc.Utf8.parse(x);
-//     let jg = CryptoJS.AES.encrypt(j1, j, {
-//         'mode': CryptoJS.mode.ECB, 'padding': CryptoJS.pad.Pkcs7
-//     });
-//     return jg.toString();
-// }
-//
-//
-// function openMH(bookid, linkid, path) {
-//     var localhost = 'https://www.mhdnf.xyz'
-//     // var idx = id.toString()
-//     let url = localhost + '/play?linkId=' + linkid + '&bookId=' + bookid + "&path=" + path + '&key=' + a(linkid)
-//     return url
-// }
 
 function openMH(bookid, linkid, path) {
     var localhost = 'https://www.mhdnf.xyz'
