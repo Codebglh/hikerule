@@ -22,10 +22,10 @@ function yiji() {
     }
     // &wd=狂飙
     var MY_URL = "http://cj.lziapi.com/api.php/provide/vod/?ac=videolist&pg=" + MY_PAGE;
-    var html = fetch(MY_URL);
+    var html = JSON.parse(fetch(MY_URL));
     let a = html.list
     for (var i = 0; i < a.length; i++) {
-
+        a[i].replace("", "")
         d.push({
             title: a[i].vod_name,
             desc: a[i].vod_blurb,
