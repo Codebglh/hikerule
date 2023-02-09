@@ -9,21 +9,17 @@ function yiji() {
         }
 
     }
-    var url = 'https://www.mhww.xyz'
-    var MY_URL = " https://www.mhww.xyz/?page.currentPage=" + MY_PAGE + "&orderType=3&subjectName=%E9%9F%93%E6%BC%AB&filmName=";
+    // &wd=狂飙
+    var MY_URL = "http://cj.lziapi.com/api.php/provide/vod/?ac=videolist&pg=" + MY_PAGE;
     var html = fetch(MY_URL);
-    var BT = xpathArray(html, '//*[@id="booklist"]/div/div/div/p/span/text()');
-    var LJ = xpathArray(html, '//*[@id="booklist"]/div/div/@onclick');
-    var XQ = xpathArray(html, '//*[@id="booklist"]/div/div/div[2]/p[2]/text()');
-    var TP = xpathArray(html, '//*[@id="booklist"]/div/div/div[1]/img/@src');
-    for (var i = 0; i < BT.length; i++) {
-        var a = LJ[i];
-        var b = url + a.replace(/window\.open\(\'|\'\)/g, "")
+    let a = html.list
+    for (var i = 0; i < a.length; i++) {
+
         d.push({
-            title: BT[i],
-            desc: XQ[i].replace("\r\n", ""),
-            pic_url: TP[i],
-            url: b + "#immersiveTheme#",
+            title: a[i].vod_name,
+            desc: a[i].vod_blurb,
+            pic_url: a[i].vod_pic,
+            url: a[i].vod_play_url + "#immersiveTheme#",
             col_type: 'movie_3',
 
         });
@@ -159,7 +155,7 @@ function sousuo() {
         col_type: 'icon_small_3'
     });
     setResult(d);
-    
+
 
 };
 
