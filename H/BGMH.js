@@ -8,6 +8,31 @@ var version = {
     ok: 'https://okjx.cc/?url=',
     url: 'https://ghproxy.com/https://raw.githubusercontent.com/Codebglh/hikerule/main/l/',
 };
+var erjimenu = [
+    {
+        title: "剧情简介",
+        url: "empty#noRecordHistory##noHistory#",
+        pic_url: 'https://ghproxy.com/https://raw.githubusercontent.com/Codebglh/hikerule/main/XQ/src/messages.png',
+        col_type: 'icon_small_3'
+    },
+    {
+        title: "观影设置",
+        url: $('hiker://empty#noRecordHistory##noHistory#').rule(() => {
+            require(config.依赖.match(/http(s)?:\/\/.*\//)[0] + 'SrcJyMenu.js');
+            lookset();
+        }),
+        pic_url: 'https://ghproxy.com/https://raw.githubusercontent.com/Codebglh/hikerule/main/XQ/src/setting.png',
+        col_type: 'icon_small_3'
+    },
+    {
+        title: "更多片源",
+        url: "empty#noRecordHistory##noHistory#",
+        pic_url: 'https://ghproxy.com/https://raw.githubusercontent.com/Codebglh/hikerule/main/XQ/src/search.png',
+
+        col_type: 'icon_small_3',
+
+    }
+]
 
 function yiji() {
     var d = [];
@@ -79,13 +104,10 @@ function erji() {
         col_type: 'movie_1_vertical_pic_blur',
         extra: {"gradient": true},
     })
-    d.push({
-            title: "剧情简介",
-            url: "empty#noRecordHistory##noHistory#",
-            pic_url: FM,
-            col_type: 'icon_small_3',
-        }
-    )
+    for (var i in erjimenu) {
+        d.push(erjimenu[i]
+        )
+    }
     d.push({
         col_type: 'line_blank'
     })
