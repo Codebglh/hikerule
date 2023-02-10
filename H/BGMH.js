@@ -141,10 +141,10 @@ function erji() {
     }
     d.push()
     var a = 1
-    var xpath = ['//*[@id=\"xl1\"]/@onclick', '//*[@id=\"xl2\"]/@onclick', "//*[@id=\"xl3\"]/@onclick", '//*[@id=\"xl4\"]/@onclick', '//*[@id=\"xl5\"]/@onclick']
+    var xpat = ['//*[@id=\"xl1\"]/@onclick', '//*[@id=\"xl2\"]/@onclick', "//*[@id=\"xl3\"]/@onclick", '//*[@id=\"xl4\"]/@onclick', '//*[@id=\"xl5\"]/@onclick']
     var sx = true;
     var BT = xpathArray(html, "//*[@class=\"cell-title\"]/text()");
-    var LJ = xpathArray(html, xpath[a]);
+    var LJ = xpathArray(html, xpat[a]);
     if (sx) {
         for (var i = 0; i < BT.length; i++) {
             var a = LJ[i];
