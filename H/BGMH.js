@@ -181,6 +181,15 @@ function sousuo() {
         clearMyVar('sousuo$input');
     }));
     var d = [];
+    d.push(
+        {
+            title: 's',
+
+            col_type: 'input'
+        }
+    )
+
+
     d.push({
         title: '<span style="color:#ff6600"><b>\t热搜榜\t\t\t</b></span>',
         url: "hiker://empty",
