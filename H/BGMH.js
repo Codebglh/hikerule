@@ -1,3 +1,4 @@
+//本代码仅用于个人学习，请勿用于其他作用，下载后请24小时内删除，代码虽然是公开学习的，但请尊重作者，应留下说明
 var updateLog = '2022/09/26 初制作模版';
 var version = {
     author: "bgcode",
@@ -31,6 +32,36 @@ var erjimenu = [
 
         col_type: 'icon_small_3',
 
+    }, {
+        col_type: 'line'
+    }, {
+        title: '““””<b><span style="color: #1aad19">∧</span></b>',
+        col_type: 'scroll_button'
+    },
+    {
+        title: '““””<b><span style="color: #1aad19">线路一</span></b>',
+
+        col_type: 'scroll_button'
+    },
+    {
+        title: '““””<b><span style="color: #1aad19">线路二</span></b>',
+
+        col_type: 'scroll_button'
+    },
+    {
+        title: '““””<b><span style="color: #1aad19">线路三</span></b>',
+
+        col_type: 'scroll_button'
+    },
+    {
+        title: '““””<b><span style="color: #1aad19">线路四</span></b>',
+
+        col_type: 'scroll_button'
+    },
+    {
+        title: '““””<b><span style="color: #1aad19">线路五</span></b>',
+
+        col_type: 'scroll_button'
     }
 ]
 
@@ -75,7 +106,7 @@ function yiji() {
             title: BT[i],
             desc: XQ[i].replace("\r\n", ""),
             pic_url: TP[i],
-            url: b + "#immersiveTheme#",
+            url: b + "#immersiveTheme##noRecordHistory##noHistory#",
             col_type: 'movie_3',
 
         });
@@ -100,7 +131,7 @@ function erji() {
         title: '‘‘’’<b>' + SM + '</b>' + "\n" + "作者：" + ZZ + "\n" + "类型：" + a1 + a2,
         desc: '‘‘’’<font color="#f8ecc9">' + GX + "\n" + XQ + "</font>",
         pic_url: FM,
-        url: FM + "@Referer=#noHistory#",
+        url: FM + "@Referer=#noHistory##noRecordHistory#",
         col_type: 'movie_1_vertical_pic_blur',
         extra: {"gradient": true},
     })
@@ -108,24 +139,45 @@ function erji() {
         d.push(erjimenu[i]
         )
     }
-    d.push({
-        col_type: 'line_blank'
-    })
-
+    d.push()
+    var a = 1
+    var xpath = ['//*[@id=\"xl1\"]/@onclick', '//*[@id=\"xl2\"]/@onclick', "//*[@id=\"xl3\"]/@onclick", '//*[@id=\"xl4\"]/@onclick', '//*[@id=\"xl5\"]/@onclick']
+    var sx = true;
     var BT = xpathArray(html, "//*[@class=\"cell-title\"]/text()");
-    var LJ = xpathArray(html, "//*[@id=\"xl3\"]/@onclick");
-    for (var i = 0; i < BT.length; i++) {
-        var a = LJ[i];
-        let url = eval(a)
-        d.push({
-            title: "第" + (i + 1) + "话",
-            url: $(url).lazyRule(() => {
-                require(config.依赖);
-                return sanji(input)
-            }), col_type: 'text_1',
-        });
+    var LJ = xpathArray(html, xpath[a]);
+    if (sx) {
+        for (var i = 0; i < BT.length; i++) {
+            var a = LJ[i];
+            let url = eval(a)
+            d.push({
+                title: "第" + (i + 1) + "话",
+                url: $(url).lazyRule(() => {
+                    require(config.依赖);
+                    return sanji(input)
+                }), col_type: 'text_4',
+            });
 
+        }
+    } else {
+        for (var i = BT.length - 1; i >= 0; i--) {
+            var a = LJ[i];
+            let url = eval(a)
+            d.push({
+                title: "第" + (i + 1) + "话",
+                url: $(url).lazyRule(() => {
+                    require(config.依赖);
+                    return sanji(input)
+                }), col_type: 'text_4',
+            });
+
+        }
     }
+
+    d.push({
+        desc: "‘‘’’<small><font color=#f20c00>此规则仅限学习交流使用，请于导入后24小时内删除，任何团体或个人不得以任何方式方法传播此规则的整体或部分！</font></small>",
+        url: "toast://温馨提示：且用且珍惜！",
+        col_type: 'text_center_1',
+    })
     setResult(d);
 }
 
