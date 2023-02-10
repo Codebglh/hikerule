@@ -97,7 +97,7 @@ function erji() {
     var GX = xpath(html, "//*[@id=\"book\"]/div[1]/p[3]/text()")
     var XQ = xpath(html, "//*[@id=\"book\"]/div[1]/p[4]/text()")
     d.push({
-        title: '<b>' + SM + '</b>' + "\n" + "作者：" + ZZ + "\n" + "类型：" + a1 + a2,
+        title: '‘‘’’<b>' + SM + '</b>' + "\n" + "作者：" + ZZ + "\n" + "类型：" + a1 + a2,
         desc: '‘‘’’<font color="#f8ecc9">' + GX + "\n" + XQ + "</font>",
         pic_url: FM,
         url: FM + "@Referer=#noHistory#",
@@ -122,7 +122,7 @@ function erji() {
             url: $(url).lazyRule(() => {
                 require(config.依赖);
                 return sanji(input)
-            }), col_type: 'text_2',
+            }), col_type: 'text_1',
         });
 
     }
