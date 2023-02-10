@@ -12,7 +12,7 @@ var erjimenu = [
     {
         title: "剧情简介",
         url: "empty#noRecordHistory##noHistory#",
-        pic_url: 'https://ghproxy.com/https://raw.githubusercontent.com/Codebglh/hikerule/main/XQ/src/messages.png',
+        pic_url: 'https://ghproxy.com/https://raw.githubusercontent.com/Codebglh/hikerule/main/XQ/src/message.png',
         col_type: 'icon_small_3'
     },
     {
