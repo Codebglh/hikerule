@@ -18,7 +18,7 @@ var erjimenu = [
     {
         title: "观影设置",
         url: $('hiker://empty#noRecordHistory##noHistory#').rule(() => {
-            require(config.依赖.match(/http(s)?:\/\/.*\//)[0] + 'SrcJyMenu.js');
+            require(config.依赖);
             lookset();
         }),
         pic_url: 'https://ghproxy.com/https://raw.githubusercontent.com/Codebglh/hikerule/main/XQ/src/setting.png',
@@ -118,7 +118,8 @@ function erji() {
         var a = LJ[i];
         let url = eval(a)
         d.push({
-            title: BT[i], url: $(url).lazyRule(() => {
+            title: "第" + (i + 1) + "话",
+            url: $(url).lazyRule(() => {
                 require(config.依赖);
                 return sanji(input)
             }), col_type: 'text_2',
@@ -232,4 +233,8 @@ function openMH(bookid, linkid, path) {
     });
     let url = localhost + '/play?linkId=' + linkid + '&bookId=' + bookid + "&path=" + path + '&key=' + jg.toString()
     return url
+}
+
+function lookset() {
+
 }
