@@ -20,7 +20,7 @@ var erjimenu = [
         title: "观影设置",
         url: $('hiker://empty#noRecordHistory##noHistory#').rule(() => {
             require(config.依赖);
-            lookset();
+            shezhi();
         }),
         pic_url: 'https://ghproxy.com/https://raw.githubusercontent.com/Codebglh/hikerule/main/XQ/src/setting.png',
         col_type: 'icon_small_3'
@@ -32,8 +32,6 @@ var erjimenu = [
 
         col_type: 'icon_small_3',
 
-    }, {
-        col_type: 'line'
     }, {
         title: '““””<b><span style="color: #1aad19">∧</span></b>',
         col_type: 'scroll_button'
@@ -62,6 +60,9 @@ var erjimenu = [
         title: '““””<b><span style="color: #1aad19">线路五</span></b>',
 
         col_type: 'scroll_button'
+    },
+    {
+        col_type: 'line'
     }
 ]
 
