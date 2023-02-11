@@ -48,30 +48,75 @@ var erjimenu = [
         col_type: 'scroll_button'
     },
     {
-        title: '““””<b><span style="color: #1aad19">线路一</span></b>',
-
+        title: getMyVar('path') == '0' ? '““””<b><span style="color: #FF0000">线路一</span></b>' : '““””<b><span style="color: #1aad19">线路一</span></b>',
+        url: $("#noLoading#").lazyRule(() => {
+            if (getMyVar('path') == '1') {
+                putMyVar('path', '0');
+            } else {
+                putMyVar('path', '1');
+            }
+            ;
+            refreshPage(false);
+            return 'toast://切换路线成功'
+        }),
         col_type: 'scroll_button'
     },
     {
-        title: '““””<b><span style="color: #1aad19">线路二</span></b>',
-
+        title: getMyVar('path') == '1' ? '““””<b><span style="color: #FF0000">线路二</span></b>' : '““””<b><span style="color: #1aad19">线路二</span></b>',
+        url: $("#noLoading#").lazyRule(() => {
+            if (getMyVar('path') == '1') {
+                putMyVar('path', '0');
+            } else {
+                putMyVar('path', '1');
+            }
+            ;
+            refreshPage(false);
+            return 'toast://切换路线成功'
+        }),
         col_type: 'scroll_button'
     },
-    {
-        title: '““””<b><span style="color: #1aad19">线路三</span></b>',
-
-        col_type: 'scroll_button'
-    },
-    {
-        title: '““””<b><span style="color: #1aad19">线路四</span></b>',
-
-        col_type: 'scroll_button'
-    },
-    {
-        title: '““””<b><span style="color: #1aad19">线路五</span></b>',
-
-        col_type: 'scroll_button'
-    },
+    // {
+    //     title: getMyVar('path') == '1' ? '““””<b><span style="color: #FF0000">线路三</span></b>' : '““””<b><span style="color: #1aad19">线路三</span></b>',
+    //     url: $("#noLoading#").lazyRule(() => {
+    //         if (getMyVar('path') == '1') {
+    //             putMyVar('path', '0');
+    //         } else {
+    //             putMyVar('path', '1');
+    //         }
+    //         ;
+    //         refreshPage(false);
+    //         return 'toast://切换路线成功'
+    //     }),
+    //     col_type: 'scroll_button'
+    // },
+    // {
+    //     title: getMyVar('path') == '1' ? '““””<b><span style="color: #FF0000">线路四</span></b>' : '““””<b><span style="color: #1aad19">线路四</span></b>',
+    //     url: $("#noLoading#").lazyRule(() => {
+    //         if (getMyVar('path') == '1') {
+    //             putMyVar('path', '0');
+    //         } else {
+    //             putMyVar('path', '1');
+    //         }
+    //         ;
+    //         refreshPage(false);
+    //         return 'toast://切换路线成功'
+    //     }),
+    //     col_type: 'scroll_button'
+    // },
+    // {
+    //     title: getMyVar('path') == '1' ? '““””<b><span style="color: #FF0000">线路五</span></b>' : '““””<b><span style="color: #1aad19">线路五</span></b>',
+    //     url: $("#noLoading#").lazyRule(() => {
+    //         if (getMyVar('path') == '1') {
+    //             putMyVar('path', '0');
+    //         } else {
+    //             putMyVar('path', '1');
+    //         }
+    //         ;
+    //         refreshPage(false);
+    //         return 'toast://切换路线成功'
+    //     }),
+    //     col_type: 'scroll_button'
+    // },
     {
         col_type: 'line'
     }
@@ -153,9 +198,9 @@ function erji() {
 
     // var shsort = true
     var xpat = ['//*[@id=\"xl1\"]/@onclick', '//*[@id=\"xl2\"]/@onclick', "//*[@id=\"xl3\"]/@onclick", '//*[@id=\"xl4\"]/@onclick', '//*[@id=\"xl5\"]/@onclick']
-    var sx = true;
+
     var BT = xpathArray(html, "//*[@class=\"cell-title\"]/text()");
-    var LJ = xpathArray(html, xpat[a]);
+    var LJ = xpathArray(html, xpat[getMyVar('path')]);
     if (getMyVar('shsort') == '0') {
         for (var i = 0; i < BT.length; i++) {
             var a = LJ[i];
