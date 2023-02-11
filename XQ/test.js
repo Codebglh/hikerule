@@ -37,9 +37,9 @@ var erjimenu = [
         title: getMyVar('shsort') ? '““””<b><span style="color: #FF0000">∨</span></b>' : '““””<b><span style="color: #1aad19">∧</span></b>',
         url: $("#noLoading#").lazyRule(() => {
             if (getMyVar('shsort')) {
-                putMyVar('shsort', 'false');
+                putMyVar('shsort', false);
             } else {
-                putMyVar('shsort', 'true');
+                putMyVar('shsort', true);
             }
             ;
             refreshPage(false);
@@ -156,7 +156,7 @@ function erji() {
     var sx = true;
     var BT = xpathArray(html, "//*[@class=\"cell-title\"]/text()");
     var LJ = xpathArray(html, xpat[a]);
-    if (shsort) {
+    if (getMyVar('shsort')) {
         for (var i = 0; i < BT.length; i++) {
             var a = LJ[i];
             let url = eval(a)
