@@ -48,7 +48,7 @@ var erjimenu = [
         col_type: 'scroll_button'
     },
     {
-        title: getMyVar('path') == '0' ? '““””<b><span style="color: #cb5656">线路一</span></b>' : '““””<b><span style="color: #00FFFF">线路一</span></b>',
+        title: getMyVar('path') != '0' ? '““””<b><span style="color: #cb5656">线路一</span></b>' : '““””<b><span style="color: #00FFFF">线路一</span></b>',
         url: $("#noLoading#").lazyRule(() => {
             if (getMyVar('path') == '0') {
                 putMyVar('path', '0');
@@ -59,7 +59,7 @@ var erjimenu = [
         col_type: 'scroll_button'
     },
     {
-        title: getMyVar('path') == '1' ? '““””<b><span style="color: #cb5656">线路二</span></b>' : '““””<b><span style="color:	#00FFFF">线路二</span></b>',
+        title: getMyVar('path') != '1' ? '““””<b><span style="color: #cb5656">线路二</span></b>' : '““””<b><span style="color:	#00FFFF">线路二</span></b>',
         url: $("#noLoading#").lazyRule(() => {
             if (getMyVar('path') == '1') {
                 putMyVar('path', '1');
@@ -71,7 +71,7 @@ var erjimenu = [
         col_type: 'scroll_button'
     },
     {
-        title: getMyVar('path') == '2' ? '““””<b><span style="color: #cb5656">线路三</span></b>' : '““””<b><span style="color:	#00FFFF">线路三</span></b>',
+        title: getMyVar('path') != '2' ? '““””<b><span style="color: #cb5656">线路三</span></b>' : '““””<b><span style="color:	#00FFFF">线路三</span></b>',
         url: $("#noLoading#").lazyRule(() => {
             if (getMyVar('path') == '2') {
 
@@ -84,7 +84,7 @@ var erjimenu = [
         col_type: 'scroll_button'
     },
     {
-        title: getMyVar('path') == '3' ? '““””<b><span style="color: #cb5656">线路四</span></b>' : '““””<b><span style="color:	#00FFFF">线路四</span></b>',
+        title: getMyVar('path') != '3' ? '““””<b><span style="color: #cb5656">线路四</span></b>' : '““””<b><span style="color:	#00FFFF">线路四</span></b>',
         url: $("#noLoading#").lazyRule(() => {
             if (getMyVar('path') == '3') {
                 putMyVar('path', '3');
@@ -96,7 +96,7 @@ var erjimenu = [
         col_type: 'scroll_button'
     },
     {
-        title: getMyVar('path') == '4' ? '““””<b><span style="color: #cb5656">线路五</span></b>' : '““””<b><span style="color:	#00FFFF">线路五</span></b>',
+        title: getMyVar('path') != '4' ? '““””<b><span style="color: #cb5656">线路五</span></b>' : '““””<b><span style="color:	#00FFFF">线路五</span></b>',
         url: $("#noLoading#").lazyRule(() => {
             if (getMyVar('path') == '4') {
 

@@ -303,13 +303,13 @@ function sousuo() {
     addListener("onClose", $.toString(() => {
         clearMyVar('sousuo$input');
     }));
-    var searchurl = "https://www.mhdnf.xyz/?page.currentPage=" + fypage + "&orderType=3&subjectName=&filmName=" + key;
+    var searchurl = "https://www.mhdnf.xyz/?page.currentPage=" + MY_PAGE + "&orderType=3&subjectName=&filmName=";
     var d = [];
     d.push(
         {
             title: '🔍',
             url: $.toString((searchurl) => {
-                return input + searchurl;
+                return "hiker://search?rule=" + searchurl + input;
             }, searchurl),
             desc: "搜你想看的...",
             col_type: 'input',
