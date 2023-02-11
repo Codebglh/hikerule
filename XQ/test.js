@@ -34,7 +34,17 @@ var erjimenu = [
 
     },
     {
-        title: '““””<b><span style="color: #1aad19">∧</span></b>',
+        title: getMyVar('shsort') == '1' ? '““””<b><span style="color: #FF0000">∨</span></b>' : '““””<b><span style="color: #1aad19">∧</span></b>',
+        url: $("#noLoading#").lazyRule(() => {
+            if (getMyVar('shsort') == '1') {
+                putMyVar('shsort', '0');
+            } else {
+                putMyVar('shsort', '1')
+            }
+            ;
+            refreshPage(false);
+            return 'toast://切换排序成功'
+        }),
         col_type: 'scroll_button'
     },
     {
@@ -66,34 +76,32 @@ var erjimenu = [
         col_type: 'line'
     }
 ]
+var yijimenu = [{
+    title: "收藏", url: "hiker://collection", pic_url: version.url + 'src/2.png', col_type: 'icon_4',
+}, {
+    title: "历史", url: "hiker://history", pic_url: version.url + 'src/3.png', col_type: 'icon_4',
+}, {
+    title: "设置", url: $("hiker://empty#noRecordHistory##noHistory#").rule(() => {
+        require(config.依赖);
+        shezhi();
+    }), pic_url: version.url + 'src/4.png', col_type: 'icon_4',
+}, {
+    title: "搜索", url: $("hiker://empty#noRecordHistory##noHistory#").rule(() => {
+        require(config.依赖);
+        sousuo();
+    }), pic_url: version.url + 'src/5.png', col_type: 'icon_4',
+}, {
+    col_type: 'line'
+}]
 
 function yiji() {
-    version()
     var d = [];
     if (MY_PAGE == 1) { //第一页的筛选
-        d.push({
-            title: "收藏", url: "hiker://collection", pic_url: version.url + 'src/2.png', col_type: 'icon_4',
-        });
-        d.push({
-            title: "历史", url: "hiker://history", pic_url: version.url + 'src/3.png', col_type: 'icon_4',
-        });
-        d.push({
-            title: "设置", url: $("hiker://empty#noRecordHistory##noHistory#").rule(() => {
-                require(config.依赖);
-                shezhi();
-            }), pic_url: version.url + 'src/4.png', col_type: 'icon_4',
-        });
-        d.push({
-            title: "搜索", url: $("hiker://empty#noRecordHistory##noHistory#").rule(() => {
-                require(config.依赖);
-                sousuo();
-            }), pic_url: version.url + 'src/5.png', col_type: 'icon_4',
-        });
-
-        d.push({
-            col_type: 'line'
-        });
-
+        for (var i in yijimenu) {
+            d.push(
+                yijimenu [i]
+            )
+        }
     }
     var url = 'https://www.mhww.xyz'
     var MY_URL = " https://www.mhww.xyz/?page.currentPage=" + MY_PAGE + "&orderType=3&subjectName=%E9%9F%93%E6%BC%AB&filmName=";
