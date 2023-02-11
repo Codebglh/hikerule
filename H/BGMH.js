@@ -192,7 +192,6 @@ function erji() {
 
     var BT = xpathArray(html, "//*[@class=\"cell-title\"]/text()");
     var LJ = xpathArray(html, xpat[getMyVar('path')]);
-    log(LJ[0]);
     if (getMyVar('shsort') == '0') {
         for (var i = 0; i < BT.length; i++) {
             var a = LJ[i];
