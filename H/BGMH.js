@@ -153,7 +153,7 @@ function yiji() {
             title: BT[i],
             desc: XQ[i].replace("\r\n", ""),
             pic_url: TP[i],
-            url: b + "#immersiveTheme##noRecordHistory##noHistory#",
+            url: b + "#immersiveTheme##noHistory#",
             col_type: 'movie_3',
 
         });
