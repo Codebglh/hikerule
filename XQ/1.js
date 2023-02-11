@@ -99,7 +99,7 @@ var erjimenu = [
         title: getMyVar('path') == '4' ? '““””<b><span style="color: #cb5656">线路五</span></b>' : '““””<b><span style="color:	#00FFFF">线路五</span></b>',
         url: $("#noLoading#").lazyRule(() => {
             if (getMyVar('path') == '4') {
-                
+
                 putMyVar('path', '4');
             }
             ;
@@ -303,12 +303,19 @@ function sousuo() {
     addListener("onClose", $.toString(() => {
         clearMyVar('sousuo$input');
     }));
+    var searchurl = "https://www.mhdnf.xyz/?page.currentPage=" + fypage + "&orderType=3&subjectName=&filmName=" + key;
     var d = [];
     d.push(
         {
-            title: 's',
-
-            col_type: 'input'
+            title: '🔍',
+            url: $.toString((searchurl) => {
+                return input + searchurl;
+            }, searchurl),
+            desc: "搜你想看的...",
+            col_type: 'input',
+            extra: {
+                titleVisible: true
+            }
         }
     )
 
