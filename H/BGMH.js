@@ -34,66 +34,110 @@ var erjimenu = [
 
     },
     {
-        title: '““””<b><span style="color: #1aad19">∧</span></b>',
+        title: getMyVar('shsort') == '1' ? '““””<b><span style="color: #cb5656">∨</span></b>' : '““””<b><span style="color: #00FFFF">∧</span></b>',
+        url: $("#noLoading#").lazyRule(() => {
+            if (getMyVar('shsort') == '1') {
+                putMyVar('shsort', '0');
+            } else {
+                putMyVar('shsort', '1');
+            }
+            ;
+            refreshPage(false);
+            return 'toast://切换排序成功'
+        }),
         col_type: 'scroll_button'
     },
     {
-        title: '““””<b><span style="color: #1aad19">线路一</span></b>',
-
+        title: getMyVar('path') == '0' ? '““””<b><span style="color: #cb5656">线路一</span></b>' : '““””<b><span style="color: #00FFFF">线路一</span></b>',
+        url: $("#noLoading#").lazyRule(() => {
+            if (getMyVar('path') == '0') {
+                putMyVar('path', '0');
+            }
+            refreshPage(false);
+            return 'toast://切换路线成功'
+        }),
         col_type: 'scroll_button'
     },
     {
-        title: '““””<b><span style="color: #1aad19">线路二</span></b>',
+        title: getMyVar('path') == '1' ? '““””<b><span style="color: #cb5656">线路二</span></b>' : '““””<b><span style="color:	#00FFFF">线路二</span></b>',
+        url: $("#noLoading#").lazyRule(() => {
+            if (getMyVar('path') == '1') {
+                putMyVar('path', '1');
+            }
 
+            refreshPage(false);
+            return 'toast://切换路线成功'
+        }),
         col_type: 'scroll_button'
     },
     {
-        title: '““””<b><span style="color: #1aad19">线路三</span></b>',
+        title: getMyVar('path') == '2' ? '““””<b><span style="color: #cb5656">线路三</span></b>' : '““””<b><span style="color:	#00FFFF">线路三</span></b>',
+        url: $("#noLoading#").lazyRule(() => {
+            if (getMyVar('path') == '2') {
 
+                putMyVar('path', '2');
+            }
+            ;
+            refreshPage(false);
+            return 'toast://切换路线成功'
+        }),
         col_type: 'scroll_button'
     },
     {
-        title: '““””<b><span style="color: #1aad19">线路四</span></b>',
-
+        title: getMyVar('path') == '3' ? '““””<b><span style="color: #cb5656">线路四</span></b>' : '““””<b><span style="color:	#00FFFF">线路四</span></b>',
+        url: $("#noLoading#").lazyRule(() => {
+            if (getMyVar('path') == '3') {
+                putMyVar('path', '3');
+            }
+            ;
+            refreshPage(false);
+            return 'toast://切换路线成功'
+        }),
         col_type: 'scroll_button'
     },
     {
-        title: '““””<b><span style="color: #1aad19">线路五</span></b>',
+        title: getMyVar('path') == '4' ? '““””<b><span style="color: #cb5656">线路五</span></b>' : '““””<b><span style="color:	#00FFFF">线路五</span></b>',
+        url: $("#noLoading#").lazyRule(() => {
+            if (getMyVar('path') == '4') {
 
+                putMyVar('path', '4');
+            }
+            ;
+            refreshPage(false);
+            return 'toast://切换路线成功'
+        }),
         col_type: 'scroll_button'
     },
     {
         col_type: 'line'
     }
 ]
+var yijimenu = [{
+    title: "收藏", url: "hiker://collection", pic_url: version.url + 'src/2.png', col_type: 'icon_4',
+}, {
+    title: "历史", url: "hiker://history", pic_url: version.url + 'src/3.png', col_type: 'icon_4',
+}, {
+    title: "设置", url: $("hiker://empty#noRecordHistory##noHistory#").rule(() => {
+        require(config.依赖);
+        shezhi();
+    }), pic_url: version.url + 'src/4.png', col_type: 'icon_4',
+}, {
+    title: "搜索", url: $("hiker://empty#noRecordHistory##noHistory#").rule(() => {
+        require(config.依赖);
+        sousuo();
+    }), pic_url: version.url + 'src/5.png', col_type: 'icon_4',
+}, {
+    col_type: 'line'
+}]
 
 function yiji() {
-    version()
     var d = [];
     if (MY_PAGE == 1) { //第一页的筛选
-        d.push({
-            title: "收藏", url: "hiker://collection", pic_url: version.url + 'src/2.png', col_type: 'icon_4',
-        });
-        d.push({
-            title: "历史", url: "hiker://history", pic_url: version.url + 'src/3.png', col_type: 'icon_4',
-        });
-        d.push({
-            title: "设置", url: $("hiker://empty#noRecordHistory##noHistory#").rule(() => {
-                require(config.依赖);
-                shezhi();
-            }), pic_url: version.url + 'src/4.png', col_type: 'icon_4',
-        });
-        d.push({
-            title: "搜索", url: $("hiker://empty#noRecordHistory##noHistory#").rule(() => {
-                require(config.依赖);
-                sousuo();
-            }), pic_url: version.url + 'src/5.png', col_type: 'icon_4',
-        });
-
-        d.push({
-            col_type: 'line'
-        });
-
+        for (var i in yijimenu) {
+            d.push(
+                yijimenu [i]
+            )
+        }
     }
     var url = 'https://www.mhww.xyz'
     var MY_URL = " https://www.mhww.xyz/?page.currentPage=" + MY_PAGE + "&orderType=3&subjectName=%E9%9F%93%E6%BC%AB&filmName=";
@@ -142,13 +186,14 @@ function erji() {
         d.push(erjimenu[i]
         )
     }
-    d.push()
-    var a = 1
+
+    // var shsort = true
     var xpat = ['//*[@id=\"xl1\"]/@onclick', '//*[@id=\"xl2\"]/@onclick', "//*[@id=\"xl3\"]/@onclick", '//*[@id=\"xl4\"]/@onclick', '//*[@id=\"xl5\"]/@onclick']
-    var sx = true;
+
     var BT = xpathArray(html, "//*[@class=\"cell-title\"]/text()");
-    var LJ = xpathArray(html, xpat[a]);
-    if (sx) {
+    var LJ = xpathArray(html, xpat[getMyVar('path')]);
+    log(LJ[0]);
+    if (getMyVar('shsort') == '0') {
         for (var i = 0; i < BT.length; i++) {
             var a = LJ[i];
             let url = eval(a)
