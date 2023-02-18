@@ -9,112 +9,95 @@ var version = {
     ok: 'https://okjx.cc/?url=',
     url: 'https://ghproxy.com/https://raw.githubusercontent.com/Codebglh/hikerule/main/l/',
 };
-var erjimenu = [
-    {
-        title: "剧情简介",
-        url: "empty#noRecordHistory##noHistory#",
-        pic_url: 'https://ghproxy.com/https://raw.githubusercontent.com/Codebglh/hikerule/main/XQ/src/message.png',
-        col_type: 'icon_small_3'
-    },
-    {
-        title: "观影设置",
-        url: $('hiker://empty#noRecordHistory##noHistory#').rule(() => {
-            require(config.依赖);
-            shezhi();
-        }),
-        pic_url: 'https://ghproxy.com/https://raw.githubusercontent.com/Codebglh/hikerule/main/XQ/src/setting.png',
-        col_type: 'icon_small_3'
-    },
-    {
-        title: "更多片源",
-        url: $('hiker://empty#noRecordHistory##noHistory#').rule(() => {
-            require(config.依赖);
-            sousuo();
-        }),
-        pic_url: 'https://ghproxy.com/https://raw.githubusercontent.com/Codebglh/hikerule/main/XQ/src/search.png',
+var erjimenu = [{
+    title: "剧情简介",
+    url: "empty#noRecordHistory##noHistory#",
+    pic_url: 'https://ghproxy.com/https://raw.githubusercontent.com/Codebglh/hikerule/main/XQ/src/message.png',
+    col_type: 'icon_small_3'
+}, {
+    title: "观影设置",
+    url: $('hiker://empty#noRecordHistory##noHistory#').rule(() => {
+        require(config.依赖);
+        shezhi();
+    }),
+    pic_url: 'https://ghproxy.com/https://raw.githubusercontent.com/Codebglh/hikerule/main/XQ/src/setting.png',
+    col_type: 'icon_small_3'
+}, {
+    title: "更多片源", url: $('hiker://empty#noRecordHistory##noHistory#').rule(() => {
+        require(config.依赖);
+        sousuo();
+    }), pic_url: 'https://ghproxy.com/https://raw.githubusercontent.com/Codebglh/hikerule/main/XQ/src/search.png',
 
-        col_type: 'icon_small_3',
+    col_type: 'icon_small_3',
 
-    },
-    {
-        title: getMyVar('shsort') == '0' ? '““””<b><span style="color: #cb5656">∨</span></b>' : '““””<b><span style="color: #00FFFF">∧</span></b>',
-        url: $("#noLoading#").lazyRule(() => {
-            if (getMyVar('shsort') == '1') {
-                putMyVar('shsort', '0');
-            } else {
-                putMyVar('shsort', '1');
-            }
-            ;
-            refreshPage(false);
-            return 'toast://切换排序成功'
-        }),
-        col_type: 'scroll_button'
-    },
-    {
-        title: getMyVar('path') == '0' ? '““””<b><span style="color: #cb5656">线路一</span></b>' : '““””<b><span style="color: #00FFFF">线路一</span></b>',
-        url: $("#noLoading#").lazyRule(() => {
-            if (getMyVar('path') != '0') {
-                putMyVar('path', '0');
-            }
-            refreshPage(false);
-            return 'toast://切换路线成功'
-        }),
-        col_type: 'scroll_button'
-    },
-    {
-        title: getMyVar('path') == '1' ? '““””<b><span style="color: #cb5656">线路二</span></b>' : '““””<b><span style="color:	#00FFFF">线路二</span></b>',
-        url: $("#noLoading#").lazyRule(() => {
-            if (getMyVar('path') != '1') {
-                putMyVar('path', '1');
-            }
+}, {
+    title: getMyVar('shsort') == '0' ? '““””<b><span style="color: #cb5656">∨</span></b>' : '““””<b><span style="color: #00FFFF">∧</span></b>',
+    url: $("#noLoading#").lazyRule(() => {
+        if (getMyVar('shsort') == '1') {
+            putMyVar('shsort', '0');
+        } else {
+            putMyVar('shsort', '1');
+        }
+        ;refreshPage(false);
+        return 'toast://切换排序成功'
+    }),
+    col_type: 'scroll_button'
+}, {
+    title: getMyVar('path') == '0' ? '““””<b><span style="color: #cb5656">线路一</span></b>' : '““””<b><span style="color: #00FFFF">线路一</span></b>',
+    url: $("#noLoading#").lazyRule(() => {
+        if (getMyVar('path') != '0') {
+            putMyVar('path', '0');
+        }
+        refreshPage(false);
+        return 'toast://切换路线成功'
+    }),
+    col_type: 'scroll_button'
+}, {
+    title: getMyVar('path') == '1' ? '““””<b><span style="color: #cb5656">线路二</span></b>' : '““””<b><span style="color:	#00FFFF">线路二</span></b>',
+    url: $("#noLoading#").lazyRule(() => {
+        if (getMyVar('path') != '1') {
+            putMyVar('path', '1');
+        }
 
-            refreshPage(false);
-            return 'toast://切换路线成功'
-        }),
-        col_type: 'scroll_button'
-    },
-    {
-        title: getMyVar('path') == '2' ? '““””<b><span style="color: #cb5656">线路三</span></b>' : '““””<b><span style="color:	#00FFFF">线路三</span></b>',
-        url: $("#noLoading#").lazyRule(() => {
-            if (getMyVar('path') != '2') {
+        refreshPage(false);
+        return 'toast://切换路线成功'
+    }),
+    col_type: 'scroll_button'
+}, {
+    title: getMyVar('path') == '2' ? '““””<b><span style="color: #cb5656">线路三</span></b>' : '““””<b><span style="color:	#00FFFF">线路三</span></b>',
+    url: $("#noLoading#").lazyRule(() => {
+        if (getMyVar('path') != '2') {
 
-                putMyVar('path', '2');
-            }
-            ;
-            refreshPage(false);
-            return 'toast://切换路线成功'
-        }),
-        col_type: 'scroll_button'
-    },
-    {
-        title: getMyVar('path') == '3' ? '““””<b><span style="color: #cb5656">线路四</span></b>' : '““””<b><span style="color:	#00FFFF">线路四</span></b>',
-        url: $("#noLoading#").lazyRule(() => {
-            if (getMyVar('path') != '3') {
-                putMyVar('path', '3');
-            }
-            ;
-            refreshPage(false);
-            return 'toast://切换路线成功'
-        }),
-        col_type: 'scroll_button'
-    },
-    {
-        title: getMyVar('path') == '4' ? '““””<b><span style="color: #cb5656">线路五</span></b>' : '““””<b><span style="color:	#00FFFF">线路五</span></b>',
-        url: $("#noLoading#").lazyRule(() => {
-            if (getMyVar('path') != '4') {
+            putMyVar('path', '2');
+        }
+        ;refreshPage(false);
+        return 'toast://切换路线成功'
+    }),
+    col_type: 'scroll_button'
+}, {
+    title: getMyVar('path') == '3' ? '““””<b><span style="color: #cb5656">线路四</span></b>' : '““””<b><span style="color:	#00FFFF">线路四</span></b>',
+    url: $("#noLoading#").lazyRule(() => {
+        if (getMyVar('path') != '3') {
+            putMyVar('path', '3');
+        }
+        ;refreshPage(false);
+        return 'toast://切换路线成功'
+    }),
+    col_type: 'scroll_button'
+}, {
+    title: getMyVar('path') == '4' ? '““””<b><span style="color: #cb5656">线路五</span></b>' : '““””<b><span style="color:	#00FFFF">线路五</span></b>',
+    url: $("#noLoading#").lazyRule(() => {
+        if (getMyVar('path') != '4') {
 
-                putMyVar('path', '4');
-            }
-            ;
-            refreshPage(false);
-            return 'toast://切换路线成功'
-        }),
-        col_type: 'scroll_button'
-    },
-    {
-        col_type: 'line'
-    }
-]
+            putMyVar('path', '4');
+        }
+        ;refreshPage(false);
+        return 'toast://切换路线成功'
+    }),
+    col_type: 'scroll_button'
+}, {
+    col_type: 'line'
+}]
 var yijimenu = [{
     title: "收藏", url: "hiker://collection", pic_url: version.url + 'src/2.png', col_type: 'icon_4',
 }, {
@@ -137,9 +120,7 @@ function yiji() {
     var d = [];
     if (MY_PAGE == 1) { //第一页的筛选
         for (var i in yijimenu) {
-            d.push(
-                yijimenu [i]
-            )
+            d.push(yijimenu [i])
         }
     }
     var url = 'https://www.mhww.xyz'
@@ -170,8 +151,8 @@ function yiji() {
 function erji() {
     addListener("onClose", $.toString(() => {
 
-        clearMyVar('erji$path');
-        clearMyVar('erji$shsort');
+        clearMyVar('path');
+        clearMyVar('shsort');
     }));
     var html = getResCode()
     var d = [];
@@ -191,8 +172,7 @@ function erji() {
         extra: {"gradient": true},
     })
     for (var i in erjimenu) {
-        d.push(erjimenu[i]
-        )
+        d.push(erjimenu[i])
     }
 
 
@@ -221,8 +201,7 @@ function erji() {
         for (var i = BT.length - 1; i >= 0; i--) {
             let url = LJ[i];
             d.push({
-                title: "第" + (i + 1) + "话",
-                url: $(url).lazyRule(() => {
+                title: "第" + (i + 1) + "话", url: $(url).lazyRule(() => {
                     require(config.依赖);
                     return sanji(input)
                 }), col_type: 'text_4',
@@ -273,10 +252,7 @@ function search() {
         var a = LJ[i];
         var b = url + a.replace(/window\.open\(\'|\'\)/g, "")
         d.push({
-            title: BT[i],
-            url: b + "#immersiveTheme#",
-            img: TP[i],
-            desc: XQ[i].replace("\r\n", ""),
+            title: BT[i], url: b + "#immersiveTheme#", img: TP[i], desc: XQ[i].replace("\r\n", ""),
         });
 
     }
@@ -315,13 +291,14 @@ function sousuo() {
         clearMyVar('sousuo$input');
     }));
     var d = [];
-    d.push(
-        {
-            title: 's',
-
-            col_type: 'input'
-        }
-    )
+    d.push({
+        title: '🔍',
+        url: $().lazyRule(() => {
+            require(config.依赖);
+            return search(input);
+        }),
+        col_type: 'input'
+    })
 
 
     d.push({
