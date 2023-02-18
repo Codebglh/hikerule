@@ -187,13 +187,17 @@ function erji() {
         )
     }
 
-    var shsort = '0', path = '0'
+
     var xpat = ['//*[@id=\"xl1\"]/@onclick', '//*[@id=\"xl2\"]/@onclick', "//*[@id=\"xl3\"]/@onclick", '//*[@id=\"xl4\"]/@onclick', '//*[@id=\"xl5\"]/@onclick']
     var BT = xpathArray(html, "//*[@class=\"cell-title\"]/text()");
-    var LJ = xpathArray(html, xpat[getMyVar('path')]);
+    if (getMyVar('path') != 0) {
+        var LJ = xpathArray(html, xpat[getMyVar('path')]);
+    } else {
+        var LJ = xpathArray(html, xpat[0]);
+    }
 
 
-    if (getMyVar('shsort') == '0') {
+    if (getMyVar('shsort') != '0') {
         for (var i = 0; i < BT.length; i++) {
             let url = LJ[i];
             d.push({
@@ -207,8 +211,7 @@ function erji() {
         }
     } else {
         for (var i = BT.length - 1; i >= 0; i--) {
-            var a = LJ[i];
-            let url = eval(a)
+            let url = LJ[i];
             d.push({
                 title: "第" + (i + 1) + "话",
                 url: $(url).lazyRule(() => {
