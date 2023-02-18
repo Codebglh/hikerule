@@ -27,7 +27,10 @@ var erjimenu = [
     },
     {
         title: "更多片源",
-        url: "empty#noRecordHistory##noHistory#",
+        url: $('hiker://empty#noRecordHistory##noHistory#').rule(() => {
+            require(config.依赖);
+            sousuo();
+        }),
         pic_url: 'https://ghproxy.com/https://raw.githubusercontent.com/Codebglh/hikerule/main/XQ/src/search.png',
 
         col_type: 'icon_small_3',
