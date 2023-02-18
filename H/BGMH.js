@@ -168,6 +168,11 @@ function yiji() {
 };
 
 function erji() {
+    addListener("onClose", $.toString(() => {
+
+        clearMyVar('erji$path');
+        clearMyVar('erji$shsort');
+    }));
     var html = getResCode()
     var d = [];
     var FM = xpath(html, "//*[@id=\"book\"]/div[1]/p[1]/img/@src")
