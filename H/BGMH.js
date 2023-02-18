@@ -339,7 +339,7 @@ function lookset(input) {
             desc: XQ[i].replace("\r\n", ""),
             pic_url: TP[i],
             url: b + "#immersiveTheme##noHistory#",
-            col_type: 'movie_3',
+            col_type: 'movie_1',
 
         });
 
