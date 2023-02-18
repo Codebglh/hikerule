@@ -27,7 +27,6 @@ function yiji() {
                 erji(input)
             }) + "#immersiveTheme#",
             col_type: 'movie_3',
-
         });
 
     }
@@ -35,5 +34,16 @@ function yiji() {
 };
 
 function erji(str) {
-    var a = str.split()
+    let LJ = str.split(/第.*?集|\$|#/g)
+    var a = 0;
+    let url = [];
+    for (let i = 0; i < LJ.length; i++) {
+        if (LJ[i] != '') {
+            url[a] = LJ[i];
+            a = a + 1;
+        }
+    }
+    d.push({
+        title: a[i].vod_name,
+    });
 }
