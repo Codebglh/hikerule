@@ -193,9 +193,9 @@ function erji() {
     var BT = xpathArray(html, "//*[@class=\"cell-title\"]/text()");
     var LJ = xpathArray(html, xpat[getMyVar('path')]);
     var L = []
-    for (var i = 0; i < LJ.length; i++) {
-        L[i] = eval(LJ[i]);
-    }
+    // for (var i = 0; i < LJ.length; i++) {
+    //     L[i] = eval(LJ[i]);
+    // }
     if (getMyVar('shsort') == '0') {
         for (var i = 0; i < L.length; i++) {
             let url = L[i]
@@ -231,7 +231,8 @@ function erji() {
 }
 
 function sanji(url) {
-    var html = fetch(url)
+    var url1 = eval(url)
+    var html = fetch(url1)
     var xx = xpathArray(html, "//*[@id=\"imgList\"]/img/@src");
     var BT = xpathArray(html, "//*[@id=\"imgList\"]/img/@data-original");
     var ll = "pics://"
