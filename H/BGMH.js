@@ -194,8 +194,8 @@ function erji() {
     var LJ = xpathArray(html, xpat[getMyVar('path')]);
     if (getMyVar('shsort') == '0') {
         for (var i = 0; i < BT.length; i++) {
-            var a = LJ[i];
-            let url = eval(a)
+            let url = LJ[i];
+
             d.push({
                 title: "第" + (i + 1) + "话",
                 url: $(url).lazyRule(() => {
@@ -228,7 +228,8 @@ function erji() {
     setResult(d);
 }
 
-function sanji(url) {
+function sanji(inl) {
+    var url = eval(inl)
     var html = fetch(url)
     var xx = xpathArray(html, "//*[@id=\"imgList\"]/img/@src");
     var BT = xpathArray(html, "//*[@id=\"imgList\"]/img/@data-original");
