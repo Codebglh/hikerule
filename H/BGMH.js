@@ -34,7 +34,7 @@ var erjimenu = [
 
     },
     {
-        title: getMyVar('shsort') == '1' ? '““””<b><span style="color: #cb5656">∨</span></b>' : '““””<b><span style="color: #00FFFF">∧</span></b>',
+        title: getMyVar('shsort') == '0' ? '““””<b><span style="color: #cb5656">∨</span></b>' : '““””<b><span style="color: #00FFFF">∧</span></b>',
         url: $("#noLoading#").lazyRule(() => {
             if (getMyVar('shsort') == '1') {
                 putMyVar('shsort', '0');
@@ -197,7 +197,7 @@ function erji() {
     }
 
 
-    if (getMyVar('shsort') != '0') {
+    if (getMyVar('shsort') != 0) {
         for (var i = 0; i < BT.length; i++) {
             let url = LJ[i];
             d.push({
