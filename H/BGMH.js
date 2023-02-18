@@ -295,7 +295,7 @@ function sousuo() {
         title: '🔍',
         url: $().lazyRule(() => {
             require(config.依赖);
-            return search(input);
+            return lookset(input);
         }),
         col_type: 'input'
     })
@@ -323,6 +323,26 @@ function openMH(bookid, linkid, path) {
     return url
 }
 
-function lookset() {
+function lookset(input) {
+    var localhost = "https://www.mhdnf.xyz/?page.currentPage=fypage&orderType=3&subjectName=&filmName="
+    let url = localhost + input;
+    var html = fetch(url)
+    var BT = xpathArray(html, '//*[@id="booklist"]/div/div/div/p/span/text()');
+    var LJ = xpathArray(html, '//*[@id="booklist"]/div/div/@onclick');
+    var XQ = xpathArray(html, '//*[@id="booklist"]/div/div/div[2]/p[2]/text()');
+    var TP = xpathArray(html, '//*[@id="booklist"]/div/div/div[1]/img/@src');
+    for (var i = 0; i < BT.length; i++) {
+        var a = LJ[i];
+        var b = url + a.replace(/window\.open\(\'|\'\)/g, "")
+        d.push({
+            title: BT[i],
+            desc: XQ[i].replace("\r\n", ""),
+            pic_url: TP[i],
+            url: b + "#immersiveTheme##noHistory#",
+            col_type: 'movie_3',
+
+        });
+
+    }
 
 }
