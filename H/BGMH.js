@@ -293,11 +293,25 @@ function sousuo() {
     var d = [];
     d.push({
         title: '🔍',
-        url: $().lazyRule(() => {
-            require(config.依赖);
-            return lookset(input);
-        }),
-        col_type: 'input'
+        // url: $().lazyRule(() => {
+        //     require(config.依赖);
+        //     log(input)
+        //     lookset(input);
+        // }),
+        url:
+        // $.toString(() => {
+        //     putMyVar("so", input);
+        //     refreshPage();
+        // }),
+            $("hiker://empty#noRecordHistory##noHistory#").rule(() => {
+                require(config.依赖);
+                putMyVar("so", input);
+                lookset(getMyVar("so", ""));
+            }),
+        col_type: 'input',
+        // extra: {
+        //     defaultValue: getMyVar("so", "")
+        // }
     })
 
 
