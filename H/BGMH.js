@@ -305,6 +305,7 @@ function sousuo() {
         // }),
             $("hiker://empty#noRecordHistory##noHistory#").rule(() => {
                 require(config.依赖);
+                log("11")
                 putMyVar("so", input);
                 lookset();
                 refreshPage();
