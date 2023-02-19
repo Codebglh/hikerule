@@ -26,7 +26,7 @@ var erjimenu = [{
     title: "剧情简介",
     url: "empty#noRecordHistory##noHistory#",
     pic_url: 'https://ghproxy.com/https://raw.githubusercontent.com/Codebglh/hikerule/main/XQ/src/message.png',
-    col_type: 'icon_small_2'
+    col_type: 'icon_2'
 }, {
     title: "观影设置",
     url: $('hiker://empty#noRecordHistory##noHistory#').rule(() => {
@@ -34,7 +34,7 @@ var erjimenu = [{
         shezhi();
     }),
     pic_url: 'https://ghproxy.com/https://raw.githubusercontent.com/Codebglh/hikerule/main/XQ/src/setting.png',
-    col_type: 'icon_small_2'
+    col_type: 'icon_2'
 }, {
     title: getMyVar('shsort') == 0 ? '““””<b><span style="color: #cb5656">∨</span></b>' : '““””<b><span style="color: #00FFFF">∧</span></b>',
     url: $("#noLoading#").lazyRule(() => {
