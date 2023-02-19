@@ -119,8 +119,133 @@ function yiji() {
             d.push(yijimenu [i])
         }
     }
+    var url = 'https://www.mhww.xyz'
+    var MY_URL = " https://www.mhww.xyz/?page.currentPage=" + MY_PAGE + "&orderType=3&subjectName=%E9%9F%93%E6%BC%AB&filmName=";
+    var html = fetch(MY_URL);
+    var BT = xpathArray(html, '//*[@id="booklist"]/div/div/div/p/span/text()');
+    var LJ = xpathArray(html, '//*[@id="booklist"]/div/div/@onclick');
+    var XQ = xpathArray(html, '//*[@id="booklist"]/div/div/div[2]/p[2]/text()');
+    var TP = xpathArray(html, '//*[@id="booklist"]/div/div/div[1]/img/@src');
+    for (var i = 0; i < BT.length; i++) {
+        var a = LJ[i];
+        var b = url + a.replace(/window\.open\(\'|\'\)/g, "")
+        d.push({
+            title: BT[i],
+            desc: XQ[i].replace("\r\n", ""),
+            pic_url: TP[i],
+            url: b + "#immersiveTheme##noHistory#",
+            col_type: 'movie_3',
+
+        });
+
+    }
     setResult(d);
 }
+
+function erji() {
+    addListener("onClose", $.toString(() => {
+
+        clearMyVar('path');
+        clearMyVar('shsort');
+    }));
+    var html = getResCode()
+    var d = [];
+    var FM = xpath(html, "//*[@id=\"book\"]/div[1]/p[1]/img/@src")
+    var SM = xpath(html, "//*[@id=\"book\"]/div[1]/h1/text()")
+    var ZZ = xpath(html, "//*[@id=\"book\"]/div[1]/p[2]/a/text()")
+    var a1 = xpath(html, "//*[@id=\"book\"]/div[1]/h1/span[1]/text()")
+    var a2 = xpath(html, "//*[@id=\"book\"]/div[1]/h1/span[2]/text()")
+    var GX = xpath(html, "//*[@id=\"book\"]/div[1]/p[3]/text()")
+    var XQ = xpath(html, "//*[@id=\"book\"]/div[1]/p[4]/text()")
+    d.push({
+        title: '‘‘’’<b>' + SM + '</b>' + "\n" + "作者：" + ZZ + "\n" + "类型：" + a1 + a2,
+        desc: '‘‘’’<font color="#f8ecc9">' + GX + "\n" + XQ + "</font>",
+        pic_url: FM,
+        url: FM + "@Referer=#noHistory##noRecordHistory#",
+        col_type: 'movie_1_vertical_pic_blur',
+        extra: {"gradient": true},
+    })
+    for (var i in erjimenu) {
+        d.push(erjimenu[i])
+    }
+
+
+    var xpat = ['//*[@id=\"xl1\"]/@onclick', '//*[@id=\"xl2\"]/@onclick', "//*[@id=\"xl3\"]/@onclick", '//*[@id=\"xl4\"]/@onclick', '//*[@id=\"xl5\"]/@onclick']
+    var BT = xpathArray(html, "//*[@class=\"cell-title\"]/text()");
+    if (getMyVar('path') != 0) {
+        var LJ = xpathArray(html, xpat[getMyVar('path')]);
+    } else {
+        var LJ = xpathArray(html, xpat[0]);
+    }
+
+
+    if (getMyVar('shsort') != 0) {
+        for (var i = 0; i < BT.length; i++) {
+            let url = LJ[i];
+            d.push({
+                title: "第" + (i + 1) + "话",
+                url: $(url).lazyRule(() => {
+                    require(config.依赖);
+                    return sanji(input)
+                }), col_type: 'text_4',
+            });
+
+        }
+    } else {
+        for (var i = BT.length - 1; i >= 0; i--) {
+            let url = LJ[i];
+            d.push({
+                title: "第" + (i + 1) + "话", url: $(url).lazyRule(() => {
+                    require(config.依赖);
+                    return sanji(input)
+                }), col_type: 'text_4',
+            });
+
+        }
+    }
+
+    d.push({
+        desc: "‘‘’’<small><font color=#f20c00>此规则仅限学习交流使用，请于导入后24小时内删除，任何团体或个人不得以任何方式方法传播此规则的整体或部分！</font></small>",
+        url: "toast://温馨提示：且用且珍惜！",
+        col_type: 'text_center_1',
+    })
+    setResult(d);
+}
+
+function sanji(inl) {
+    var url = eval(inl)
+    var html = fetch(url)
+    var xx = xpathArray(html, "//*[@id=\"imgList\"]/img/@src");
+    var BT = xpathArray(html, "//*[@id=\"imgList\"]/img/@data-original");
+    var ll = "pics://"
+    for (var i = 0; i < 3; i++) {
+        ll = ll + xx[i] + '&&'
+    }
+    for (var i = 0; i < BT.length; i++) {
+
+        if (i == BT.length - 1) {
+            ll = ll + BT[i]
+        } else {
+            ll = ll + BT[i] + '&&'
+        }
+    }
+
+    return ll
+
+}
+
+function openMH(bookid, linkid, path) {
+    var localhost = 'https://www.mhdnf.xyz'
+    eval(getCryptoJS());
+    const j = CryptoJS.enc.Utf8.parse('12cdefgabcdefg12');
+    let j1 = CryptoJS.enc.Utf8.parse(linkid);
+    let jg = CryptoJS.AES.encrypt(j1, j, {
+        'mode': CryptoJS.mode.ECB, 'padding': CryptoJS.pad.Pkcs7
+    });
+    let url = localhost + '/play?linkId=' + linkid + '&bookId=' + bookid + "&path=" + path + '&key=' + jg.toString()
+    return url
+}
+
 
 function shezhi() {
     addListener("onClose", $.toString(() => {
@@ -187,6 +312,7 @@ function search(d) {
             }, b),
             col_type: 'movie_2',
             extra: {
+                titleVisible: true,
                 title: BT[i]
             }
         });
