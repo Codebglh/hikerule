@@ -22,7 +22,7 @@ var yijimenu = [{
     col_type: 'line'
 }]
 
-function yiji1() {
+function yiji() {
     var d = [];
     if (MY_PAGE == 1) {
         for (var i in yijimenu) {
@@ -52,23 +52,11 @@ function sousuo() {
     }));
     var d = [];
     var searchurl = $('').lazyRule(() => {
-        let recordlist = storage0.getItem('searchrecord') || [];
-        if (recordlist.indexOf(input) > -1) {
-            recordlist = recordlist.filter((item) => item !== input);
-        }
-        recordlist.unshift(input);
-        if (recordlist.length > 20) {
-            recordlist.splice(recordlist.length - 1, 1);
-        }
-        storage0.setItem('searchrecord', recordlist);
-        if (getItem('searchmode') == "hiker") {
-            return "hiker://search?rule=" + MY_RULE.title + "&s=" + input;
-        } else {
-            return $('hiker://empty#noRecordHistory##noHistory#').rule((name) => {
-                require(config.依赖.match(/http(s)?:\/\/.*\//)[0] + 'SrcJyXunmi.js');
-                xunmi(name);
-            }, input);
-        }
+
+
+        return "hiker://search?rule=" + MY_RULE.title + "&s=" + input;
+        
+
     });
     d.push({
         title: '🔍',
