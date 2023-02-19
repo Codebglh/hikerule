@@ -1,12 +1,13 @@
-let file1 = "https://ghproxy.com/https://raw.githubusercontent.com/Codebglh/hikerule/main/code/yiji.js";
+let file = "https://ghproxy.com/https://raw.githubusercontent.com/Codebglh/hikerule/main/code/yiji.js";
+let name = "hiker://files/rules/bgHouse/js/yiji.js";
 
 let relyfile = "";
-if (fileExist('hiker://files/libs/' + md5(file1) + '.js')) {
-    relyfile = file1;
+if (fileExist(name)) {
+    relyfile = file;
+} else {
+    downloadFile(file, relyfile)
 }
 if (relyfile == "") {
-    let cjFile = request(file1, {timeout: 3000});
-    if (cjFile.indexOf('nowVersion') > -1) {
-        relyfile = file1;
-    }
+    let cjFile = request(file, {timeout: 3000});
+    relyfile = file;
 }

@@ -376,5 +376,31 @@ function erji1(url) {
 }
 
 function version() {
-    var nowVersion = "1.0";//现在版本
+    var nowVersion = "6.5";//现在版本
+    var nowtime = Date.now();
+    var oldtime = parseInt(getItem('VersionChecktime', '0').replace('time', ''));
+    if (getMyVar('SrcJuying-VersionCheck', '0') == '0' && nowtime > (oldtime + 12 * 60 * 60 * 1000)) {
+        try {
+            eval(request(config.依赖.match(/http(s)?:\/\/.*\//)[0] + 'SrcTmplVersion.js'))
+            if (parseFloat(newVersion.SrcJuying) > parseFloat(nowVersion)) {
+                confirm({
+                    title: '发现新版本，是否更新？',
+                    content: nowVersion + '=>' + newVersion.SrcJuying + '\n' + newVersion.SrcJuyingdesc[newVersion.SrcJuying],
+                    confirm: $.toString((nowtime) => {
+                        setItem('VersionChecktime', nowtime + 'time');
+                        deleteCache();
+                        delete config.依赖;
+                        refreshPage();
+                    }, nowtime),
+                    cancel: ''
+                })
+                log('检测到新版本！\nV' + newVersion.SrcJuying + '版本》' + newVersion.SrcJuyingdesc[newVersion.SrcJuying]);
+            }
+            putMyVar('SrcJuying-Version', '-V' + newVersion.SrcJuying);
+        } catch (e) {
+        }
+        putMyVar('SrcJuying-VersionCheck', '1');
+    } else {
+        putMyVar('SrcJuying-Version', '-V' + nowVersion);
+    }
 }
