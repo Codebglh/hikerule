@@ -186,6 +186,9 @@ function search(d) {
                 erji(b);
             }, b),
             col_type: 'movie_2',
+            extra: {
+                title: BT[i]
+            }
         });
 
     }
