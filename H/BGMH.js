@@ -307,6 +307,7 @@ function sousuo() {
                 require(config.依赖);
                 putMyVar("so", input);
                 lookset();
+                refreshPage();
             }),
         col_type: 'input',
         extra: {
@@ -340,6 +341,7 @@ function openMH(bookid, linkid, path) {
 function lookset() {
     var localhost = "https://www.mhdnf.xyz/?page.currentPage=fypage&orderType=3&subjectName=&filmName="
     log("bg")
+    var d = []
     let url = localhost + getMyVar("so", "");
     var html = fetch(url)
     var BT = xpathArray(html, '//*[@id="booklist"]/div/div/div/p/span/text()');
@@ -359,5 +361,5 @@ function lookset() {
         });
 
     }
-
+    setResult(d);
 }
