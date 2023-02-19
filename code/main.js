@@ -6,6 +6,7 @@ if (fileExist(name)) {
     relyfile = name;
 } else {
     downloadFile(file, name)
+    log('ssa')
 }
 if (relyfile == "") {
     relyfile = file;
