@@ -29,4 +29,33 @@ function yiji() {
             d.push(yijimenu [i])
         }
     }
+    setResult(d);
 }
+
+function shezhi() {
+    addListener("onClose", $.toString(() => {
+        clearMyVar('shezhi$input');
+    }));
+    var d = [];
+    d.push({
+        title: '<span style="color:#ff6600"><b>\t热搜榜\t\t\t</b></span>',
+        url: "hiker://empty",
+        pic_url: 'https://ss1.baidu.com/6ONXsjip0QIZ8tyhnq/it/u=3779990328,1416553241&fm=179&app=35&f=PNG?w=60&h=70&s=E7951B62A4639D153293A4E90300401B',
+        col_type: 'icon_small_3'
+    });
+    setResult(d);
+};
+
+function sousuo() {
+    addListener("onClose", $.toString(() => {
+        clearMyVar('shezhi$input');
+    }));
+    var d = [];
+    d.push({
+        title: '<span style="color:#ff6600"><b>\t热搜榜\t\t\t</b></span>',
+        url: "hiker://empty",
+        pic_url: 'https://ss1.baidu.com/6ONXsjip0QIZ8tyhnq/it/u=3779990328,1416553241&fm=179&app=35&f=PNG?w=60&h=70&s=E7951B62A4639D153293A4E90300401B',
+        col_type: 'icon_small_3'
+    });
+    setResult(d);
+};
