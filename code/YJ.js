@@ -3,8 +3,7 @@ let localhost = 'https://ghproxy.com/https://raw.githubusercontent.com/Codebglh/
 function yiji() {
     require(config.依赖);
     xiazai();
-    // require(localhost + "yiji.js");
-    require(' hiker://files/rules/bgHouse/js/yiji.js');
+    require(localhost + "yiji.js");
 }
 
 function erji() {
@@ -28,7 +27,7 @@ function sanji(input) {
             ll = ll + BT[i] + '&&'
         }
     }
-    require(localhost + "sanji.js")
+
 }
 
 function search() {
