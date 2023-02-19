@@ -22,7 +22,7 @@ var yijimenu = [{
     col_type: 'line'
 }]
 
-function yiji() {
+function yiji1() {
     var d = [];
     if (MY_PAGE == 1) {
         for (var i in yijimenu) {
