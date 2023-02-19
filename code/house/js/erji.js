@@ -119,8 +119,7 @@ if (getMyVar('shsort') == 0) {
         d.push({
             title: "第" + (i + 1) + "话",
             url: $(url).lazyRule(() => {
-                require('https://ghproxy.com/https://raw.githubusercontent.com/Codebglh/hikerule/main/code/house/js/'
-                );
+                require(config.依赖);
                 return sanji(input)
             }), col_type: 'text_4',
         });
@@ -130,8 +129,9 @@ if (getMyVar('shsort') == 0) {
     for (var i = BT.length - 1; i >= 0; i--) {
         let url = LJ[i];
         d.push({
-            title: "第" + (i + 1) + "话", url: $(url).lazyRule(() => {
-                require(config.依赖);
+            title: "第" + (i + 1) + "话",
+            url: $(url).lazyRule(() => {
+                require(local);
                 return sanji(input)
             }), col_type: 'text_4',
         });
@@ -145,38 +145,3 @@ d.push({
     col_type: 'text_center_1',
 })
 setResult(d);
-
-
-function sanji(str) {
-    var url = eval(str)
-    var html = fetch(url)
-    var xx = xpathArray(html, "//*[@id=\"imgList\"]/img/@src");
-    var BT = xpathArray(html, "//*[@id=\"imgList\"]/img/@data-original");
-    var ll = "pics://"
-    for (var i = 0; i < 3; i++) {
-        ll = ll + xx[i] + '&&'
-    }
-    for (var i = 0; i < BT.length; i++) {
-
-        if (i == BT.length - 1) {
-            ll = ll + BT[i]
-        } else {
-            ll = ll + BT[i] + '&&'
-        }
-    }
-
-    return ll
-
-}
-
-function openMH(bookid, linkid, path) {
-    var localhost = 'https://www.mhdnf.xyz'
-    eval(getCryptoJS());
-    const j = CryptoJS.enc.Utf8.parse('12cdefgabcdefg12');
-    let j1 = CryptoJS.enc.Utf8.parse(linkid);
-    let jg = CryptoJS.AES.encrypt(j1, j, {
-        'mode': CryptoJS.mode.ECB, 'padding': CryptoJS.pad.Pkcs7
-    });
-    let url = localhost + '/play?linkId=' + linkid + '&bookId=' + bookid + "&path=" + path + '&key=' + jg.toString()
-    return url
-}

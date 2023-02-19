@@ -10,9 +10,9 @@ function erji() {
     require(localhost + "erji.js")
 }
 
-// function sanji() {
-//     require(localhost + "sanji.js")
-// }
+function sanji() {
+    require(localhost + "sanji.js")
+}
 
 function search() {
     require(localhost + "search.js")
