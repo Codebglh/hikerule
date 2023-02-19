@@ -321,7 +321,7 @@ function search(d) {
     setResult(x);
 }
 
-function erji(url) {
+function erji1(url) {
     var html = fetch(url)
     var d = [];
     var FM = xpath(html, "//*[@id=\"book\"]/div[1]/p[1]/img/@src")
