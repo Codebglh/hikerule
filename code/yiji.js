@@ -52,9 +52,10 @@ function sousuo() {
     }));
     var d = [];
     var searchurl = $('').lazyRule(() => {
-        return $('hiker://empty#noRecordHistory##noHistory#').rule((name) => {
+        return $('hiker://empty#noRecordHistory##noHistory#').rule(() => {
             require(config.依赖);
-            search(name);
+            log(input)
+            search();
         });
 
 
@@ -62,16 +63,14 @@ function sousuo() {
     d.push({
         title: '🔍',
         url: $.toString((searchurl) => {
+            // var input = getMyVar('sousuo$input', '')
+            log(input)
             return input + searchurl;
         }, searchurl),
 
         col_type: 'input',
         extra: {
             titleVisible: true,
-            id: "searchinput",
-            onChange: $.toString(() => {
-                log("sda")
-            })
         }
     });
     setResult(d);
@@ -79,9 +78,8 @@ function sousuo() {
 
 function search(d) {
     var x = [];
-    var localhost = "https://www.mhdnf.xyz/?page.currentPage=fypage&orderType=3&subjectName=&filmName="
+    var localhost = "https://www.mhdnf.xyz/?page.currentPage=" + MY_PAGE + "&orderType=3&subjectName=&filmName="
     var url = localhost + d;
-    fetch(url);
     var html = fetch(url)
     var BT = xpathArray(html, '//*[@id="booklist"]/div/div/div/p/span/text()');
     var LJ = xpathArray(html, '//*[@id="booklist"]/div/div/@onclick');
@@ -95,7 +93,7 @@ function search(d) {
             desc: XQ[i].replace("\r\n", ""),
             pic_url: TP[i],
             url: b + "#immersiveTheme##noHistory#",
-            col_type: 'movie_1',
+            col_type: 'movie_2',
         });
 
     }
