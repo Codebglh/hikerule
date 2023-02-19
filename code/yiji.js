@@ -1,4 +1,3 @@
-let d = new []
 let version = {
     author: "bgcode",
     ver: "0.0.1",
