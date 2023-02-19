@@ -1,3 +1,5 @@
+require(config.依赖);
+return openMH(bookid, linkid, path)
 var url = eval(input)
 var html = fetch(url)
 var xx = xpathArray(html, "//*[@id=\"imgList\"]/img/@src");
