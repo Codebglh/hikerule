@@ -52,10 +52,11 @@ function sousuo() {
     }));
     var d = [];
     var searchurl = $('').lazyRule(() => {
+        return $('hiker://empty#noRecordHistory##noHistory#').rule((name) => {
+            require(config.依赖);
+            search(name);
+        });
 
-
-        return "hiker://search?rule=" + MY_RULE.title + "&s=" + input;
-        
 
     });
     d.push({
@@ -75,3 +76,28 @@ function sousuo() {
     });
     setResult(d);
 };
+
+function search(d) {
+    var x = [];
+    var localhost = "https://www.mhdnf.xyz/?page.currentPage=fypage&orderType=3&subjectName=&filmName="
+    var url = localhost + d;
+    fetch(url);
+    var html = fetch(url)
+    var BT = xpathArray(html, '//*[@id="booklist"]/div/div/div/p/span/text()');
+    var LJ = xpathArray(html, '//*[@id="booklist"]/div/div/@onclick');
+    var XQ = xpathArray(html, '//*[@id="booklist"]/div/div/div[2]/p[2]/text()');
+    var TP = xpathArray(html, '//*[@id="booklist"]/div/div/div[1]/img/@src');
+    for (var i = 0; i < BT.length; i++) {
+        var a = LJ[i];
+        var b = url + a.replace(/window\.open\(\'|\'\)/g, "")
+        x.push({
+            title: BT[i],
+            desc: XQ[i].replace("\r\n", ""),
+            pic_url: TP[i],
+            url: b + "#immersiveTheme##noHistory#",
+            col_type: 'movie_1',
+        });
+
+    }
+    setResult(x);
+}
