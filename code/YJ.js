@@ -10,7 +10,8 @@ function erji() {
     require(localhost + "erji.js")
 }
 
-function sanji() {
+function sanji(input) {
+    var url = eval(input)
     require(localhost + "sanji.js")
 }
 

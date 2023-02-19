@@ -131,7 +131,7 @@ if (getMyVar('shsort') == 0) {
         d.push({
             title: "第" + (i + 1) + "话",
             url: $(url).lazyRule(() => {
-                require(local);
+                require(config.依赖);
                 return sanji(input)
             }), col_type: 'text_4',
         });
