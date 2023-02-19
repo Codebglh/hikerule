@@ -306,12 +306,12 @@ function sousuo() {
             $("hiker://empty#noRecordHistory##noHistory#").rule(() => {
                 require(config.依赖);
                 putMyVar("so", input);
-                lookset(getMyVar("so", ""));
+                lookset();
             }),
         col_type: 'input',
-        // extra: {
-        //     defaultValue: getMyVar("so", "")
-        // }
+        extra: {
+            defaultValue: getMyVar("so", "")
+        }
     })
 
 
@@ -337,9 +337,10 @@ function openMH(bookid, linkid, path) {
     return url
 }
 
-function lookset(input) {
+function lookset() {
     var localhost = "https://www.mhdnf.xyz/?page.currentPage=fypage&orderType=3&subjectName=&filmName="
-    let url = localhost + input;
+    log("bg")
+    let url = localhost + getMyVar("so", "");
     var html = fetch(url)
     var BT = xpathArray(html, '//*[@id="booklist"]/div/div/div/p/span/text()');
     var LJ = xpathArray(html, '//*[@id="booklist"]/div/div/@onclick');
