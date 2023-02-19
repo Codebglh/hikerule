@@ -25,7 +25,7 @@ var erjimenu = [{
     title: "剧情简介",
     url: "empty#noRecordHistory##noHistory#",
     pic_url: 'https://ghproxy.com/https://raw.githubusercontent.com/Codebglh/hikerule/main/XQ/src/message.png',
-    col_type: 'icon_small_3'
+    col_type: 'icon_small_2'
 }, {
     title: "观影设置",
     url: $('hiker://empty#noRecordHistory##noHistory#').rule(() => {
@@ -33,18 +33,9 @@ var erjimenu = [{
         shezhi();
     }),
     pic_url: 'https://ghproxy.com/https://raw.githubusercontent.com/Codebglh/hikerule/main/XQ/src/setting.png',
-    col_type: 'icon_small_3'
+    col_type: 'icon_small_2'
 }, {
-    title: "更多片源", url: $('hiker://empty#noRecordHistory##noHistory#').rule(() => {
-        // require(config.依赖);
-        log("bb")
-        // sousuo();
-    }), pic_url: 'https://ghproxy.com/https://raw.githubusercontent.com/Codebglh/hikerule/main/XQ/src/search.png',
-
-    col_type: 'icon_small_3',
-
-}, {
-    title: getMyVar('shsort') == '0' ? '““””<b><span style="color: #cb5656">∨</span></b>' : '““””<b><span style="color: #00FFFF">∧</span></b>',
+    title: getMyVar('shsort') == 0 ? '““””<b><span style="color: #cb5656">∨</span></b>' : '““””<b><span style="color: #00FFFF">∧</span></b>',
     url: $("#noLoading#").lazyRule(() => {
         if (getMyVar('shsort') == '1') {
             putMyVar('shsort', '0');
@@ -144,9 +135,8 @@ function yiji() {
 
 function erji() {
     addListener("onClose", $.toString(() => {
-
-        clearMyVar('path');
-        clearMyVar('shsort');
+        clearMyVar('erji$path');
+        clearMyVar('erji$shsort');
     }));
     var html = getResCode()
     var d = [];
@@ -168,8 +158,6 @@ function erji() {
     for (var i in erjimenu) {
         d.push(erjimenu[i])
     }
-
-
     var xpat = ['//*[@id=\"xl1\"]/@onclick', '//*[@id=\"xl2\"]/@onclick', "//*[@id=\"xl3\"]/@onclick", '//*[@id=\"xl4\"]/@onclick', '//*[@id=\"xl5\"]/@onclick']
     var BT = xpathArray(html, "//*[@class=\"cell-title\"]/text()");
     if (getMyVar('path') != 0) {
@@ -179,7 +167,7 @@ function erji() {
     }
 
 
-    if (getMyVar('shsort') != 0) {
+    if (getMyVar('shsort') == 0) {
         for (var i = 0; i < BT.length; i++) {
             let url = LJ[i];
             d.push({
@@ -308,7 +296,7 @@ function search(d) {
             pic_url: TP[i],
             url: $("hiker://empty#noRecordHistory##noHistory#").rule((b) => {
                 require(config.依赖);
-                erji(b);
+                erji1(b);
             }, b),
             col_type: 'movie_2',
             extra: {

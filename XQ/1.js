@@ -309,7 +309,7 @@ function sousuo() {
         {
             title: '🔍',
             url: $.toString((searchurl) => {
-                return "hiker://search?rule=" + searchurl + input;
+                return "hiker://erji.js?rule=" + searchurl + input;
             }, searchurl),
             desc: "搜你想看的...",
             col_type: 'input',
