@@ -7,7 +7,4 @@ if (fileExist(name)) {
 } else {
     downloadFile(file, relyfile)
 }
-if (relyfile == "") {
-    let cjFile = request(file, {timeout: 3000});
-    relyfile = file;
-}
+
