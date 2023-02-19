@@ -1,4 +1,5 @@
 let version = {
+
     author: "bgcode",
     ver: "0.0.1",
     update: '2023/2/19 14:25',
@@ -372,4 +373,8 @@ function erji1(url) {
         col_type: 'text_center_1',
     })
     setResult(d);
+}
+
+function version() {
+    var nowVersion = "1.0";//现在版本
 }
