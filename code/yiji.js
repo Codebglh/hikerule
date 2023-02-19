@@ -37,6 +37,7 @@ var erjimenu = [{
 }, {
     title: "更多片源", url: $('hiker://empty#noRecordHistory##noHistory#').rule(() => {
         // require(config.依赖);
+        log("bb")
         // sousuo();
     }), pic_url: 'https://ghproxy.com/https://raw.githubusercontent.com/Codebglh/hikerule/main/XQ/src/search.png',
 
@@ -141,19 +142,17 @@ function sousuo() {
     }));
     var d = [];
     var searchurl = $('').lazyRule(() => {
-        return $('hiker://empty#noRecordHistory##noHistory#').rule(() => {
+        var bn = input;
+        return $('hiker://empty#noRecordHistory##noHistory#').rule((bn) => {
             require(config.依赖);
-            log(input)
-            search();
-        });
+            search(bn);
+        }, bn);
 
 
     });
     d.push({
         title: '🔍',
         url: $.toString((searchurl) => {
-            // var input = getMyVar('sousuo$input', '')
-            log(input)
             return input + searchurl;
         }, searchurl),
 
