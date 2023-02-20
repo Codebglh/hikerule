@@ -38,5 +38,6 @@ function xiazai() {
         downloadFile(file, local)
         downloadFile(file1, local1)
         downloadFile(file2, local2)
+        toast('更新成功')
     }
 }
