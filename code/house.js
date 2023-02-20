@@ -2,32 +2,33 @@ let localhost = 'https://ghproxy.com/https://raw.githubusercontent.com/Codebglh/
 let localfile = 'hiker://files/rules/bgHouse/js/'
 
 function yiji() {
-    require(localfile + "yiji.js");
+    if (fileExist(localfile + "yiji.js")) {
+        require(localfile + "yiji.js");
+    } else {
+        downloadFile(localhost + "yiji.js", localfile + "yiji.js")
+        require(localfile + "yiji.js");
+        toast('yiji下载更新成功')
+    }
 }
 
 function erji() {
-    require(localfile + "erji.js")
+    if (fileExist(localfile + "erji.js")) {
+        require(localfile + "erji.js");
+    } else {
+        downloadFile(localhost + "erji.js", localfile + "erji.js")
+        require(localfile + "erji.js");
+        toast('erji下载更新成功')
+    }
 }
 
 
 function search() {
-    require(localfile + "search.js")
-}
-
-
-file = ['yiji.js', 'erji.js', 'sanji.js']
-for (var i = 0; i < file.length; i++) {
-    if (fileExist(localfile + file[i])) {
-        log(md5(localfile + file[i]))
-        if (md5(localfile + file[i]) != md5(localhost + file[i])) {
-            deleteFile(localfile + file[i])
-            downloadFile(localhost + file[i], localfile + file[i])
-            toast(file[i] + '更新成功')
-        } else {
-            toast(file[i] + '已是最新')
-        }
+    if (fileExist(localfile + "sanji.js")) {
+        require(localfile + "sanji.js");
     } else {
-        downloadFile(localhost + file[i], localfile + file[i])
-        toast(file[i] + '下载更新成功')
+        downloadFile(localhost + "sanji.js", localfile + "sanji.js")
+        require(localfile + "sanji.js");
+        toast('下载更新成功')
     }
 }
+
