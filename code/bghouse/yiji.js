@@ -43,7 +43,7 @@ for (var i = 0; i < a.length; i++) {
         desc: a[i].vod_blurb,
         pic_url: a[i].vod_pic,
         url: $(s).rule(() => {
-            eval('hiker://files/rules/bgHouse/js/erji.js')
+            require("hiker://files/rules/bgHouse/js/erji.js")
             erji(input);
         }) + "#immersiveTheme#",
         col_type: 'movie_3',
