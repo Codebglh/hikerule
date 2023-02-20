@@ -1,15 +1,27 @@
 var yijimenu = [{
-    title: "收藏", url: "hiker://collection", pic_url: version.url + 'src/2.png', col_type: 'icon_4',
+    title: "收藏",
+    url: "hiker://collection",
+    pic_url: 'https://ghproxy.com/https://raw.githubusercontent.com/Codebglh/hikerule/main/code/src/2.png',
+    col_type: 'icon_4',
 }, {
-    title: "历史", url: "hiker://history", pic_url: version.url + 'src/3.png', col_type: 'icon_4',
+    title: "历史",
+    url: "hiker://history",
+    pic_url: 'https://ghproxy.com/https://raw.githubusercontent.com/Codebglh/hikerule/main/code/src/3.png',
+    col_type: 'icon_4',
 }, {
-    title: "设置", url: $("hiker://empty#noRecordHistory##noHistory#").rule(() => {
+    title: "设置",
+    url: $("hiker://empty#noRecordHistory##noHistory#").rule(() => {
         log("shezhi")
-    }), pic_url: version.url + 'src/4.png', col_type: 'icon_4',
+    }),
+    pic_url: 'https://ghproxy.com/https://raw.githubusercontent.com/Codebglh/hikerule/main/code/src/4.png',
+    col_type: 'icon_4',
 }, {
-    title: "搜索", url: $("hiker://empty#noRecordHistory##noHistory#").rule(() => {
+    title: "搜索",
+    url: $("hiker://empty#noRecordHistory##noHistory#").rule(() => {
         log("sousuo");
-    }), pic_url: version.url + 'src/5.png', col_type: 'icon_4',
+    }),
+    pic_url: 'https://ghproxy.com/https://raw.githubusercontent.com/Codebglh/hikerule/main/code/src/5.png',
+    col_type: 'icon_4',
 }, {
     col_type: 'line'
 }]
