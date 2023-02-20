@@ -9,12 +9,13 @@ function erji() {
     //         a = a + 1;
     //     }
     // }
-    toast(MY_PARAMS.title);
+    let a = MY_PARAMS.pic_url
+    toast(a);
     d.push({
         title: MY_PARAMS.title,
         desc: MY_PARAMS.desc,
-        url: MY_PARAMS.pic_url,
-        pic_url: MY_PARAMS.pic_url,
+        url: a,
+        pic_url: a,
         col_type: 'movie_1_vertical_pic_blur',
     });
     setResult(d);
