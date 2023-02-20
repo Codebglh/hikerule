@@ -1,5 +1,6 @@
 function erji() {
-    let LJ = getVar('url').split(/第.*?集|\$|#/g)
+    let str = MY_PARAMS.url
+    let LJ = str.split(/第.*?集|\$|#/g)
     var a = 0;
     let url = [];
     for (let i = 0; i < LJ.length; i++) {
@@ -9,10 +10,10 @@ function erji() {
         }
     }
     d.push({
-        title: getVar('title'),
-        desc: getVar('desc'),
-        url: getVar('pic_url'),
-        pic_url: getVar('pic_url'),
+        title: MY_PARAMS.title,
+        desc: MY_PARAMS.desc,
+        url: MY_PARAMS.pic_url,
+        pic_url: MY_PARAMS.pic_url,
         col_type: 'movie_1_vertical_pic_blur',
     });
 }
