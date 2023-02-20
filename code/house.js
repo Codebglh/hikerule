@@ -26,13 +26,13 @@ function xiazai() {
     if (md5(file) == md5(local) && md5(file1) == md5(local1) && md5(file2) == md5(local2)) {
         break
     } else {
-        if (fileExists(local)) {
+        if (fileExist(local)) {
             deleteFile(local)
         }
-        if (fileExists(local1)) {
+        if (fileExist(local1)) {
             deleteFile(local1)
         }
-        if (fileExists(local2)) {
+        if (fileExist(local2)) {
             deleteFile(local2)
         }
         downloadFile(file, local)
