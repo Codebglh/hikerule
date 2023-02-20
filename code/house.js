@@ -1,17 +1,18 @@
-let localhost = 'https://ghproxy.com/https://raw.githubusercontent.com/Codebglh/hikerule/main/code/bghouse/js/';
+let localhost = 'https://ghproxy.com/https://raw.githubusercontent.com/Codebglh/hikerule/main/code/bghouse/';
 let localfile = 'hiker://files/rules/bgHouse/js/'
 
 function yiji() {
-    fetch(localfile + "yiji.js");
+    xiazai();
+    require(localfile + "yiji.js");
 }
 
 function erji() {
-    fetch(localfile + "erji.js")
+    require(localfile + "erji.js")
 }
 
 
 function search() {
-    fetch(localfile + "search.js")
+    require(localfile + "search.js")
 }
 
 
@@ -22,7 +23,7 @@ function xiazai() {
     local1 = localfile + 'erji.js';
     file2 = localhost + 'sanji.js';
     local2 = localfile + 'sanji.js';
-    if (md5(file1) == md5(local) && md5(file2) == md5(local1) && md5(file3) == md5(local2)) {
+    if (md5(file) == md5(local) && md5(file1) == md5(local1) && md5(file2) == md5(local2)) {
         break
     } else {
         if (fileExists(local)) {
@@ -35,7 +36,7 @@ function xiazai() {
             deleteFile(local2)
         }
         downloadFile(file, local)
-        downloadFile(file1, local)
-        downloadFile(file2, local)
+        downloadFile(file1, local1)
+        downloadFile(file2, local2)
     }
 }
