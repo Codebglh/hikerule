@@ -42,7 +42,7 @@ for (var i = 0; i < a.length; i++) {
         title: a[i].vod_name,
         desc: a[i].vod_blurb,
         pic_url: a[i].vod_pic,
-        url: $(s).lazyRule(() => {
+        url: $(s).Rule(() => {
             require('hiker://files/rules/bgHouse/js/erji.js')
             erji(input);
         }) + "#immersiveTheme#",
