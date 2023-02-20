@@ -11,10 +11,10 @@ function erji() {
     // }
     let a = MY_PARAMS.title
     let b = MY_PARAMS.pic_url
-    toast(a);
+    let c = MY_PARAMS.desc
     d.push({
-        title: MY_PARAMS.title,
-        desc: MY_PARAMS.desc,
+        title: a,
+        desc: c,
         url: b,
         pic_url: b,
         col_type: 'movie_1_vertical_pic_blur',
