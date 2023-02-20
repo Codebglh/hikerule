@@ -42,10 +42,10 @@ for (var i = 0; i < a.length; i++) {
         title: a[i].vod_name,
         desc: a[i].vod_blurb,
         pic_url: a[i].vod_pic,
-        url: $().rule(() => {
+        url: "hiker://empty#immersiveTheme#" + $().rule(() => {
             require("hiker://files/rules/bgHouse/js/erji.js")
             erji();
-        }) + "#immersiveTheme#",
+        }),
         col_type: 'movie_3',
         extra: {title: a[i].vod_name, desc: a[i].vod_blurb, pic_url: a[i].vod_pic, url: a[i].vod_play_url}
     });
