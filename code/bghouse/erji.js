@@ -1,5 +1,5 @@
-function erji(str) {
-    let LJ = str.split(/第.*?集|\$|#/g)
+function erji() {
+    let LJ = getVar('url').split(/第.*?集|\$|#/g)
     var a = 0;
     let url = [];
     for (let i = 0; i < LJ.length; i++) {
@@ -9,6 +9,10 @@ function erji(str) {
         }
     }
     d.push({
-        title: url[1].vod_name,
+        title: getVar('title'),
+        desc: getVar('desc'),
+        url: getVar('pic_url'),
+        pic_url: getVar('pic_url'),
+        col_type: 'movie_1_vertical_pic_blur',
     });
 }

@@ -37,17 +37,16 @@ var MY_URL = url + MY_PAGE;
 var html = JSON.parse(fetch(MY_URL));
 let a = html.list
 for (var i = 0; i < a.length; i++) {
-    let url = a[i].vod_play_url
+    let s = a[i].vod_play_url
     d.push({
         title: a[i].vod_name,
         desc: a[i].vod_blurb,
         pic_url: a[i].vod_pic,
-        url: $(url).lazyRule(() => {
-            require('hiker://files/rules/bgHouse/js/erji.js');
-            erji(input)
+        url: $(s).lazyRule(() => {
+            erji(input);
         }) + "#immersiveTheme#",
         col_type: 'movie_3',
-        extra: {}
+        extra: {title: a[i].vod_name, desc: a[i].vod_blurb, pic_url: a[i].vod_pic, url: a[i].vod_play_url}
     });
 }
 setResult(d);
