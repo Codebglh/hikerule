@@ -9,6 +9,6 @@ function erji(str) {
         }
     }
     d.push({
-        title: a[i].vod_name,
+        title: url[1].vod_name,
     });
 }
