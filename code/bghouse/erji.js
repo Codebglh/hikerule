@@ -1,5 +1,5 @@
 function erji() {
-
+    let d = []
     // let LJ = str.split(/第.*?集|\$|#/g)
     // var a = 0;
     // let url = [];
