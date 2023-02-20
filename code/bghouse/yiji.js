@@ -25,7 +25,7 @@ var yijimenu = [{
 }, {
     col_type: 'line'
 }]
-
+let localfile = 'hiker://files/rules/bgHouse/js/'
 var d = [];
 if (MY_PAGE == 1) {
     for (var i in yijimenu) {
@@ -43,7 +43,7 @@ for (var i = 0; i < a.length; i++) {
         desc: a[i].vod_blurb,
         pic_url: a[i].vod_pic,
         url: $(url).lazyRule(() => {
-            require(config.依赖);
+            require(localfile + 'erji.js');
             erji(input)
         }) + "#immersiveTheme#",
         col_type: 'movie_3',
