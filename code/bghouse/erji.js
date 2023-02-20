@@ -1,4 +1,4 @@
-function erji(str) {
+function erji() {
 
     // let LJ = str.split(/第.*?集|\$|#/g)
     // var a = 0;
