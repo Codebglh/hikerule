@@ -1,5 +1,5 @@
-function erji() {
-    let str = MY_PARAMS.url
+function erji(str) {
+
     let LJ = str.split(/第.*?集|\$|#/g)
     var a = 0;
     let url = [];
