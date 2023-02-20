@@ -24,7 +24,7 @@ function xiazai() {
     file2 = localhost + 'sanji.js';
     local2 = localfile + 'sanji.js';
     if (md5(file) == md5(local) && md5(file1) == md5(local1) && md5(file2) == md5(local2)) {
-        break
+        log("已经是最新")
     } else {
         if (fileExist(local)) {
             deleteFile(local)
