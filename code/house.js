@@ -18,6 +18,7 @@ function search() {
 file = ['yiji.js', 'erji.js', 'sanji.js']
 for (var i = 0; i < file.length; i++) {
     if (fileExist(localfile + file[i])) {
+        log(md5(localfile + file[i]))
         if (md5(localfile + file[i]) != md5(localhost + file[i])) {
             deleteFile(localfile + file[i])
             downloadFile(localhost + file[i], localfile + file[i])
