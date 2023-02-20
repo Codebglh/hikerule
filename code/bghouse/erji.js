@@ -16,4 +16,5 @@ function erji(str) {
         pic_url: MY_PARAMS.pic_url,
         col_type: 'movie_1_vertical_pic_blur',
     });
+    setResult(d);
 }
