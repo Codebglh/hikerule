@@ -20,16 +20,16 @@ function xiazai() {
     file = ['yiji.js', 'erji.js', 'sanji.js']
     for (var i = 0; i < file.length; i++) {
         if (fileExist(localfile + file[i])) {
-            if (md5(localfile + file[i] != md5(localhost + file[i]))) {
+            if (md5(localfile + file[i]) != md5(localhost + file[i])) {
                 deleteFile(localfile + file[i])
                 downloadFile(localhost + file[i], localfile + file[i])
-                toast('更新成功')
+                toast(file[i] + '更新成功')
             } else {
-                toast('已是最新')
+                toast(file[i] + '已是最新')
             }
         } else {
             downloadFile(localhost + file[i], localfile + file[i])
-            toast('下载更新成功')
+            toast(file[i] + '下载更新成功')
         }
     }
 }
