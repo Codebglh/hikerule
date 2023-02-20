@@ -9,6 +9,7 @@ function erji() {
     //         a = a + 1;
     //     }
     // }
+    toast(MY_PARAMS.title);
     d.push({
         title: MY_PARAMS.title,
         desc: MY_PARAMS.desc,
